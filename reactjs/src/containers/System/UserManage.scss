@@ -1,0 +1,43 @@
+.container {
+    .text-center {
+        .title-manage {
+            font-size: 50px;
+            color    : blue;
+        }
+    }
+
+    .content {
+        padding: 0;
+
+        table {
+            font-family    : arial, sans-serif;
+            border-collapse: collapse;
+            width          : 100%;
+
+
+            tr {
+                height: 30px !important;
+
+                td,
+                th {
+                    border    : 1px solid #dddddd;
+                    text-align: left;
+                    padding   : 8px;
+                }
+
+
+                .btn {
+                    margin-top: 0 !important;
+                    width     : 50px;
+                }
+            }
+
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+        }
+
+    }
+}

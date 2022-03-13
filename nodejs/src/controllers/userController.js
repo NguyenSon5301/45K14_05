@@ -23,15 +23,53 @@ let AddNewUser = async (req, res) => {
     let data = await userService.handleAddNewUser(req.body);
     res.status(200).json(data);
   } catch (error) {
-    console.log("check error", error);
     res.status(200).json({
       errCode: -1,
       errMessage: "Error from server",
     });
   }
 };
-
+let getAllUser = async (req, res) => {
+  try {
+    let id = req.query.id;
+    let data = await userService.onGetAllUsers(id);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let deleteUser = async (req, res) => {
+  try {
+    let id = req.body.id;
+    let data = await userService.onDeleteUser(id);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let editUser = async (req, res) => {
+  try {
+    let input = req.body;
+    let data = await userService.onEditUser(input);
+    res.status(200).json(data);
+  } catch (error) {
+    console.log("seer", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
   handleLoging,
   AddNewUser,
+  getAllUser,
+  deleteUser,
+  editUser,
 };

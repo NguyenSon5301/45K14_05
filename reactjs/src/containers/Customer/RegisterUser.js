@@ -4,7 +4,7 @@ import "./styleRegister.scss";
 import { CreateNewUser } from "../../services/userService";
 import axios from "axios";
 
-export default class Register extends Component {
+export default class RegisterUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +47,7 @@ export default class Register extends Component {
     let isValid = this.checkValidateInput();
     if (isValid === false) return;
     if (isValid === true) {
-      let res = await CreateNewUser({
+      await CreateNewUser({
         email: this.state.email,
         password: this.state.password,
         firstName: this.state.firstName,
@@ -56,7 +56,7 @@ export default class Register extends Component {
       });
       setTimeout(() => {
         this.props.history.push(`/home`);
-      }, 3000);
+      }, 1000);
     }
   };
   render() {

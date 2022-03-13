@@ -23,7 +23,7 @@ import System from "../routes/System";
 
 import { CustomToastCloseButton } from "../components/CustomToast";
 import ConfirmModal from "../components/ConfirmModal";
-import Register from "./Customer/Register";
+import RegisterUser from "./Customer/Register";
 import UserLogin from "./Customer/UserLogin";
 
 class App extends Component {
@@ -56,7 +56,11 @@ class App extends Component {
               <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                 <Switch>
                   <Route path={path.HOME} exact component={Home} />
-                  <Route path={path.REGISTER} exact component={Register} />
+                  <Route
+                    path={path.REGISTERUSER}
+                    exact
+                    component={RegisterUser}
+                  />
                   <Route path={path.USERLOGIN} exact component={UserLogin} />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route

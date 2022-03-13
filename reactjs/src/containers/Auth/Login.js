@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
-// import * as actions from "../store/actions";
 import * as actions from "../../store/actions";
 import bg1 from "./bg_1.jpg";
 import "../Customer/styleLogin.scss";
 import { FormattedMessage } from "react-intl";
-// import { userService } from '../../services/userService';
 import { handleLoginApi } from "../../services/userService";
 
 class Login extends Component {

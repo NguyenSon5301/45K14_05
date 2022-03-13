@@ -4,8 +4,6 @@ import { FormattedMessage } from "react-intl";
 import { LANGUAGE } from "../../utils/constant";
 import HeaderHomePage from "./HeaderHomePage";
 import { ChangeLanguage } from "../../store/actions/appActions";
-import "../../More/styles/bootstrap4/bootstrap.min.css";
-import "../../More/plugins/font-awesome-4.7.0/css/font-awesome.min.css";
 import "../../More/styles/main_styles.css";
 import "../../More/styles/responsive.css";
 import sli1 from "../../More/images/slider_1.jpg";
