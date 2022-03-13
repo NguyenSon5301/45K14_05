@@ -1,0 +1,109 @@
+$font-family-sans-serif-2: 'Roboto',
+sans-serif;
+$font-family-serif: 'Source Serif Pro',
+serif;
+$font-family-sans-serif: 'Roboto',
+sans-serif;
+
+body {
+	font-family     : $font-family-sans-serif;
+	background-color: #fff;
+}
+
+p {
+	color      : darken(#ccc, 10%);
+	font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: $font-family-sans-serif;
+}
+
+a {
+	transition: .3s all ease;
+
+	&:hover {
+		text-decoration: none !important;
+	}
+}
+
+.content {
+	padding: 7rem 0;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+.half {
+
+	&,
+	& .container>.row {
+		height: 100vh;
+	}
+
+
+
+	.contents,
+	.bg {
+		width: 50%;
+
+
+		.form-group {
+			overflow     : hidden;
+			margin-bottom: 0;
+			border       : 1px solid #efefef;
+			min-height   : 55px;
+
+			border-bottom: none;
+			position     : relative;
+
+
+		}
+
+		.form-control {
+			border       : none;
+			padding      : 0;
+			font-size    : 20px;
+			border-radius: 0;
+			position     : absolute;
+			top          : 15px;
+			left         : 20px;
+
+			&:active,
+			&:focus {
+				outline   : none;
+				box-shadow: none;
+			}
+		}
+	}
+
+	.bg {
+		background-size    : cover;
+		background-position: center;
+	}
+
+	a {
+		color          : #888;
+		text-decoration: underline;
+	}
+
+	.btn {
+		height       : 54px;
+		padding-left : 30px;
+		padding-right: 30px;
+	}
+
+
+}
