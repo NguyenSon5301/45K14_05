@@ -15,7 +15,6 @@ class UserLogin extends Component {
       password: "",
       showPassword: false,
       errMessage: "",
-      showPassword: false,
     };
   }
 
@@ -61,7 +60,7 @@ class UserLogin extends Component {
           toast.success("Login success");
           setTimeout(() => {
             this.props.history.push(`/home`);
-          }, 3000);
+          }, 1000);
         }
       }
     } catch (e) {
@@ -108,14 +107,29 @@ class UserLogin extends Component {
                       onChange={(e) => this.handleChangeInput(e, "username")}
                     />
                   </div>
-                  <div className="form-group  mb-3">
+                  <div className="form-group login-password  mb-3">
                     <input
                       placeholder="Password"
-                      type="password"
+                      type={this.state.showPassword ? "text" : "password"}
                       className="form-control"
                       value={password}
                       onChange={(e) => this.handleChangeInput(e, "password")}
                     />
+                    <span
+                      className="icon-show"
+                      onClick={() => this.handleShowHidePassword()}
+                    >
+                      <i
+                        className={
+                          this.state.showPassword
+                            ? "fas fa-eye show-password"
+                            : "fas fa-eye-slash show-password"
+                        }
+                      ></i>
+                    </span>
+                  </div>
+                  <div className="col-12" style={{ color: "red" }}>
+                    {this.state.errMessage}
                   </div>
                   <input
                     type="submit"

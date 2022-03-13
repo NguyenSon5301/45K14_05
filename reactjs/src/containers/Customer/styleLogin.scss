@@ -87,6 +87,16 @@ h2 {
 				box-shadow: none;
 			}
 		}
+
+		.login-password {
+			position: relative;
+
+			.icon-show {
+				position: absolute;
+				top     : 20px;
+				right   : 20px;
+			}
+		}
 	}
 
 	.bg {
