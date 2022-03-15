@@ -1,11 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
-import { ConnectedRouter as Router } from "connected-react-router";
 import { ChangeLanguage } from "../../store/actions/appActions";
-import { ToastContainer } from "react-toastify";
 import { FormattedMessage } from "react-intl";
-import { LANGUAGE } from "../../utils/constant";
 import prd1 from "../../More/images/product_1.png";
 import prd2 from "../../More/images/product_2.png";
 import prd3 from "../../More/images/product_3.png";
@@ -16,6 +12,8 @@ import prd7 from "../../More/images/product_7.png";
 import prd8 from "../../More/images/product_8.png";
 import prd9 from "../../More/images/product_9.png";
 import prd10 from "../../More/images/product_10.png";
+import Slider from "react-slick";
+
 class ProductItem extends Component {
   ChangeLanguage = (language) => {
     this.props.ChangeLanguageRedux(language);
@@ -85,7 +83,13 @@ class ProductItem extends Component {
     ],
   };
   render() {
-    let { language } = this.props;
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+    };
     let { arrItem } = this.state;
     return (
       <Fragment>
@@ -132,6 +136,7 @@ class ProductItem extends Component {
                 </div>
               </div>
             </div>
+
             <div className="row">
               <div className="col">
                 <div className="product-grid">

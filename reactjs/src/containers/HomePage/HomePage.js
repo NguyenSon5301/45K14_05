@@ -20,7 +20,6 @@ class HomePage extends Component {
     this.props.ChangeLanguageRedux(language);
   };
   render() {
-    let { language } = this.props;
     return (
       <>
         <div className="super_container">

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import bg from "../../More/images/zzc.jpg";
 import "./styleRegister.scss";
 import { CreateNewUser } from "../../services/userService";
-import axios from "axios";
 
 export default class RegisterUser extends Component {
   constructor(props) {
@@ -19,7 +18,6 @@ export default class RegisterUser extends Component {
   }
   handleChangeInput = (e, id) => {
     let copyState = { ...this.state };
-    console.log("check event", e.target.value);
     copyState[id] = e.target.value;
     this.setState({
       ...copyState,
@@ -62,79 +60,79 @@ export default class RegisterUser extends Component {
   render() {
     let { address, firstName, lastName, email, password, phonenumber } =
       this.state;
-    console.log("check state", this.state);
+
     return (
-      <div className="wrapper">
-        <div className="inner">
-          <div
-            className="image-holder"
-            style={{ backgroundImage: `url(${bg})` }}
-          ></div>
-          <div className="form-input">
-            <h3>Registration Form</h3>
-            <div className="form-group">
-              <input
-                value={firstName}
-                onChange={(e) => this.handleChangeInput(e, "firstName")}
-                type="text"
-                placeholder="First Name"
-                className="form-control"
-              />
-              <input
-                value={lastName}
-                onChange={(e) => this.handleChangeInput(e, "lastName")}
-                type="text"
-                placeholder="Last Name"
-                className="form-control"
-              />
-            </div>
+      <div className="d-lg-flex half">
+        <div
+          className="bg order-1 order-md-2"
+          style={{ backgroundImage: `url(${bg})` }}
+        ></div>
+        <div className="contents order-2 order-md-1">
+          <div className="container">
+            <div className="row align-items-center justify-content-center">
+              <div className="col-md-7">
+                <div className="mb-4">
+                  <h3>Register</h3>
+                </div>
+                <div>
+                  <div className="form-group ">
+                    <input
+                      placeholder="Email"
+                      type="text"
+                      className="form-control"
+                      value={email}
+                      onChange={(e) => this.handleChangeInput(e, "email")}
+                    />
+                  </div>
+                  <div className="form-group ">
+                    <input
+                      placeholder="firstName"
+                      type="text"
+                      className="form-control"
+                      value={firstName}
+                      onChange={(e) => this.handleChangeInput(e, "firstName")}
+                    />
+                  </div>
+                  <div className="form-group ">
+                    <input
+                      placeholder="lastName"
+                      type="text"
+                      className="form-control"
+                      value={lastName}
+                      onChange={(e) => this.handleChangeInput(e, "lastName")}
+                    />
+                  </div>
+                  <div className="form-group ">
+                    <input
+                      placeholder="password"
+                      type="text"
+                      className="form-control"
+                      value={password}
+                      onChange={(e) => this.handleChangeInput(e, "password")}
+                    />
+                  </div>
+                  <div className="form-group last-child ">
+                    <input
+                      placeholder="phonenumber"
+                      type="text"
+                      className="form-control"
+                      value={phonenumber}
+                      onChange={(e) => this.handleChangeInput(e, "phonenumber")}
+                    />
+                  </div>
 
-            <div className="form-wrapper">
-              <input
-                value={email}
-                onChange={(e) => this.handleChangeInput(e, "email")}
-                type="text"
-                placeholder="Email Address"
-                className="form-control"
-              />
-              <i className="zmdi zmdi-email"></i>
+                  <div className="col-12" style={{ color: "red" }}>
+                    {this.state.errMessage}
+                  </div>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="btn btn-block btn-primary my-2"
+                    onClick={() => this.handleSubmit()}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="form-wrapper">
-              <input
-                value={phonenumber}
-                onChange={(e) => this.handleChangeInput(e, "phonenumber")}
-                type="text"
-                placeholder="Phone Number"
-                className="form-control"
-              />
-              <i className="zmdi zmdi-phone"></i>
-            </div>
-            <div className="form-wrapper">
-              <select name="" id="" className="form-control">
-                <option value="" disabled selected>
-                  Gender
-                </option>
-                <option value="male">Male</option>
-                <option value="femal">Female</option>
-                <option value="other">Other</option>
-              </select>
-              <i className="zmdi zmdi-caret-down"></i>
-            </div>
-            <div className="form-wrapper">
-              <input
-                value={password}
-                onChange={(e) => this.handleChangeInput(e, "password")}
-                type="password"
-                placeholder="Password"
-                className="form-control"
-              />
-              <i className="zmdi zmdi-lock"></i>
-            </div>
-
-            <button onClick={() => this.handleSubmit()}>
-              Register
-              <i className="zmdi zmdi-arrow-right"></i>
-            </button>
           </div>
         </div>
       </div>

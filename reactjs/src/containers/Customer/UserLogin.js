@@ -107,7 +107,7 @@ class UserLogin extends Component {
                       onChange={(e) => this.handleChangeInput(e, "username")}
                     />
                   </div>
-                  <div className="form-group login-password  mb-3">
+                  <div className="form-group last-child login-password mb-3">
                     <input
                       placeholder="Password"
                       type={this.state.showPassword ? "text" : "password"}

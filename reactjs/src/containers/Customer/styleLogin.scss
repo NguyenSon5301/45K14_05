@@ -72,6 +72,7 @@ h2 {
 
 		}
 
+
 		.form-control {
 			border       : none;
 			padding      : 0;
@@ -86,16 +87,25 @@ h2 {
 				outline   : none;
 				box-shadow: none;
 			}
+
+
 		}
 
 		.login-password {
-			position: relative;
+			position     : relative;
+			border-bottom: 1px solid #efefef;
+
 
 			.icon-show {
 				position: absolute;
 				top     : 20px;
 				right   : 20px;
 			}
+		}
+
+		.last-child {
+			position     : relative;
+			border-bottom: 1px solid #efefef;
 		}
 	}
 

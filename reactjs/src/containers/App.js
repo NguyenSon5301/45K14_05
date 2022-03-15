@@ -5,6 +5,7 @@ import { ConnectedRouter as Router } from "connected-react-router";
 import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
 import HomePage from "./HomePage/HomePage";
+
 import CustomScrollbars from "../components/CustomScrollbars";
 
 import {
@@ -23,7 +24,7 @@ import System from "../routes/System";
 
 import { CustomToastCloseButton } from "../components/CustomToast";
 import ConfirmModal from "../components/ConfirmModal";
-import RegisterUser from "./Customer/Register";
+import RegisterUser from "./Customer/RegisterUser";
 import UserLogin from "./Customer/UserLogin";
 
 class App extends Component {
@@ -49,9 +50,9 @@ class App extends Component {
     return (
       <Fragment>
         <Router history={history}>
-          <div className="main-container">
+          <div className="main-container" style={{ fontFamily: "Arial" }}>
             <ConfirmModal />
-            {this.props.isLoggedIn && <Header />}
+            {/* {this.props.isLoggedIn && <Header />} */}
             <div className="content-container">
               <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                 <Switch>

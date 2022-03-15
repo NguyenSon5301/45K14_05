@@ -5,11 +5,14 @@ import { toast } from "react-toastify";
 import "./UserManage.scss";
 import { connect } from "react-redux";
 import { getUser, deleteUser, editUser } from "../../services/userService";
+import ModalEditUser from "./ModalEditUser";
 class UserManage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       arrUser: [],
+      isOpenModalEdit: false,
+      userEdit: {},
     };
   }
   fetchAllUser = async () => {
@@ -35,9 +38,18 @@ class UserManage extends Component {
       toast.error("the user is not deleted");
     }
   };
-  onEdit = async () => {
-    let res = await editUser({});
+  onEdit = async (user) => {
+    this.setState({
+      isOpenModalEdit: true,
+      userEdit: user,
+    });
   };
+  toogleEditUser = () => {
+    this.setState({
+      isOpenModalEdit: !this.state.isOpenModalEdit,
+    });
+  };
+
   render() {
     let { arrUser } = this.state;
     console.log("check arrUser", arrUser);
@@ -84,6 +96,11 @@ class UserManage extends Component {
               })}
           </table>
         </div>
+        <ModalEditUser
+          isOpenModalEdit={this.state.isOpenModalEdit}
+          currentUser={this.state.userEdit}
+          toogleEditUserParent={this.toogleEditUser}
+        />
       </div>
     );
   }

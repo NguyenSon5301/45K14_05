@@ -279,8 +279,9 @@ section {
 }
 
 .super_container {
-	width   : 100%;
-	overflow: hidden;
+	width      : 100%;
+	overflow   : hidden;
+	font-family: Georgia, Arial, Helvetica;
 }
 
 /*********************************
