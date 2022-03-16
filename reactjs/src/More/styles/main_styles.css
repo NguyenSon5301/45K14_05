@@ -915,7 +915,9 @@ section {
 }
 
 .new_arrivals_title {
-	margin-top: 74px;
+	margin-top : 74px;
+	font-size  : 50px;
+	font-weight: 600;
 }
 
 /*********************************
@@ -1202,7 +1204,9 @@ section {
 }
 
 .section_title h2 {
-	display: inline-block;
+	display    : inline-block;
+	font-size  : 50px;
+	font-weight: 600;
 }
 
 .section_title::after {
@@ -1217,8 +1221,8 @@ section {
 	transform        : translateX(-50%);
 	width            : 60px;
 	height           : 5px;
-	background       : #fe4c50;
-	content          : '';
+
+	content: '';
 }
 
 .timer {

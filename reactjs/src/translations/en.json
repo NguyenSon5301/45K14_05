@@ -28,8 +28,22 @@
         "addCart": "Add to cart",
         "Best-Sellers": "Best Sellers"
     },
+    "Benefit": {
+        "Free-ship": "Free Shipping",
+        "Title-free-ship": "Nationwide Delivery",
+        "Cash-on-delivery": "CASH ON DELIVERY",
+        "Title-cash": " The Internet Tend To Repeat",
+        "Return": "45 DAYS RETURN",
+        "Title-return": "Making it Look Like Readable",
+        "Opening-all-week": "OPENING ALL WEEK",
+        "Time": "8AM - 09PM"
+    },
     "Product": {
         "": ""
+    },
+    "Deal-Of-The-Week": {
+        "Title": "Deal of the week",
+        "shopButton": "Shop now"
     },
     "common": {
         "add": "Add",
@@ -63,8 +77,7 @@
             "system-administrator": {
                 "header": "System Administrator",
                 "user-manage": "User manage",
-                "product-manage": "Package manage",
-                "register-package-group-or-account": "Register service package for group/account"
+                "product-manage": "Package manage"
             },
             "system-parameter": {
                 "header": "System-parameter"

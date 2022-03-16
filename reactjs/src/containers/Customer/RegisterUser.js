@@ -86,7 +86,7 @@ export default class RegisterUser extends Component {
                   </div>
                   <div className="form-group ">
                     <input
-                      placeholder="firstName"
+                      placeholder="First Name"
                       type="text"
                       className="form-control"
                       value={firstName}
@@ -95,7 +95,7 @@ export default class RegisterUser extends Component {
                   </div>
                   <div className="form-group ">
                     <input
-                      placeholder="lastName"
+                      placeholder="Last Name"
                       type="text"
                       className="form-control"
                       value={lastName}
@@ -104,7 +104,7 @@ export default class RegisterUser extends Component {
                   </div>
                   <div className="form-group ">
                     <input
-                      placeholder="password"
+                      placeholder="Password"
                       type="text"
                       className="form-control"
                       value={password}
@@ -113,7 +113,7 @@ export default class RegisterUser extends Component {
                   </div>
                   <div className="form-group last-child ">
                     <input
-                      placeholder="phonenumber"
+                      placeholder="Phone Number"
                       type="text"
                       className="form-control"
                       value={phonenumber}

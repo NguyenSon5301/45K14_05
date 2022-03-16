@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FormattedMessage } from "react-intl";
 
 export default class Benefit extends Component {
   render() {
@@ -12,8 +13,12 @@ export default class Benefit extends Component {
                   <i className="fa fa-truck" aria-hidden="true"></i>
                 </div>
                 <div className="benefit_content">
-                  <h6>free shipping</h6>
-                  <p>Suffered Alteration in Some Form</p>
+                  <h6>
+                    <FormattedMessage id={"Benefit.Free-ship"} />
+                  </h6>
+                  <p>
+                    <FormattedMessage id={"Benefit.Title-free-ship"} />
+                  </p>
                 </div>
               </div>
             </div>
@@ -23,8 +28,14 @@ export default class Benefit extends Component {
                   <i className="fa fa-money" aria-hidden="true"></i>
                 </div>
                 <div className="benefit_content">
-                  <h6>cach on delivery</h6>
-                  <p>The Internet Tend To Repeat</p>
+                  <h6>
+                    {" "}
+                    <FormattedMessage id={"Benefit.Cash-on-delivery"} />
+                  </h6>
+                  <p>
+                    {" "}
+                    <FormattedMessage id={"Benefit.Title-cash"} />
+                  </p>
                 </div>
               </div>
             </div>
@@ -34,8 +45,14 @@ export default class Benefit extends Component {
                   <i className="fa fa-undo" aria-hidden="true"></i>
                 </div>
                 <div className="benefit_content">
-                  <h6>45 days return</h6>
-                  <p>Making it Look Like Readable</p>
+                  <h6>
+                    {" "}
+                    <FormattedMessage id={"Benefit.Return"} />
+                  </h6>
+                  <p>
+                    {" "}
+                    <FormattedMessage id={"Benefit.Title-return"} />
+                  </p>
                 </div>
               </div>
             </div>
@@ -45,8 +62,14 @@ export default class Benefit extends Component {
                   <i className="fa fa-clock-o" aria-hidden="true"></i>
                 </div>
                 <div className="benefit_content">
-                  <h6>opening all week</h6>
-                  <p>8AM - 09PM</p>
+                  <h6>
+                    {" "}
+                    <FormattedMessage id={"Benefit.Opening-all-week"} />
+                  </h6>
+                  <p>
+                    {" "}
+                    <FormattedMessage id={"Benefit.Time"} />
+                  </p>
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGE } from "../../utils/constant";
+import * as actions from "../../store/actions";
 
 import { NavLink } from "react-router-dom";
 
@@ -12,7 +13,7 @@ class HeaderHomePage extends Component {
   };
 
   render() {
-    let { language } = this.props;
+    const { processLogout } = this.props;
     const { history } = this.props;
     return (
       <Fragment>
@@ -56,21 +57,21 @@ class HeaderHomePage extends Component {
                         <ul className="account_selection">
                           <li>
                             <NavLink to={`/home/userlogin`}>
-                              <i
-                                className="fa fa-sign-in"
-                                aria-hidden="true"
-                              ></i>
                               <FormattedMessage id={"HeaderHome.Sign-in"} />
                             </NavLink>
                           </li>
                           <li>
                             <NavLink to={`/home/register`}>
-                              <i
-                                className="fa fa-user-plus"
-                                aria-hidden="true"
-                              ></i>
                               <FormattedMessage id={"HeaderHome.Register"} />
                             </NavLink>
+                          </li>
+
+                          <li
+                            className="btn btn-logout"
+                            onClick={processLogout}
+                          >
+                            <i className="fas fa-sign-out-alt"></i>
+                            Log out
                           </li>
                         </ul>
                       </li>
@@ -167,6 +168,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     ChangeLanguageRedux: (language) => dispatch(ChangeLanguage(language)),
+    processLogout: () => dispatch(actions.processLogout()),
   };
 };
 

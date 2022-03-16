@@ -144,7 +144,7 @@ class ProductItem extends Component {
                     arrItem.length > 0 &&
                     arrItem.map((item, index) => {
                       return (
-                        <div class="product-item men" key={item.Id}>
+                        <div class="product-item " key={item.Id}>
                           <div class="product discount product_filter">
                             <div class="product_image">
                               <img src={item.img} alt="" />

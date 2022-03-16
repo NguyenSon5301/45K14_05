@@ -28,6 +28,20 @@
         "addCart": "Thêm vào giỏ",
         "Best-Sellers": "Bán chạy nhất"
     },
+    "Deal-Of-The-Week": {
+        "Title": "Đơn hàng trong tuần",
+        "shopButton": "Đến ngay"
+    },
+    "Benefit": {
+        "Free-ship": "Miễn phí vận chuyển",
+        "Title-free-ship": "Giao hàng trên toàn quốc",
+        "Cash-on-delivery": "Thanh toán khi nhận hàng",
+        "Title-cash": "Internet có xu hướng lặp lại",
+        "Return": "Trả hàng trong 45 ngày",
+        "Title-return": "Miễn phí hoàn trả",
+        "Opening-all-week": "Mở cửa cả tuần",
+        "Time": "8H - 21H"
+    },
     "common": {
         "add": "Thêm",
         "edit": "Sửa",
@@ -60,8 +74,7 @@
             "system-administrator": {
                 "header": "Quản trị hệ thống",
                 "user-manage": "Quản lý người sử dụng",
-                "product-manage": "Quản lý gói",
-                "register-package-group-or-account": "Đăng ký gói dịch vụ cho nhóm/tài khoản"
+                "product-manage": "Quản lý hàng hóa"
             },
             "system-parameter": {
                 "header": "Tham số hệ thống"

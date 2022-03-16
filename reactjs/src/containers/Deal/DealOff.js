@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import dead from "../../More/images/deal_ofthe_week.png";
+import { FormattedMessage } from "react-intl";
 
 export default class DealOff extends Component {
   render() {
@@ -15,7 +16,9 @@ export default class DealOff extends Component {
             <div className="col-lg-6 text-right deal_ofthe_week_col">
               <div className="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
                 <div className="section_title">
-                  <h2>Deal Of The Week</h2>
+                  <h2>
+                    <FormattedMessage id={"Deal-Of-The-Week.Title"} />
+                  </h2>
                 </div>
                 <ul className="timer">
                   <li className="d-inline-flex flex-column justify-content-center align-items-center">
@@ -44,7 +47,9 @@ export default class DealOff extends Component {
                   </li>
                 </ul>
                 <div className="red_button deal_ofthe_week_button">
-                  <a href="#">shop now</a>
+                  <a href="#">
+                    <FormattedMessage id={"Deal-Of-The-Week.shopButton"} />
+                  </a>
                 </div>
               </div>
             </div>
