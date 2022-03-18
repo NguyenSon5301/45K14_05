@@ -4,20 +4,29 @@ import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGE } from "../../utils/constant";
 import * as actions from "../../store/actions";
-
+import { handleLoginApi } from "../../services/userService";
+import Navigator from "../../components/Navigator";
 import { NavLink } from "react-router-dom";
+// import { userMenu } from "../Header/menuApp";
 
 class HeaderHomePage extends Component {
   ChangeLanguage = (language) => {
     this.props.ChangeLanguageRedux(language);
   };
+  async componentDidMount() {
+    let res = await handleLoginApi();
+    console.log("check res", res);
+    this.setState({});
+  }
 
   render() {
-    const { processLogout } = this.props;
+    const { processLogout, userInfo } = this.props;
     const { history } = this.props;
+    console.log("chekc userinfo", userInfo);
     return (
       <Fragment>
         <header className="header trans_300">
+          {/* <Navigator menus={userMenu} /> */}
           <div className="top_nav">
             <div className="container">
               <div className="row">
@@ -81,7 +90,6 @@ class HeaderHomePage extends Component {
               </div>
             </div>
           </div>
-
           <div className="main_nav_container">
             <div className="container">
               <div className="row">
@@ -162,6 +170,7 @@ class HeaderHomePage extends Component {
 const mapStateToProps = (state) => {
   return {
     language: state.app.language,
+    userInfo: state.app.userInfo,
   };
 };
 

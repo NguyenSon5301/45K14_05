@@ -9,6 +9,32 @@
     height          : 40px;
     position        : relative;
 
+    .change-language {
+        position   : absolute;
+        right      : 200px;
+        line-height: 40px;
+
+        .en {
+            padding-right: 5px;
+
+            &.active {
+                color: orange;
+            }
+
+        }
+
+        .vi {
+
+            &.active {
+                color: orange;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     .welcome {
         position   : absolute;
         right      : 70px;

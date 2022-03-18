@@ -25,7 +25,7 @@ class HomePage extends Component {
         <div className="super_container">
           {/* header */}
 
-          <HeaderHomePage language={this.props.language} />
+          <HeaderHomePage />
           <div className="fs_menu_overlay"></div>
           <div className="hamburger_menu">
             <div className="hamburger_close">

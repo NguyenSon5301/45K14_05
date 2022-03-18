@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { ModalHeader, ModalBody, ModalFooter, Button, Modal } from "reactstrap";
+import "./ModalEditUser.scss";
+import _ from "lodash";
 export default class ModalEditUser extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,26 @@ export default class ModalEditUser extends Component {
   toggle = () => {
     this.props.toogleEditUserParent();
   };
-
+  handleSaveUser = () => {
+    let isValid = this.checkVaidInput();
+    if (isValid === true) {
+      // call api
+      console.log("check data");
+      this.props.editUser(this.state);
+    }
+  };
+  componentDidMount() {
+    let { currentUser } = this.props;
+    if (currentUser && !_.isEmpty(currentUser)) {
+      this.setState({
+        email: currentUser.email,
+        password: currentUser.password,
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName,
+        phonenumber: currentUser.phonenumber,
+      });
+    }
+  }
   render() {
     return (
       <Modal
@@ -47,7 +68,7 @@ export default class ModalEditUser extends Component {
         <ModalBody>
           <div className="modal-user-container">
             <div className="modal-user-body">
-              <div className="input-container">
+              <div className="input-container max-width-input">
                 <label>Email </label>
                 <input
                   type="text"
@@ -56,15 +77,7 @@ export default class ModalEditUser extends Component {
                   onChange={(event) => this.handleInputUser(event, "email")}
                 />
               </div>
-              <div className="input-container">
-                <label>Password</label>
-                <input
-                  type="password"
-                  disabled
-                  value={this.state.password}
-                  onChange={(event) => this.handleInputUser(event, "password")}
-                />
-              </div>
+
               <div className="input-container">
                 <label>First Name</label>
                 <input
@@ -82,7 +95,7 @@ export default class ModalEditUser extends Component {
                 />
               </div>
               <div className="input-container max-width-input">
-                <label>Last Name</label>
+                <label>Phone</label>
                 <input
                   type="text"
                   value={this.state.phonenumber}

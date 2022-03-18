@@ -1,22 +1,39 @@
 export const adminMenu = [
   {
     //hệ thống
-    name: "menu.system.header",
+    name: "menu.admin.title-user",
     menus: [
       {
-        name: "menu.system.system-administrator.header",
-        subMenus: [
-          {
-            name: "menu.system.system-administrator.user-manage",
-            link: "/system/user-manage",
-          },
-          {
-            name: "menu.system.system-administrator.product-manage",
-            link: "/system/product-manage",
-          },
-        ],
+        name: "menu.admin.manage-user",
+        link: "/system/user-manage",
       },
-      // { name: 'menu.system.system-parameter.header', link: '/system/system-parameter' },
+    ],
+  },
+  {
+    name: "menu.admin.title-product",
+    menus: [
+      {
+        name: "menu.admin.manage-product",
+        link: "/system/product-manage",
+      },
+    ],
+  },
+  {
+    name: "menu.admin.title-blog",
+    menus: [
+      {
+        name: "menu.admin.manage-blog",
+        link: "/system/blog-manage",
+      },
+    ],
+  },
+  {
+    name: "menu.admin.title-bill",
+    menus: [
+      {
+        name: "menu.admin.manage-bill",
+        link: "/system/bill-manage",
+      },
     ],
   },
 ];

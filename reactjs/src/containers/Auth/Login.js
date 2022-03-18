@@ -20,7 +20,7 @@ class Login extends Component {
 
   handleChangeInput = (e, id) => {
     let copyState = { ...this.state };
-    console.log("check event", e.target.value);
+
     copyState[id] = e.target.value;
     this.setState({
       ...copyState,
@@ -40,7 +40,7 @@ class Login extends Component {
       }
       if (data && data.errCode === 0) {
         this.props.userLoginSuccess(data.user);
-        console.log("loging success");
+        console.log("loging success", data.user);
       }
     } catch (e) {
       if (e.response) {

@@ -6,6 +6,7 @@ import "./UserManage.scss";
 import { connect } from "react-redux";
 import { getUser, deleteUser, editUser } from "../../services/userService";
 import ModalEditUser from "./ModalEditUser";
+
 class UserManage extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +40,7 @@ class UserManage extends Component {
     }
   };
   onEdit = async (user) => {
+    console.log("check user", user);
     this.setState({
       isOpenModalEdit: true,
       userEdit: user,
@@ -48,6 +50,21 @@ class UserManage extends Component {
     this.setState({
       isOpenModalEdit: !this.state.isOpenModalEdit,
     });
+  };
+  DoEditUser = async (user) => {
+    try {
+      let res = await editUser(user);
+      if (res && res.errCode === 0) {
+        this.setState({
+          isOpenEditUser: false,
+        });
+        await this.fetchAllUser();
+      } else {
+        alert(res.errMessage);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {
@@ -96,11 +113,14 @@ class UserManage extends Component {
               })}
           </table>
         </div>
-        <ModalEditUser
-          isOpenModalEdit={this.state.isOpenModalEdit}
-          currentUser={this.state.userEdit}
-          toogleEditUserParent={this.toogleEditUser}
-        />
+        {this.state.isOpenModalEdit && (
+          <ModalEditUser
+            isOpenModalEdit={this.state.isOpenModalEdit}
+            currentUser={this.state.userEdit}
+            toogleEditUserParent={this.toogleEditUser}
+            editUser={this.DoEditUser}
+          />
+        )}
       </div>
     );
   }

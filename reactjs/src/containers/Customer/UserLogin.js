@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import { toast } from "react-toastify";
+import { Redirect } from "react-router";
 
 class UserLogin extends Component {
   constructor(props) {
@@ -57,7 +58,8 @@ class UserLogin extends Component {
           });
         }
         if (data && data.errCode === 0) {
-          toast.success("Login success");
+          this.props.userLoginSuccess(data.user);
+          toast.success("Login success", data.user);
           setTimeout(() => {
             this.props.history.push(`/home`);
           }, 1000);
@@ -153,6 +155,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    userLoginSuccess: (userInfo) =>
+      dispatch(actions.userLoginSuccess(userInfo)),
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
