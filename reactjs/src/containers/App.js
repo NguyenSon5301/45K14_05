@@ -26,6 +26,8 @@ import { CustomToastCloseButton } from "../components/CustomToast";
 import ConfirmModal from "../components/ConfirmModal";
 import RegisterUser from "./Customer/RegisterUser";
 import UserLogin from "./Customer/UserLogin";
+import SinglePr from "./Navigator/SinglePr";
+import Contact from "./Navigator/Contact";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -54,6 +56,7 @@ class App extends Component {
             <div className="content-container">
               <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                 <Switch>
+                  {/* User */}
                   <Route path={path.HOME} exact component={Home} />
                   <Route
                     path={path.REGISTERUSER}
@@ -62,6 +65,8 @@ class App extends Component {
                   />
                   <Route path={path.USERLOGIN} exact component={UserLogin} />
                   <Route path={path.HOMEPAGE} component={HomePage} />
+                  <Route path={path.SINGLEPR} component={SinglePr} />
+                  <Route path={path.CONTACT} component={Contact} />
                   <Route
                     path={path.LOGIN}
                     component={userIsNotAuthenticated(Login)}

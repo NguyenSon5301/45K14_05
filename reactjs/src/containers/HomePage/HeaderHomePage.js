@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
-import { LANGUAGE } from "../../utils/constant";
+import { LANGUAGE, path } from "../../utils/constant";
 import * as actions from "../../store/actions";
 import { handleLoginApi } from "../../services/userService";
 import Navigator from "../../components/Navigator";
@@ -10,19 +10,28 @@ import { NavLink } from "react-router-dom";
 // import { userMenu } from "../Header/menuApp";
 
 class HeaderHomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
   ChangeLanguage = (language) => {
     this.props.ChangeLanguageRedux(language);
   };
   async componentDidMount() {
+    let userData = this.props.userData;
     let res = await handleLoginApi();
     console.log("check res", res);
-    this.setState({});
+    this.setState({
+      user: userData,
+    });
   }
 
   render() {
-    const { processLogout, userInfo } = this.props;
+    const { processLogout, userInfo, user } = this.props;
     const { history } = this.props;
-    console.log("chekc userinfo", userInfo);
+    console.log("chekc userinfo", this.state.user);
     return (
       <Fragment>
         <header className="header trans_300">
@@ -65,12 +74,12 @@ class HeaderHomePage extends Component {
                         </a>
                         <ul className="account_selection">
                           <li>
-                            <NavLink to={`/home/userlogin`}>
+                            <NavLink to={path.LOGIN}>
                               <FormattedMessage id={"HeaderHome.Sign-in"} />
                             </NavLink>
                           </li>
                           <li>
-                            <NavLink to={`/home/register`}>
+                            <NavLink to={path.REGISTERUSER}>
                               <FormattedMessage id={"HeaderHome.Register"} />
                             </NavLink>
                           </li>
@@ -95,14 +104,14 @@ class HeaderHomePage extends Component {
               <div className="row">
                 <div className="col-lg-12 text-right">
                   <div className="logo_container">
-                    <a href="#">
+                    <NavLink to={path.HOMEPAGE}>
                       DANA<span>shop</span>
-                    </a>
+                    </NavLink>
                   </div>
                   <nav className="navbar">
                     <ul className="navbar_menu">
                       <li>
-                        <NavLink to="/home">
+                        <NavLink to={path.HOMEPAGE}>
                           <FormattedMessage id={"HeaderHome.Home"} />
                         </NavLink>
                       </li>
@@ -119,15 +128,13 @@ class HeaderHomePage extends Component {
                       <li></li>
                       <li>
                         <a href="#">
-                          {" "}
                           <FormattedMessage id={"HeaderHome.Blog"} />
                         </a>
                       </li>
                       <li>
-                        <a href="contact.html">
-                          {" "}
+                        <NavLink to={path.CONTACT}>
                           <FormattedMessage id={"HeaderHome.Contact"} />
-                        </a>
+                        </NavLink>
                       </li>
                     </ul>
                     <ul className="navbar_user">

@@ -7,6 +7,7 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router";
+import { NavLink } from "react-router-dom";
 
 class UserLogin extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class UserLogin extends Component {
 
   handleChangeInput = (e, id) => {
     let copyState = { ...this.state };
-    console.log("check event", e.target.value);
+
     copyState[id] = e.target.value;
     this.setState({
       ...copyState,
@@ -52,6 +53,7 @@ class UserLogin extends Component {
           this.state.username,
           this.state.password
         );
+
         if (data && data.errCode !== 0) {
           this.setState({
             errMessage: data.message,
@@ -59,10 +61,10 @@ class UserLogin extends Component {
         }
         if (data && data.errCode === 0) {
           this.props.userLoginSuccess(data.user);
-          toast.success("Login success", data.user);
-          setTimeout(() => {
-            this.props.history.push(`/home`);
-          }, 1000);
+          // toast.success("Login success", data.user);
+          // setTimeout(() => {
+          //   this.props.history.push(`/home`);
+          // }, 1000);
         }
       }
     } catch (e) {
@@ -133,12 +135,13 @@ class UserLogin extends Component {
                   <div className="col-12" style={{ color: "red" }}>
                     {this.state.errMessage}
                   </div>
-                  <input
+                  <NavLink
+                    to={`/home`}
                     type="submit"
                     value="Log In"
                     className="btn btn-block btn-primary"
                     onClick={() => this.handleLogin()}
-                  />
+                  ></NavLink>
                 </div>
               </div>
             </div>
@@ -151,6 +154,7 @@ class UserLogin extends Component {
 const mapStateToProps = (state) => {
   return {
     language: state.app.language,
+    isLoggedIn: state.user.isLoggedIn,
   };
 };
 

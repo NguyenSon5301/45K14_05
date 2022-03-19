@@ -39,7 +39,12 @@
         "Time": "8AM - 09PM"
     },
     "Product": {
-        "": ""
+        "title": "Product Name",
+        "image": "Image",
+        "count": "Count",
+        "price": "Price",
+        "type": "Type",
+        "size": "Size"
     },
     "Deal-Of-The-Week": {
         "Title": "Deal of the week",

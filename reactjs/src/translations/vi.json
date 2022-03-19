@@ -28,6 +28,14 @@
         "addCart": "Thêm vào giỏ",
         "Best-Sellers": "Bán chạy nhất"
     },
+    "Product": {
+        "title": "Tên sản phẩm",
+        "image": "Hình ảnh",
+        "count": "Số lượng",
+        "price": "Giá sản phẩm",
+        "type": "Loại sản phẩm",
+        "size": "kích cỡ"
+    },
     "Deal-Of-The-Week": {
         "Title": "Đơn hàng trong tuần",
         "shopButton": "Đến ngay"

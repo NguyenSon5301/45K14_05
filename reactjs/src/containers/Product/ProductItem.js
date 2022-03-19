@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
+import { NavLink } from "react-router-dom";
 import prd1 from "../../More/images/product_1.png";
 import prd2 from "../../More/images/product_2.png";
 import prd3 from "../../More/images/product_3.png";
@@ -13,6 +14,8 @@ import prd8 from "../../More/images/product_8.png";
 import prd9 from "../../More/images/product_9.png";
 import prd10 from "../../More/images/product_10.png";
 import Slider from "react-slick";
+import SinglePr from "../Navigator/SinglePr";
+import { path } from "../../utils/constant";
 
 class ProductItem extends Component {
   ChangeLanguage = (language) => {
@@ -82,6 +85,9 @@ class ProductItem extends Component {
       },
     ],
   };
+  MoveSinglePage = (id) => {
+    console.log("check id", id);
+  };
   render() {
     const settings = {
       dots: true,
@@ -97,7 +103,7 @@ class ProductItem extends Component {
           <div className="container">
             <div className="row">
               <div className="col text-center">
-                <div className="section_title new_arrivals_title">
+                <div className=" new_arrivals_title">
                   <h2>
                     <FormattedMessage id={"NewArrivals.Title"} />
                   </h2>
@@ -147,15 +153,17 @@ class ProductItem extends Component {
                         <div class="product-item " key={item.Id}>
                           <div class="product discount product_filter">
                             <div class="product_image">
-                              <img src={item.img} alt="" />
+                              <img src={item.img} />
                             </div>
                             <div class="favorite favorite_left"></div>
                             <div class="product_info">
                               <h6 class="product_name">
-                                <a href="single.html">{item.Title}</a>
+                                <NavLink exact to={path.SINGLEPR}>
+                                  {item.Title}
+                                </NavLink>
                               </h6>
                               <div class="product_price">
-                                <span>{item.Price}</span>
+                                <>{item.Price}</>
                               </div>
                             </div>
                           </div>

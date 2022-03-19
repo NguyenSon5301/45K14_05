@@ -29,7 +29,7 @@ export default class BestSellter extends Component {
         <div className="container">
           <div className="row">
             <div className="col text-center">
-              <div className="section_title new_arrivals_title">
+              <div className="new_arrivals_title">
                 <h2 className="title-bestSeller">
                   <FormattedMessage id={"NewArrivals.Best-Sellers"} />
                 </h2>

@@ -838,6 +838,12 @@ section {
 	background: #FE7C7F !important;
 }
 
+.red_button.add_to_cart_button {
+	margin-left: 30px;
+	margin-top : -8px;
+
+}
+
 .red_button a {
 	display       : block;
 	color         : #FFFFFF;
@@ -1041,9 +1047,9 @@ section {
 }
 
 .product_price {
-	font-size  : 16px;
+	font-size  : 17px;
 	color      : #fe4c50;
-	font-weight: 600;
+	font-weight: 800;
 }
 
 .product_price span {

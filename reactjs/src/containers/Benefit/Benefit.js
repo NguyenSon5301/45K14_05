@@ -29,11 +29,9 @@ export default class Benefit extends Component {
                 </div>
                 <div className="benefit_content">
                   <h6>
-                    {" "}
                     <FormattedMessage id={"Benefit.Cash-on-delivery"} />
                   </h6>
                   <p>
-                    {" "}
                     <FormattedMessage id={"Benefit.Title-cash"} />
                   </p>
                 </div>
