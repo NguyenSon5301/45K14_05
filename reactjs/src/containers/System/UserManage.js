@@ -24,15 +24,6 @@ class UserManage extends Component {
       isOpenMidalCreate: false,
     };
   }
-  // fetchAllUser = async () => {
-  //   let res = await getUser("All");
-  //   if (res && res.errCode === 0) {
-  //     let data = res.data;
-  //     this.setState({
-  //       arrUser: data,
-  //     });
-  //   }
-  // };
 
   async componentDidMount() {
     await this.props.fetchAllUser();
@@ -54,8 +45,8 @@ class UserManage extends Component {
       toast.error("the user is not deleted");
     }
   };
+  // send data for props modal
   onEdit = async (user) => {
-    console.log("check user", user);
     this.setState({
       isOpenModalEdit: true,
       userEdit: user,
@@ -68,12 +59,14 @@ class UserManage extends Component {
   };
   DoEditUser = async (user) => {
     try {
+      console.log("check user", user);
       let res = await editUser(user);
+      console.log("check res", res);
       if (res && res.errCode === 0) {
         this.setState({
           isOpenEditUser: false,
         });
-        await this.fetchAllUser();
+        await this.props.fetchAllUser();
       } else {
         alert(res.errMessage);
       }
@@ -135,6 +128,7 @@ class UserManage extends Component {
               <th>Email</th>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Address</th>
               <th>Phone Numbers</th>
               <th>Gender</th>
               <th>Action</th>
@@ -147,7 +141,7 @@ class UserManage extends Component {
                     <td>{item.email}</td>
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
-
+                    <td>{item.address}</td>
                     <td>{item.phonenumber}</td>
                     <td>{item.Gender}</td>
                     <td className="button-sub">
@@ -170,6 +164,14 @@ class UserManage extends Component {
               })}
           </table>
         </div>
+        {this.state.isOpenModalEdit && (
+          <ModalEditUser
+            isOpen={this.state.isOpenModalEdit}
+            toogleEditUser={this.toogleEditUser}
+            currentUser={this.state.userEdit}
+            editUser={this.DoEditUser}
+          />
+        )}
       </div>
     );
   }

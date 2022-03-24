@@ -15,6 +15,8 @@ let initWebRoutes = (app) => {
   router.post("/api/send-gmail", userController.sendEmail);
   // newletter
   router.post("/api/send-newLetter", userController.sendNewLetter);
+  // all code
+  router.get("/api/get-all-code", userController.getAllCode);
 
   return app.use("/", router);
 };

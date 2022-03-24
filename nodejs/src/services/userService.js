@@ -89,7 +89,6 @@ let handleAddNewUser = (data) => {
 let hashUserPassword = (password) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("check password", password);
       let hashPassWord = await bcrypt.hashSync(password, salt);
       resolve(hashPassWord);
     } catch (e) {
@@ -171,11 +170,22 @@ let onEditUser = (data) => {
     }
   });
 };
-
+let getAllCodeSV = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = {};
+      let allCode = db.Allcode.findAll();
+      resolve({ allCode, errCode: 0, errMessage: "OK" });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   handleUserLogin,
   handleAddNewUser,
   onGetAllUsers,
   onDeleteUser,
   onEditUser,
+  getAllCodeSV,
 };

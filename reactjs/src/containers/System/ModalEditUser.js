@@ -6,10 +6,12 @@ export default class ModalEditUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       email: "",
       firstName: "",
       lastName: "",
       phonenumber: "",
+      address: "",
     };
   }
   handleInputUser = (event, id) => {
@@ -18,47 +20,51 @@ export default class ModalEditUser extends Component {
     this.setState({
       ...coppyState,
     });
-    console.log("coppy state", coppyState);
-    console.log("test handle ", event.target.value, id);
   };
   checkVaidInput = () => {
     let isValid = true;
-    let arrInput = ["email", "firstName", "lastName", "phonenumber"];
+    let arrInput = ["email", "firstName", "lastName", "phonenumber", "address"];
     for (let i = 0; i < arrInput.length; i++) {
       if (!this.state[arrInput[i]]) {
         isValid = false;
         alert("Missing parameter: " + arrInput[i]);
         break;
       }
+      return isValid;
     }
   };
   //toggle
   toggle = () => {
-    this.props.toogleEditUserParent();
+    this.props.toogleEditUser();
   };
   handleSaveUser = () => {
     let isValid = this.checkVaidInput();
+    console.log("is", isValid);
     if (isValid === true) {
       // call api
       this.props.editUser(this.state);
+      this.toggle();
     }
   };
   componentDidMount() {
     let { currentUser } = this.props;
     if (currentUser && !_.isEmpty(currentUser)) {
       this.setState({
+        id: currentUser.id,
         email: currentUser.email,
         password: currentUser.password,
         firstName: currentUser.firstName,
         lastName: currentUser.lastName,
         phonenumber: currentUser.phonenumber,
+        address: currentUser.address,
       });
     }
   }
+
   render() {
     return (
       <Modal
-        isOpen={this.props.isOpenModalEdit}
+        isOpen={this.props.isOpen}
         toggle={() => this.toggle()}
         className={"abcClassName"}
         size="lg"
@@ -93,7 +99,7 @@ export default class ModalEditUser extends Component {
                   onChange={(event) => this.handleInputUser(event, "lastName")}
                 />
               </div>
-              <div className="input-container max-width-input">
+              <div className="input-container ">
                 <label>Phone</label>
                 <input
                   type="text"
@@ -103,14 +109,14 @@ export default class ModalEditUser extends Component {
                   }
                 />
               </div>
-              {/* <div className="input-container max-width-input">
+              <div className="input-container ">
                 <label>Address</label>
                 <input
                   type="text"
                   value={this.state.address}
                   onChange={(event) => this.handleInputUser(event, "address")}
                 />
-              </div> */}
+              </div>
             </div>
           </div>
         </ModalBody>

@@ -97,6 +97,19 @@ let sendNewLetter = async (req, res) => {
     });
   }
 };
+let getAllCode = async (req, res) => {
+  try {
+    let data = await userService.getAllCodeSV();
+
+    res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
   handleLoging,
   AddNewUser,
@@ -105,4 +118,5 @@ module.exports = {
   editUser,
   sendNewLetter,
   sendEmail,
+  getAllCode,
 };
