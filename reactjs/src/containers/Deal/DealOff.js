@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import dead from "../../More/images/deal_ofthe_week.png";
 import { FormattedMessage } from "react-intl";
-
+import "./DealOff.css";
 export default class DealOff extends Component {
   render() {
     return (

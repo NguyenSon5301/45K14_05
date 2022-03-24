@@ -5,23 +5,16 @@ import userController from "../controllers/userController";
 let router = express.Router();
 
 let initWebRoutes = (app) => {
-  router.get("/", homeController.getHomePage);
-  router.get("/about", homeController.getAboutPage);
-  router.get("/crud", homeController.getCRUD);
-
-  router.post("/post-crud", homeController.postCRUD);
-  router.get("/get-crud", homeController.displayGetCRUD);
-  router.get("/edit-crud", homeController.getEditCRUD);
-
-  router.post("/put-crud", homeController.putCRUD);
-  router.get("/delete-crud", homeController.deleteCRUD);
-
   router.post("/api/login", userController.handleLoging);
   // user
   router.post("/api/Register", userController.AddNewUser);
   router.get("/api/get-all-users", userController.getAllUser);
   router.delete("/api/delete-user", userController.deleteUser);
   router.put("/api/edit-user", userController.editUser);
+  // mail
+  router.post("/api/send-gmail", userController.sendEmail);
+  // newletter
+  router.post("/api/send-newLetter", userController.sendNewLetter);
 
   return app.use("/", router);
 };

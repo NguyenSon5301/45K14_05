@@ -36,9 +36,27 @@
         "type": "Loại sản phẩm",
         "size": "kích cỡ"
     },
+    "letter": {
+        "title": "Bấm theo dõi chúng tôi, bạn sẽ nhận được giảm giá 20% khi mua hàng lần đầu",
+        "sub": "theo dõi"
+    },
     "Deal-Of-The-Week": {
         "Title": "Đơn hàng trong tuần",
         "shopButton": "Đến ngay"
+    },
+    "Blogs": {
+        "header": "Blog mới nhất",
+        "Read-more": "Xem thêm",
+        "title": "Đây là những xu hướng đẹp nhất mùa thu năm nay"
+    },
+    "Contact": {
+        "header": "Liên hệ chúng tôi",
+        "Title": " Có nhiều cách để liên hệ với chúng tôi. Bạn có thể gửi cho chúng tôi một dòng, gọi cho chúng tôi hoặc gửi email, chọn những gì phù hợp với bạn nhất.",
+        "time": "Mở cửa: 8.00-18.00 T2-T7",
+        "close-time": "Chủ nhật: Đóng cửa",
+        "header-form": "Liên hệ với chúng tôi",
+        "title-form": "Điền vào biểu mẫu dưới đây để nhận được miễn phí và bảo mật.",
+        "button-form": "Gửi tin nhắn"
     },
     "Benefit": {
         "Free-ship": "Miễn phí vận chuyển",

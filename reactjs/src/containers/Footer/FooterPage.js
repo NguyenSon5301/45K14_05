@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { path } from "../../utils/constant";
+import "./Footer.css";
 
 export default class FooterPage extends Component {
   render() {
@@ -17,7 +20,7 @@ export default class FooterPage extends Component {
                       <a href="#">FAQs</a>
                     </li>
                     <li>
-                      <a href="contact.html">Contact us</a>
+                      <NavLink to={path.CONTACT}>Contact us</NavLink>
                     </li>
                   </ul>
                 </div>

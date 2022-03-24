@@ -46,6 +46,24 @@
         "type": "Type",
         "size": "Size"
     },
+    "Contact": {
+        "header": "Contact us",
+        "Title": "There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.",
+        "time": "Open hours: 8.00-18.00 Mon-Fri",
+        "close-time": "Sunday: Closed",
+        "header-form": "Get In Touch With Us!",
+        "title-form": "Fill out the form below to recieve a free and confidential.",
+        "button-form": "Send message"
+    },
+    "Blogs": {
+        "header": "Latest Blogs",
+        "Read-more": "Read more",
+        "title": "Here are the trends I see coming this fall"
+    },
+    "letter": {
+        "title": "Subscribe to our newsletter and get 20% off your first purchase",
+        "sub": "subscribe"
+    },
     "Deal-Of-The-Week": {
         "Title": "Deal of the week",
         "shopButton": "Shop now"
@@ -58,8 +76,7 @@
             "manage-blog": "Manage Blog",
             "title-user": "User",
             "title-product": "Product",
-            "title-blog": "Blog",
-            "title-bill": "Bill"
+            "title-blog": "Blog"
         }
     }
 }

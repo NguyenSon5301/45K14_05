@@ -1,0 +1,39 @@
+.modal-user-container {
+    .modal-content {
+
+
+        .modal-header {
+            button {
+                background-color: transparent !important;
+                color           : red;
+            }
+        }
+    }
+
+
+
+    .modal-user-body {
+        display  : flex;
+        gap      : 10px;
+        flex-wrap: wrap;
+
+        .input-container {
+            display       : flex;
+            flex-direction: column;
+
+            &.max-width-input {
+                width: 100%;
+            }
+
+            width: 49%;
+
+            .input {
+                border-radius: 3px;
+                border       : 1px solid grey;
+                height       : 30px;
+                outline      : none;
+                padding      : 0 30px;
+            }
+        }
+    }
+}

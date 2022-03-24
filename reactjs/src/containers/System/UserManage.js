@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
-import { fetchAllUserRedux } from "../../store/actions/adminActions";
 import { toast } from "react-toastify";
 import "./UserManage.scss";
 import { connect } from "react-redux";
-import { getUser, deleteUser, editUser } from "../../services/userService";
+import {
+  getUser,
+  deleteUser,
+  editUser,
+  CreateNewUser,
+} from "../../services/userService";
 import ModalEditUser from "./ModalEditUser";
+import ModalCreateUser from "./ModalCreateUser";
+import { emitter } from "../../utils/emitter";
+import * as actions from "../../store/actions";
 
 class UserManage extends Component {
   constructor(props) {
@@ -14,27 +21,35 @@ class UserManage extends Component {
       arrUser: [],
       isOpenModalEdit: false,
       userEdit: {},
+      isOpenMidalCreate: false,
     };
   }
-  fetchAllUser = async () => {
-    let res = await getUser("All");
-    if (res && res.errCode === 0) {
-      let data = res.data;
-      this.setState({
-        arrUser: data,
-      });
-    }
-  };
+  // fetchAllUser = async () => {
+  //   let res = await getUser("All");
+  //   if (res && res.errCode === 0) {
+  //     let data = res.data;
+  //     this.setState({
+  //       arrUser: data,
+  //     });
+  //   }
+  // };
 
   async componentDidMount() {
-    await this.fetchAllUser();
+    await this.props.fetchAllUser();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.users !== this.props.users) {
+      this.setState({
+        arrUser: this.props.users,
+      });
+    }
   }
   onDelete = async (id) => {
     let res = await deleteUser(id);
     console.log("check res", res);
     if (res && res.errCode === 0) {
-      toast.success("The user is deleted");
-      await this.fetchAllUser();
+      toast.success("delete user is successed");
+      await this.props.fetchAllUser();
     } else {
       toast.error("the user is not deleted");
     }
@@ -66,15 +81,54 @@ class UserManage extends Component {
       console.log(e);
     }
   };
+  // handle create user
+  onAddNewUser = () => {
+    this.setState({
+      isOpenMidalCreate: true,
+    });
+  };
+  // handle add new user for child
+  handleSubmit = async (data) => {
+    try {
+      let res = await CreateNewUser(data);
+      if (res && res.errCode !== 0) {
+        alert(res.errMessage);
+      } else {
+        await this.props.fetchAllUser();
+        this.setState({
+          isOpenMidalCreate: false,
+        });
+        emitter.emit("EVENT_CLEAR_DATA_MODAL");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  toogleCreateUser = () => {
+    this.setState({
+      isOpenMidalCreate: !this.state.isOpenMidalCreate,
+    });
+  };
 
   render() {
     let { arrUser } = this.state;
-    console.log("check arrUser", arrUser);
     return (
       <div className="container">
+        <ModalCreateUser
+          toogleCreateUser={this.toogleCreateUser}
+          fetchAllUser={this.fetchAllUser}
+          isOpenMidalCreate={this.state.isOpenMidalCreate}
+          handleSubmitPr={this.handleSubmit}
+        />
         <div className="text-center">
           <h2 className="title-manage">Manage User</h2>
         </div>
+        <button
+          className="btn btn-primary px-2 my-2"
+          onClick={() => this.onAddNewUser()}
+        >
+          Add New User
+        </button>
         <div className="content">
           <table>
             <tr>
@@ -82,6 +136,7 @@ class UserManage extends Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Phone Numbers</th>
+              <th>Gender</th>
               <th>Action</th>
             </tr>
             {arrUser &&
@@ -92,7 +147,9 @@ class UserManage extends Component {
                     <td>{item.email}</td>
                     <td>{item.firstName}</td>
                     <td>{item.lastName}</td>
+
                     <td>{item.phonenumber}</td>
+                    <td>{item.Gender}</td>
                     <td className="button-sub">
                       <button
                         className="btn btn-primary mx-2"
@@ -113,14 +170,6 @@ class UserManage extends Component {
               })}
           </table>
         </div>
-        {this.state.isOpenModalEdit && (
-          <ModalEditUser
-            isOpenModalEdit={this.state.isOpenModalEdit}
-            currentUser={this.state.userEdit}
-            toogleEditUserParent={this.toogleEditUser}
-            editUser={this.DoEditUser}
-          />
-        )}
       </div>
     );
   }
@@ -128,13 +177,14 @@ class UserManage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // allUSer: state.admin.data,
+    users: state.admin.users,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
+    fetchAllUser: () => dispatch(actions.fetchAllUser()),
   };
 };
 

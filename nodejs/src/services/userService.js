@@ -1,6 +1,7 @@
 import db from "../models/index";
 import bcrypt from "bcryptjs";
 const salt = bcrypt.genSaltSync(10);
+
 let handleUserLogin = (email, password) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -9,7 +10,7 @@ let handleUserLogin = (email, password) => {
       if (isExist) {
         //user already exist
         let user = await db.User.findOne({
-          attributes: ["email", "roleId", "password", "firstName", "lastName"],
+          attributes: ["email", "password", "firstName", "lastName"],
           where: { email: email },
           raw: true,
         });
@@ -59,11 +60,11 @@ let checkUserEmail = (userEmail) => {
 let handleAddNewUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("check data1", data);
-      if (!data) {
+      let check = await checkUserEmail(data.email);
+      if (check === true) {
         resolve({
-          errCode: 2,
-          errMessage: "Missing parameter",
+          errCode: 1,
+          errMessage: "Your email is already in used, Pls try another email",
         });
       } else {
         let hashPassWordFromBcrypt = await hashUserPassword(data.password);
@@ -72,9 +73,9 @@ let handleAddNewUser = (data) => {
           firstName: data.firstName,
           lastName: data.lastName,
           password: hashPassWordFromBcrypt,
+          address: data.address,
           phonenumber: data.phonenumber,
         });
-        console.log("check data", data);
         resolve({
           errCode: 0,
           errMessage: "Create New User success",
@@ -113,7 +114,7 @@ let onGetAllUsers = (id) => {
           });
         } else if (id && id !== "All") {
           userData = await db.User.findOne({
-            attributes: { exclude: ["password", "image", "address"] },
+            attributes: { exclude: ["password"] },
             where: { id: id },
           });
         }
@@ -157,6 +158,9 @@ let onEditUser = (data) => {
       });
       if (user) {
         user.firstName = data.firstName;
+        user.lastName = data.lastName;
+        user.address = data.address;
+        user.phonenumber = data.phonenumber;
         await user.save();
         resolve({ errCode: 0, errMessage: "OK" });
       } else {
@@ -167,6 +171,7 @@ let onEditUser = (data) => {
     }
   });
 };
+
 module.exports = {
   handleUserLogin,
   handleAddNewUser,

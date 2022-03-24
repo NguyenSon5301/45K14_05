@@ -15,5 +15,18 @@ const deleteUser = (id) => {
 const editUser = (data) => {
   return axios.put(`/api/edit-user`, data);
 };
-
-export { handleLoginApi, CreateNewUser, getUser, editUser, deleteUser };
+const sendEmail = (data) => {
+  return axios.post(`/api/send-gmail`, data);
+};
+const sendNewLetter = (data) => {
+  return axios.post(`/api/send-newLetter`, data);
+};
+export {
+  handleLoginApi,
+  CreateNewUser,
+  getUser,
+  editUser,
+  deleteUser,
+  sendEmail,
+  sendNewLetter,
+};
