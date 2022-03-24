@@ -74,7 +74,7 @@ class HeaderHomePage extends Component {
                         </a>
                         <ul className="account_selection">
                           <li>
-                            <NavLink to={path.LOGIN}>
+                            <NavLink to={path.USERLOGIN}>
                               <FormattedMessage id={"HeaderHome.Sign-in"} />
                             </NavLink>
                           </li>
@@ -116,16 +116,10 @@ class HeaderHomePage extends Component {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to="/">
+                        <NavLink to={path.HOMEPAGE}>
                           <FormattedMessage id={"HeaderHome.Shop"} />
                         </NavLink>
                       </li>
-                      <li>
-                        <NavLink to="/">
-                          <FormattedMessage id={"HeaderHome.Promotion"} />
-                        </NavLink>
-                      </li>
-                      <li></li>
                       <li>
                         <a href="#">
                           <FormattedMessage id={"HeaderHome.Blog"} />

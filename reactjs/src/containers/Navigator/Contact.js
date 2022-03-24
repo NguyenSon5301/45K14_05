@@ -3,9 +3,37 @@ import FooterPage from "../Footer/FooterPage";
 import HeaderHomePage from "../HomePage/HeaderHomePage";
 import NewLetter from "../NewLetter/NewLetter";
 import "../../More/styles/contact_styles.css";
-
+import address from "../../More/images/address.png";
+import { sendEmail } from "../../services/userService";
+import { FormattedMessage } from "react-intl";
+import { NavLink } from "react-router-dom";
+import { path } from "../../utils/constant";
 export default class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      text: "",
+    };
+  }
+  handleChangeInput = (e, id) => {
+    let copyState = { ...this.state };
+
+    copyState[id] = e.target.value;
+    this.setState({
+      ...copyState,
+    });
+  };
+  handleSendEmail = async () => {
+    await sendEmail({
+      name: this.state.name,
+      email: this.state.email,
+      text: this.state.text,
+    });
+  };
   render() {
+    console.log("check state", this.state);
     return (
       <div class="super_container">
         <HeaderHomePage />
@@ -15,7 +43,7 @@ export default class Contact extends Component {
               <div class="breadcrumbs d-flex flex-row align-items-center">
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <NavLink to={path.HOMEPAGE}>Home</NavLink>
                   </li>
                   <li class="active">
                     <a href="#">
@@ -32,7 +60,7 @@ export default class Contact extends Component {
             <div class="col">
               <div id="google_map">
                 <div class="map_container">
-                  <div id="map"></div>
+                  <img src={address} />
                 </div>
               </div>
             </div>
@@ -41,79 +69,69 @@ export default class Contact extends Component {
           <div class="row">
             <div class="col-lg-6 contact_col">
               <div class="contact_contents">
-                <h1>Contact Us</h1>
+                <h1>
+                  <FormattedMessage id="Contact.header" />
+                </h1>
                 <p>
-                  There are many ways to contact us. You may drop us a line,
-                  give us a call or send an email, choose what suits you the
-                  most.
+                  <FormattedMessage id="Contact.Title" />
                 </p>
                 <div>
                   <p>0703593322</p>
                   <p></p>
                 </div>
                 <div>
-                  <p>mm</p>
-                </div>
-                <div>
-                  <p>Open hours: 8.00-18.00 Mon-Fri</p>
-                  <p>Sunday: Closed</p>
+                  <p>
+                    {" "}
+                    <FormattedMessage id="Contact.time" />
+                  </p>
+                  <p>
+                    {" "}
+                    <FormattedMessage id="Contact.close-time" />
+                  </p>
                 </div>
               </div>
             </div>
 
             <div class="col-lg-6 get_in_touch_col">
               <div class="get_in_touch_contents">
-                <h1>Get In Touch With Us!</h1>
+                <h1>
+                  <FormattedMessage id="Contact.header-form" />
+                </h1>
                 <p>
-                  Fill out the form below to recieve a free and confidential.
+                  <FormattedMessage id="Contact.title-form" />
                 </p>
                 <div>
                   <div>
                     <input
-                      id="input_name"
                       class="form_input input_name input_ph"
                       type="text"
                       name="name"
+                      value={this.state.name}
                       placeholder="Name"
-                      required="required"
-                      data-error="Name is required."
+                      onChange={(e) => this.handleChangeInput(e, "name")}
                     />
                     <input
-                      id="input_email"
                       class="form_input input_email input_ph"
                       type="email"
-                      name="email"
+                      value={this.state.email}
                       placeholder="Email"
-                      required="required"
-                      data-error="Valid email is required."
-                    />
-                    <input
-                      id="input_website"
-                      class="form_input input_website input_ph"
-                      type="url"
-                      name="name"
-                      placeholder="Website"
-                      required="required"
-                      data-error="Name is required."
+                      onChange={(e) => this.handleChangeInput(e, "email")}
                     />
                     <textarea
-                      id="input_message"
                       class="input_ph input_message"
-                      name="message"
                       placeholder="Message"
                       rows="3"
-                      required
-                      data-error="Please, write us a message."
+                      value={this.state.text}
+                      onChange={(e) => this.handleChangeInput(e, "text")}
                     ></textarea>
                   </div>
                   <div>
                     <button
-                      id="review_submit"
                       type="submit"
                       class="red_button message_submit_btn trans_300"
-                      value="Submit"
+                      onClick={() => this.handleSendEmail()}
                     >
-                      send message
+                      <FormattedMessage id="Contact.button-form" />
                     </button>
                   </div>
                 </div>
@@ -121,9 +139,7 @@ export default class Contact extends Component {
             </div>
           </div>
         </div>
-
         <NewLetter />
-
         <FooterPage />
       </div>
     );

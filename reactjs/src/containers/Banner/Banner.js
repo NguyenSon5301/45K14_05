@@ -6,6 +6,7 @@ import { ChangeLanguage } from "../../store/actions/appActions";
 import bg1 from "../../More/images/banner_1.jpg";
 import bg2 from "../../More/images/banner_2.jpg";
 import bg3 from "../../More/images/banner_3.jpg";
+import "./Banner.css";
 class Banner extends Component {
   render() {
     return (

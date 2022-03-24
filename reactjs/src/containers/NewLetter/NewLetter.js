@@ -1,6 +1,23 @@
 import React, { Component } from "react";
+import { sendNewLetter } from "../../services/userService";
+import { FormattedMessage } from "react-intl";
+import "./NewLetter.css";
 
 export default class NewLetter extends Component {
+  state = {
+    email: "",
+  };
+  InputEmail = (e) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
+  onSendNewLetter = async () => {
+    console.log("check ", this.state);
+    await sendNewLetter({
+      email: this.state.email,
+    });
+  };
   render() {
     return (
       <div className="newsletter">
@@ -10,8 +27,7 @@ export default class NewLetter extends Component {
               <div className="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
                 <h4>Newsletter</h4>
                 <p>
-                  Subscribe to our newsletter and get 20% off your first
-                  purchase
+                  <FormattedMessage id="letter.title" />
                 </p>
               </div>
             </div>
@@ -22,16 +38,15 @@ export default class NewLetter extends Component {
                     id="newsletter_email"
                     type="email"
                     placeholder="Your email"
-                    required="required"
-                    data-error="Valid email is required."
+                    value={this.state.email}
+                    onChange={(e) => this.InputEmail(e)}
                   />
                   <button
-                    id="newsletter_submit"
-                    type="submit"
+                    type="button"
                     className="newsletter_submit_btn trans_300"
-                    value="Submit"
+                    onClick={() => this.onSendNewLetter()}
                   >
-                    subscribe
+                    <FormattedMessage id="letter.sub" />
                   </button>
                 </div>
               </form>

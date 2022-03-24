@@ -16,6 +16,7 @@ import prd10 from "../../More/images/product_10.png";
 import Slider from "react-slick";
 import SinglePr from "../Navigator/SinglePr";
 import { path } from "../../utils/constant";
+import "./Product.css";
 
 class ProductItem extends Component {
   ChangeLanguage = (language) => {

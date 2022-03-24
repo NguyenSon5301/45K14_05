@@ -1,25 +1,25 @@
 import actionTypes from "./actionTypes";
-import { toast } from "react-toastify";
 import { getUser } from "../../services/userService";
-export const fetchAllUSerRedux = () => {
+import { toast } from "react-toastify";
+export const fetchAllUser = () => {
   return async (dispatch) => {
     try {
       let res = await getUser("All");
-
       if (res && res.errCode === 0) {
-        console.log("check res", res.data);
+        console.log("check res", res);
+
         dispatch({
           type: actionTypes.FETCH_ALL_USER_SUCCESS,
-          allUser: res.data,
+          users: res.data,
         });
       } else {
-        toast.error("fetch all user failded");
+        toast.error("fetch all failded");
         dispatch({
           type: actionTypes.FETCH_ALL_USER_FAILDED,
         });
       }
     } catch (e) {
-      toast.error("fetch all user failded");
+      toast.error("fetch all failded");
     }
   };
 };

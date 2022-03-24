@@ -3,11 +3,6 @@ import bg1 from "./bg_1.jpg";
 import "./styleLogin.scss";
 import { handleLoginApi } from "../../services/userService";
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
-import * as actions from "../../store/actions";
-import { toast } from "react-toastify";
-import { Redirect } from "react-router";
-import { NavLink } from "react-router-dom";
 
 class UserLogin extends Component {
   constructor(props) {
@@ -60,11 +55,9 @@ class UserLogin extends Component {
           });
         }
         if (data && data.errCode === 0) {
-          this.props.userLoginSuccess(data.user);
-          // toast.success("Login success", data.user);
-          // setTimeout(() => {
-          //   this.props.history.push(`/home`);
-          // }, 1000);
+          setTimeout(() => {
+            this.props.history.push(`/home`);
+          }, 1000);
         }
       }
     } catch (e) {
@@ -94,55 +87,52 @@ class UserLogin extends Component {
           className="bg order-1 order-md-2"
           style={{ backgroundImage: `url(${bg1})` }}
         ></div>
-        <div className="contents order-2 order-md-1">
+        <div className="contents ">
           <div className="container">
             <div className="row align-items-center justify-content-center">
               <div className="col-md-7">
                 <div className="mb-4">
                   <h3>Sign In</h3>
                 </div>
-                <div>
-                  <div className="form-group ">
-                    <input
-                      placeholder="Email"
-                      type="text"
-                      className="form-control"
-                      value={username}
-                      onChange={(e) => this.handleChangeInput(e, "username")}
-                    />
-                  </div>
-                  <div className="form-group last-child login-password mb-3">
-                    <input
-                      placeholder="Password"
-                      type={this.state.showPassword ? "text" : "password"}
-                      className="form-control"
-                      value={password}
-                      onChange={(e) => this.handleChangeInput(e, "password")}
-                    />
-                    <span
-                      className="icon-show"
-                      onClick={() => this.handleShowHidePassword()}
-                    >
-                      <i
-                        className={
-                          this.state.showPassword
-                            ? "fas fa-eye show-password"
-                            : "fas fa-eye-slash show-password"
-                        }
-                      ></i>
-                    </span>
-                  </div>
-                  <div className="col-12" style={{ color: "red" }}>
-                    {this.state.errMessage}
-                  </div>
-                  <NavLink
-                    to={`/home`}
-                    type="submit"
-                    value="Log In"
-                    className="btn btn-block btn-primary"
-                    onClick={() => this.handleLogin()}
-                  ></NavLink>
+                <div className="form-group first">
+                  <input
+                    placeholder="Email"
+                    type="text"
+                    className="form-control px-4"
+                    value={username}
+                    onChange={(e) => this.handleChangeInput(e, "username")}
+                  />
                 </div>
+                <div className="form-group last login-password mb-3">
+                  <input
+                    type={this.state.showPassword ? "text" : "password"}
+                    className="form-control px-4"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => this.handleChangeInput(e, "password")}
+                  />
+                  <span
+                    className="icon-show"
+                    onClick={() => this.handleShowHidePassword()}
+                  >
+                    <i
+                      className={
+                        this.state.showPassword
+                          ? "fas fa-eye show-password"
+                          : "fas fa-eye-slash show-password"
+                      }
+                    ></i>
+                  </span>
+                </div>
+                <div className="col-12" style={{ color: "red" }}>
+                  {this.state.errMessage}
+                </div>
+                <input
+                  type="submit"
+                  value="Log In"
+                  className="btn btn-block btn-primary"
+                  onClick={() => this.handleLogin()}
+                />
               </div>
             </div>
           </div>
@@ -159,9 +149,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    userLoginSuccess: (userInfo) =>
-      dispatch(actions.userLoginSuccess(userInfo)),
-  };
+  return {};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

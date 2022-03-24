@@ -12,7 +12,7 @@ export default class RegisterUser extends Component {
       firstName: "",
       lastName: "",
       phonenumber: "",
-      //   address: "",
+      address: "",
       //   gender: "",
     };
   }
@@ -31,6 +31,7 @@ export default class RegisterUser extends Component {
       "lastName",
       "phonenumber",
       "password",
+      "address",
     ];
     for (let i = 0; i < arrCheck.length; i++) {
       if (!this.state[arrCheck[i]]) {
@@ -45,16 +46,21 @@ export default class RegisterUser extends Component {
     let isValid = this.checkValidateInput();
     if (isValid === false) return;
     if (isValid === true) {
-      await CreateNewUser({
+      let res = await CreateNewUser({
         email: this.state.email,
         password: this.state.password,
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         phonenumber: this.state.phonenumber,
+        address: this.state.address,
       });
-      setTimeout(() => {
-        this.props.history.push(`/home`);
-      }, 1000);
+      if (res && res.errCode !== 0) {
+        alert(res.errMessage);
+      } else {
+        setTimeout(() => {
+          this.props.history.push(`/home`);
+        }, 1000);
+      }
     }
   };
   render() {
@@ -78,7 +84,7 @@ export default class RegisterUser extends Component {
                   <div className="form-group ">
                     <input
                       placeholder="Email"
-                      type="text"
+                      type="email"
                       className="form-control"
                       value={email}
                       onChange={(e) => this.handleChangeInput(e, "email")}
@@ -109,6 +115,15 @@ export default class RegisterUser extends Component {
                       className="form-control"
                       value={password}
                       onChange={(e) => this.handleChangeInput(e, "password")}
+                    />
+                  </div>
+                  <div className="form-group ">
+                    <input
+                      placeholder="Address"
+                      type="text"
+                      className="form-control"
+                      value={address}
+                      onChange={(e) => this.handleChangeInput(e, "address")}
                     />
                   </div>
                   <div className="form-group last-child ">

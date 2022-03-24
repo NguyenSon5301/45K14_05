@@ -40,7 +40,6 @@ export default class ModalEditUser extends Component {
     let isValid = this.checkVaidInput();
     if (isValid === true) {
       // call api
-      console.log("check data");
       this.props.editUser(this.state);
     }
   };

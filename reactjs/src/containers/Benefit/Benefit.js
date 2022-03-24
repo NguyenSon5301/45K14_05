@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
-
+import "./Benefit.css";
 export default class Benefit extends Component {
   render() {
     return (

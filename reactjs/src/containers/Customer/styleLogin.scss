@@ -60,6 +60,16 @@ h2 {
 			border-bottom: none;
 			position     : relative;
 
+			&.first {
+				border-top-left-radius : 7px;
+				border-top-right-radius: 7px;
+			}
+
+			&.last {
+				border-bottom             : 1px solid #efefef;
+				border-bottom-left-radius : 7px;
+				border-bottom-right-radius: 7px;
+			}
 
 		}
 
@@ -73,11 +83,7 @@ h2 {
 			top          : 15px;
 			left         : 20px;
 
-			// &:active,
-			// &:focus {
-			// 	outline   : none;
-			// 	box-shadow: none;
-			// }
+
 
 
 		}

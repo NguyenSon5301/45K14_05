@@ -27,13 +27,4 @@ export const adminMenu = [
       },
     ],
   },
-  {
-    name: "menu.admin.title-bill",
-    menus: [
-      {
-        name: "menu.admin.manage-bill",
-        link: "/system/bill-manage",
-      },
-    ],
-  },
 ];

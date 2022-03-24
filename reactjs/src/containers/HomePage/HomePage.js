@@ -5,7 +5,6 @@ import { LANGUAGE } from "../../utils/constant";
 import HeaderHomePage from "./HeaderHomePage";
 import { ChangeLanguage } from "../../store/actions/appActions";
 import "../../More/styles/main_styles.css";
-import "../../More/styles/responsive.css";
 import sli1 from "../../More/images/slider_1.jpg";
 import ProductItem from "../Product/ProductItem";
 import Banner from "../Banner/Banner";
@@ -14,6 +13,7 @@ import NewLetter from "../NewLetter/NewLetter";
 import Benefit from "../Benefit/Benefit";
 import BestSellter from "../BetstSeller/BestSellter";
 import DealOff from "../Deal/DealOff";
+import Blog from "../Blog/Blog";
 
 class HomePage extends Component {
   ChangeLanguage = (language) => {
@@ -23,79 +23,7 @@ class HomePage extends Component {
     return (
       <>
         <div className="super_container">
-          {/* header */}
-
           <HeaderHomePage />
-          <div className="fs_menu_overlay"></div>
-          <div className="hamburger_menu">
-            <div className="hamburger_close">
-              <i className="fa fa-times" aria-hidden="true"></i>
-            </div>
-            <div className="hamburger_menu_content text-right">
-              <ul className="menu_top_nav">
-                <li className="menu_item has-children"></li>
-                <li className="menu_item has-children">
-                  <a href="#">
-                    English
-                    <i className="fa fa-angle-down"></i>
-                  </a>
-                  <ul className="menu_selection">
-                    <li>
-                      <a href="#">French</a>
-                    </li>
-                    <li>
-                      <a href="#">Italian</a>
-                    </li>
-                    <li>
-                      <a href="#">German</a>
-                    </li>
-                    <li>
-                      <a href="#">Spanish</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="menu_item has-children">
-                  <a href="#">
-                    My Account
-                    <i className="fa fa-angle-down"></i>
-                  </a>
-                  <ul className="menu_selection">
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-sign-in" aria-hidden="true"></i>Sign
-                        In
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fa fa-user-plus" aria-hidden="true"></i>
-                        Register
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="menu_item">
-                  <a href="#">home</a>
-                </li>
-                <li className="menu_item">
-                  <a href="#">shop</a>
-                </li>
-                <li className="menu_item">
-                  <a href="#">promotion</a>
-                </li>
-                <li className="menu_item">
-                  <a href="#">pages</a>
-                </li>
-                <li className="menu_item">
-                  <a href="#">blog</a>
-                </li>
-                <li className="menu_item">
-                  <a href="#">contact</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
           <div
             className="main_slider"
             style={{ backgroundImage: `url(${sli1})` }}
@@ -125,6 +53,7 @@ class HomePage extends Component {
           <DealOff />
           <BestSellter />
           <Benefit />
+          <Blog />
           <NewLetter />
           <FooterPage />
         </div>
