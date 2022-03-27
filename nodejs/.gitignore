@@ -3,4 +3,3 @@
 /.idea
 .idea/
 .env
-[http] sslbackend = openssl

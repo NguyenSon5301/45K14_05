@@ -27,6 +27,7 @@ class UserManage extends Component {
 
   async componentDidMount() {
     await this.props.fetchAllUser();
+    await this.props.fetchGenderData();
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.users !== this.props.users) {
@@ -108,6 +109,8 @@ class UserManage extends Component {
     return (
       <div className="container">
         <ModalCreateUser
+          //send genders
+
           toogleCreateUser={this.toogleCreateUser}
           fetchAllUser={this.fetchAllUser}
           isOpenMidalCreate={this.state.isOpenMidalCreate}
@@ -180,6 +183,7 @@ class UserManage extends Component {
 const mapStateToProps = (state) => {
   return {
     users: state.admin.users,
+    genders: state.admin.genders,
   };
 };
 
@@ -187,6 +191,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
     fetchAllUser: () => dispatch(actions.fetchAllUser()),
+    fetchGenderData: () => dispatch(actions.fetchGenderData()),
   };
 };
 

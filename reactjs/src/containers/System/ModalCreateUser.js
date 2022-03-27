@@ -4,7 +4,10 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "./ModalCreateUser.scss";
 import { emitter } from "../../utils/emitter";
 import { toast } from "react-toastify";
-export default class extends Component {
+import * as actions from "../../store/actions";
+import { connect } from "react-redux";
+
+class ModalCreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,9 +17,11 @@ export default class extends Component {
       lastName: "",
       phonenumber: "",
       address: "",
+      genders: [],
     };
     this.listenToEmitter();
   }
+
   // clear modal data when add new user
   listenToEmitter() {
     emitter.on("EVENT_CLEAR_DATA_MODAL", () => {
@@ -29,6 +34,9 @@ export default class extends Component {
         address: "",
       });
     });
+  }
+  componentDidMount() {
+    this.props.fetchGenderData();
   }
   handleChangeInput = (event, id) => {
     let copyState = { ...this.state };
@@ -68,6 +76,8 @@ export default class extends Component {
     toast.success("creating user is succeed");
   };
   render() {
+    let { dataUserRequire } = this.props;
+    console.log("check res", this.props.dataUserRequire);
     return (
       <div>
         <Modal
@@ -122,18 +132,32 @@ export default class extends Component {
                     }
                   />
                 </div>
-                <div className="form-group col-3 max-width-input">
-                  <label>Address</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    value={this.state.address}
-                    onChange={(event) =>
-                      this.handleChangeInput(event, "address")
-                    }
-                  />
+                {/* <div className="form-group col-3 my-4 ">
+                  <select class="form-select">
+                    {dataUserRequire.map((item, index) => {
+                      console.log("item", item);
+                      return (
+                        <>
+                          <option>{item.valueVi}</option>
+                        </>
+                      );
+                    })}
+                  </select>
                 </div>
-                <div className="form-group col-3 max-width-input">
+                <div className="form-group col-3 my-4 ">
+                  <select class="form-select">
+                    {dataUserRequire.map((item, index) => {
+                      console.log("item", item);
+                      return (
+                        <>
+                          <option>{item.valueVi}</option>
+                        </>
+                      );
+                    })}
+                  </select>
+                </div> */}
+
+                <div className="form-group col-3 ">
                   <label>Phone Number</label>
                   <input
                     className="form-control"
@@ -141,6 +165,17 @@ export default class extends Component {
                     value={this.state.phonenumber}
                     onChange={(event) =>
                       this.handleChangeInput(event, "phonenumber")
+                    }
+                  />
+                </div>
+                <div className="form-group col-9 ">
+                  <label>Address</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    value={this.state.address}
+                    onChange={(event) =>
+                      this.handleChangeInput(event, "address")
                     }
                   />
                 </div>
@@ -160,3 +195,16 @@ export default class extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    dataUser: state.admin.dataUserRequire,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
+    fetchGenderData: () => dispatch(actions.fetchGenderData()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ModalCreateUser);

@@ -8,6 +8,7 @@ export const path = {
   USERLOGIN: "/home/userlogin",
   SINGLEPR: "/SinglePr",
   CONTACT: "/Contact",
+  CATEGORY: "/Category",
 };
 
 export const LANGUAGE = {

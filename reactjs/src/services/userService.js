@@ -21,6 +21,9 @@ const sendEmail = (data) => {
 const sendNewLetter = (data) => {
   return axios.post(`/api/send-newLetter`, data);
 };
+const getGender = (id) => {
+  return axios.get(`/api/get-all-code?type=${id}`);
+};
 export {
   handleLoginApi,
   CreateNewUser,
@@ -29,4 +32,5 @@ export {
   deleteUser,
   sendEmail,
   sendNewLetter,
+  getGender,
 };

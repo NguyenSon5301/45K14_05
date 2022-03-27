@@ -99,7 +99,7 @@ let sendNewLetter = async (req, res) => {
 };
 let getAllCode = async (req, res) => {
   try {
-    let data = await userService.getAllCodeSV();
+    let data = await userService.getAllCodeSV(req.query.type);
 
     res.status(200).json(data);
   } catch (error) {

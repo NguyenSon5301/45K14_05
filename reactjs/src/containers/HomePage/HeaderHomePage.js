@@ -121,9 +121,9 @@ class HeaderHomePage extends Component {
                         </NavLink>
                       </li>
                       <li>
-                        <a href="#">
-                          <FormattedMessage id={"HeaderHome.Blog"} />
-                        </a>
+                        <NavLink to={path.CATEGORY}>
+                          <FormattedMessage id={"HeaderHome.Category"} />
+                        </NavLink>
                       </li>
                       <li>
                         <NavLink to={path.CONTACT}>

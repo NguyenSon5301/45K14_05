@@ -75,6 +75,8 @@ let handleAddNewUser = (data) => {
           password: hashPassWordFromBcrypt,
           address: data.address,
           phonenumber: data.phonenumber,
+          // gender: data.gender === "1" ? true : false,
+          // roleId: data.roleId,
         });
         resolve({
           errCode: 0,
@@ -170,12 +172,21 @@ let onEditUser = (data) => {
     }
   });
 };
-let getAllCodeSV = () => {
+let getAllCodeSV = (typeInput) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let data = {};
-      let allCode = db.Allcode.findAll();
-      resolve({ allCode, errCode: 0, errMessage: "OK" });
+      if (!typeInput) {
+        resolve({ errCode: 1, errMessage: "Missing parameter" });
+      } else {
+        let res = {};
+        let allCode = await db.Allcode.findAll({
+          where: { type: typeInput },
+        });
+        res.data = allCode;
+        res.errCode = 0;
+        res.errMessage = "OK";
+        resolve(res);
+      }
     } catch (e) {
       reject(e);
     }
