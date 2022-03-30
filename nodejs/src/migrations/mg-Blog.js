@@ -20,6 +20,14 @@ module.exports = {
         allowNull: true,
         type: Sequelize.TEXT("long"),
       },
+      title: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      image: {
+        allowNull: false,
+        type: Sequelize.BLOB("long"),
+      },
 
       createdAt: {
         allowNull: false,

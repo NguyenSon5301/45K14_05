@@ -50,7 +50,7 @@ let deleteUser = async (req, res) => {
   try {
     let id = req.body.id;
     let data = await userService.onDeleteUser(id);
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
     res.status(200).json({
       errCode: -1,
@@ -62,7 +62,7 @@ let editUser = async (req, res) => {
   try {
     let input = req.body;
     let data = await userService.onEditUser(input);
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
     console.log("seer", error);
     res.status(200).json({
@@ -88,7 +88,7 @@ let sendNewLetter = async (req, res) => {
   try {
     let email = req.body.email;
     let data = await mailServices.sendNewLetterSV(email);
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
     console.log(error);
     res.status(200).json({
@@ -101,7 +101,7 @@ let getAllCode = async (req, res) => {
   try {
     let data = await userService.getAllCodeSV(req.query.type);
 
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
     console.log(error);
     res.status(200).json({
@@ -110,6 +110,33 @@ let getAllCode = async (req, res) => {
     });
   }
 };
+let createBlog = async (req, res) => {
+  try {
+    let data = await userService.createBlogSV(req.body);
+
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let getBlog = async (req, res) => {
+  try {
+    let data = await userService.getBlogSV();
+
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+
 module.exports = {
   handleLoging,
   AddNewUser,
@@ -119,4 +146,6 @@ module.exports = {
   sendNewLetter,
   sendEmail,
   getAllCode,
+  createBlog,
+  getBlog,
 };

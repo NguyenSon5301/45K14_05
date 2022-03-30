@@ -6,9 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Blog.init(
     {
+      title: DataTypes.STRING,
       contentHTML: DataTypes.TEXT,
       contentMarkDown: DataTypes.TEXT,
       description: DataTypes.TEXT,
+      image: DataTypes.STRING,
     },
     {
       sequelize,

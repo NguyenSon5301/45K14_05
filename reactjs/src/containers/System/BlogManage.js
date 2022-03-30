@@ -1,7 +1,133 @@
 import React, { Component } from "react";
+import MarkdownIt from "markdown-it";
+import MdEditor from "react-markdown-editor-lite";
+// import style manually
+import "react-markdown-editor-lite/lib/index.css";
+import { connect } from "react-redux";
+import { saveBlog } from "../../services/userService";
+import { toast } from "react-toastify";
+import CommonUtils from "../../utils/CommonUtils";
 
-export default class BlogManage extends Component {
+const mdParser = new MarkdownIt(/* Markdown-it options */);
+class BlogManage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      title: "",
+      imageBase64: "",
+
+      descriptionMD: "",
+      descriptionHTML: "",
+    };
+  }
+  handleOnChangeInput = (event, id) => {
+    let stateCoppy = { ...this.state };
+    stateCoppy[id] = event.target.value;
+    this.setState({
+      ...stateCoppy,
+    });
+  };
+
+  // save markdown
+  handleEditorChange = ({ html, text }) => {
+    this.setState({
+      descriptionHTML: html,
+      descriptionMD: text,
+    });
+  };
+  // save upload file
+  handleUpload = async (event) => {
+    let data = event.target.files;
+    let file = data[0];
+    if (file) {
+      let base64 = await CommonUtils.getBase64(file);
+
+      this.setState({
+        imageBase64: base64,
+      });
+      console.log("check base", base64);
+    }
+  };
+  // save state
+  handleSave = async () => {
+    let res = await saveBlog(this.state);
+    if (res && res.errCode === 0) {
+      console.log("check res", res);
+      toast.success("add new Blog succeed");
+      this.setState({
+        name: "",
+        title: "",
+        descriptionMD: "",
+        descriptionHTML: "",
+        imageBase64: "",
+      });
+    } else toast.error("add new Blog failded");
+    console.log("check state", this.state);
+  };
+
   render() {
-    return <div>BlogManage</div>;
+    return (
+      <div className="manage-blog-container">
+        <div
+          className="ms-title py-3"
+          style={{ "font-size": "30px", "text-align": "center" }}
+        >
+          Manage Blog
+        </div>
+        <div className="add-new-Blog row">
+          <div className="col-6 form group">
+            <lable>Tên Blog</lable>
+            <input
+              className="form-control"
+              value={this.state.name}
+              onChange={(event) => this.handleOnChangeInput(event, "name")}
+            />
+          </div>
+          <div className="col-6 form group">
+            <lable>Title</lable>
+            <input
+              className="form-control"
+              value={this.state.title}
+              onChange={(event) => this.handleOnChangeInput(event, "title")}
+            />
+          </div>
+          <div className="col-6 form group py-2 ">
+            <lable>Ảnh blog</lable>
+            <input
+              className="form-control-file px-2"
+              type="file"
+              onChange={(event) => this.handleUpload(event)}
+            />
+          </div>
+          <div className="col-12 my-2">
+            <MdEditor
+              value={this.state.descriptionMD}
+              style={{ height: "500px" }}
+              renderHTML={(text) => mdParser.render(text)}
+              onChange={this.handleEditorChange}
+            />
+          </div>
+          <div className="col-12 ">
+            <button
+              className="btn btn--save-Blog btn-primary mx-2 px-2"
+              onClick={() => this.handleSave()}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogManage);

@@ -9,6 +9,7 @@ export const path = {
   SINGLEPR: "/SinglePr",
   CONTACT: "/Contact",
   CATEGORY: "/Category",
+  DETAIL_BLOG: "/detail_blog/:id",
 };
 
 export const LANGUAGE = {

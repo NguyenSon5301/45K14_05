@@ -192,6 +192,49 @@ let getAllCodeSV = (typeInput) => {
     }
   });
 };
+let createBlogSV = (input) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!input.descriptionMD || !input.descriptionHTML) {
+        resolve({ errCode: 1, errMessage: "Missing parameter" });
+      } else {
+        await db.Blog.create({
+          contentHTML: input.descriptionHTML,
+          contentMarkDown: input.descriptionMD,
+          description: input.name,
+          title: input.title,
+          image: input.imageBase64,
+        });
+
+        resolve({
+          errCode: 0,
+          errMessage: "Save info blog succeed",
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let getBlogSV = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Blog.findAll({
+        attributes: {
+          exclude: ["contentHTML", "contentMarkDown", "title"],
+        },
+      });
+
+      resolve({
+        errCode: 0,
+        errMessage: "fetch info blog succeed",
+        data,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   handleUserLogin,
   handleAddNewUser,
@@ -199,4 +242,6 @@ module.exports = {
   onDeleteUser,
   onEditUser,
   getAllCodeSV,
+  createBlogSV,
+  getBlogSV,
 };

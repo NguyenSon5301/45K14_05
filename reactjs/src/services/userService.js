@@ -24,6 +24,13 @@ const sendNewLetter = (data) => {
 const getGender = (id) => {
   return axios.get(`/api/get-all-code?type=${id}`);
 };
+const saveBlog = (data) => {
+  return axios.post(`/api/save-blog`, data);
+};
+const getBlogs = (data) => {
+  return axios.get(`/api/get-blog`, data);
+};
+
 export {
   handleLoginApi,
   CreateNewUser,
@@ -33,4 +40,6 @@ export {
   sendEmail,
   sendNewLetter,
   getGender,
+  saveBlog,
+  getBlogs,
 };
