@@ -71,12 +71,15 @@
     "menu": {
         "admin": {
             "manage-user": "Manage User",
+            "manage-order": "Manage order",
             "manage-product": "Manage Product",
-            "manage-bill": "Manage Bill",
             "manage-blog": "Manage Blog",
+            "manage-contact": "Manage Contact",
             "title-user": "User",
             "title-product": "Product",
-            "title-blog": "Blog"
+            "title-blog": "Blog",
+            "title-contact": "Contact",
+            "title-order": "Product Order"
         }
     }
 }

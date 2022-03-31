@@ -18,8 +18,13 @@ let initWebRoutes = (app) => {
   // all code
   router.get("/api/get-all-code", userController.getAllCode);
   //blog
-  router.post("/api/save-blog", userController.createBlog);
+  router.post("/api/create-blog", userController.createBlog);
   router.get("/api/get-blog", userController.getBlog);
+  router.get("/api/get-blog-by-id", userController.getBlogById);
+  router.delete("/api/delete-blog", userController.deleteBlog);
+  //contact
+  router.get("/api/get-contacts", userController.getContact);
+  router.delete("/api/delete-contacts", userController.deleteContact);
 
   return app.use("/", router);
 };

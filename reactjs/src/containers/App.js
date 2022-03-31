@@ -23,6 +23,7 @@ import UserLogin from "./Customer/UserLogin";
 import SinglePr from "./Navigator/SinglePr";
 import Contact from "./Navigator/Contact";
 import Category from "./Category/Category";
+import DetailBlog from "./Blog/DetailBlog";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -63,6 +64,8 @@ class App extends Component {
                   <Route path={path.SINGLEPR} component={SinglePr} />
                   <Route path={path.CONTACT} component={Contact} />
                   <Route path={path.CATEGORY} component={Category} />
+                  <Route path={path.DETAIL_BLOG} component={DetailBlog} />
+
                   <Route
                     path={path.LOGIN}
                     component={userIsNotAuthenticated(Login)}

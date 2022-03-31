@@ -1,0 +1,24 @@
+.detail-blog-container {
+    .detail-cn-body {
+        margin-top  : 170px;
+        padding-left: 25px;
+        width       : 100%;
+
+        .description-right {
+            width: 20%;
+        }
+
+        .description-cn {
+            width: 80%;
+
+            .title-blg {
+
+                font-weight   : 550;
+                font-size     : 20px;
+                margin        : 0 20px;
+                margin-bottom : 30px;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

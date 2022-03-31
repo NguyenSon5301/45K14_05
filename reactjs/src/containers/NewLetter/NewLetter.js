@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { sendNewLetter } from "../../services/userService";
 import { FormattedMessage } from "react-intl";
 import "./NewLetter.css";
+import { toast } from "react-toastify";
 
 export default class NewLetter extends Component {
   state = {
@@ -13,10 +14,10 @@ export default class NewLetter extends Component {
     });
   };
   onSendNewLetter = async () => {
-    console.log("check ", this.state);
     await sendNewLetter({
       email: this.state.email,
     });
+    toast.success("send new letter succeed");
   };
   render() {
     return (

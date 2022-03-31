@@ -39,7 +39,6 @@ export default class ModalEditUser extends Component {
   };
   handleSaveUser = () => {
     let isValid = this.checkVaidInput();
-    console.log("is", isValid);
     if (isValid === true) {
       // call api
       this.props.editUser(this.state);

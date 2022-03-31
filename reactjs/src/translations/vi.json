@@ -72,12 +72,14 @@
         "admin": {
             "manage-user": "Quản lý người dùng",
             "manage-product": "Quản lý sản phẩm",
-            "manage-bill": "Quản lý hóa đơn",
+            "manage-order": "Quản lý đơn hàng",
+            "manage-contact": "Quản lý Liên Hệ",
             "manage-blog": "Quản lý Blog",
             "title-user": "Người dùng",
             "title-product": "Sản Phẩm",
             "title-blog": "Blog",
-            "title-bill": "Hóa đơn"
+            "title-order": "Đơn Hàng",
+            "title-contact": "Liên Hệ"
         }
     }
 }

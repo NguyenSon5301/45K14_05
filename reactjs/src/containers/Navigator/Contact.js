@@ -8,6 +8,7 @@ import { sendEmail } from "../../services/userService";
 import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import { path } from "../../utils/constant";
+import { toast } from "react-toastify";
 export default class Contact extends Component {
   constructor(props) {
     super(props);
@@ -31,9 +32,9 @@ export default class Contact extends Component {
       email: this.state.email,
       text: this.state.text,
     });
+    toast.success("send messege succeed");
   };
   render() {
-    console.log("check state", this.state);
     return (
       <div class="super_container">
         <HeaderHomePage />
@@ -81,11 +82,9 @@ export default class Contact extends Component {
                 </div>
                 <div>
                   <p>
-                    {" "}
                     <FormattedMessage id="Contact.time" />
                   </p>
                   <p>
-                    {" "}
                     <FormattedMessage id="Contact.close-time" />
                   </p>
                 </div>

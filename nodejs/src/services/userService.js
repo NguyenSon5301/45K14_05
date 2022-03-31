@@ -75,8 +75,8 @@ let handleAddNewUser = (data) => {
           password: hashPassWordFromBcrypt,
           address: data.address,
           phonenumber: data.phonenumber,
-          // gender: data.gender === "1" ? true : false,
-          // roleId: data.roleId,
+          gender: data.gender === "1" ? true : false,
+          roleId: data.roleId,
         });
         resolve({
           errCode: 0,
@@ -219,11 +219,7 @@ let createBlogSV = (input) => {
 let getBlogSV = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      let data = await db.Blog.findAll({
-        attributes: {
-          exclude: ["contentHTML", "contentMarkDown", "title"],
-        },
-      });
+      let data = await db.Blog.findAll();
 
       resolve({
         errCode: 0,
@@ -235,6 +231,91 @@ let getBlogSV = () => {
     }
   });
 };
+let getBlogByIdSV = (inputId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Blog.findOne({
+        where: { id: inputId },
+        attributes: {
+          exclude: ["image", "description"],
+        },
+      });
+
+      resolve({
+        errCode: 0,
+        errMessage: "OK",
+        data,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let onDeleteBlog = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!id) {
+        resolve({
+          errCode: 2,
+          errMessage: "Missing parameter",
+        });
+      } else {
+        let blog = await db.Blog.findOne({
+          where: { id: id },
+          raw: false,
+        });
+        if (!blog) {
+          resolve({ errCode: 3, errMessage: "The blog is not exist" });
+        }
+        await blog.destroy();
+        resolve({ errCode: 0, errMessage: "The blog is deleted successed" });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+// fetch contact
+let getContactSV = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Contact.findAll();
+
+      resolve({
+        errCode: 0,
+        errMessage: "OK",
+        data,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let deleteContactSV = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!id) {
+        resolve({
+          errCode: 2,
+          errMessage: "Missing parameter",
+        });
+      } else {
+        let contact = await db.Contact.findOne({
+          where: { id: id },
+          raw: false,
+        });
+        if (!contact) {
+          resolve({ errCode: 3, errMessage: "The contact is not exist" });
+        }
+        await contact.destroy();
+        resolve({ errCode: 0, errMessage: "The contact is deleted successed" });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   handleUserLogin,
   handleAddNewUser,
@@ -244,4 +325,8 @@ module.exports = {
   getAllCodeSV,
   createBlogSV,
   getBlogSV,
+  getBlogByIdSV,
+  onDeleteBlog,
+  getContactSV,
+  deleteContactSV,
 };

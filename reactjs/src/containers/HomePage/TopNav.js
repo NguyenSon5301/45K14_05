@@ -20,7 +20,6 @@ class TopNav extends Component {
   async componentDidMount() {
     let userData = this.props.userData;
     let res = await handleLoginApi();
-    console.log("check res", res);
     this.setState({
       user: userData,
     });

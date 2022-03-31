@@ -25,10 +25,22 @@ const getGender = (id) => {
   return axios.get(`/api/get-all-code?type=${id}`);
 };
 const saveBlog = (data) => {
-  return axios.post(`/api/save-blog`, data);
+  return axios.post(`/api/create-blog`, data);
 };
 const getBlogs = (data) => {
   return axios.get(`/api/get-blog`, data);
+};
+const getBlogByIdSV = (id) => {
+  return axios.get(`/api/get-blog-by-id?id=${id}`);
+};
+const deleteBlog = (id) => {
+  return axios.get(`/api/delete-blog?id=${id}`);
+};
+const getContacts = (data) => {
+  return axios.get(`/api/get-contacts`, data);
+};
+const deleteContact = (id) => {
+  return axios.get(`/api/delete-contacts?id=${id}`);
 };
 
 export {
@@ -42,4 +54,8 @@ export {
   getGender,
   saveBlog,
   getBlogs,
+  deleteBlog,
+  getBlogByIdSV,
+  getContacts,
+  deleteContact,
 };

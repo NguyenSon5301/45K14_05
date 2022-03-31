@@ -25,7 +25,6 @@ class ProductManage extends Component {
     let file = data[0];
     if (file) {
       let base64 = await CommonUtils.getBase64(file);
-      console.log("check base64", base64);
       this.setState({
         image: base64,
       });
@@ -34,7 +33,6 @@ class ProductManage extends Component {
 
   onChangeInput = (event, id) => {
     let copyState = { ...this.state };
-    console.log("check event", event.target.value);
     copyState[id] = event.target.value;
     this.setState({
       ...copyState,

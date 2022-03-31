@@ -38,7 +38,6 @@ class UserManage extends Component {
   }
   onDelete = async (id) => {
     let res = await deleteUser(id);
-    console.log("check res", res);
     if (res && res.errCode === 0) {
       toast.success("delete user is successed");
       await this.props.fetchAllUser();
@@ -60,9 +59,7 @@ class UserManage extends Component {
   };
   DoEditUser = async (user) => {
     try {
-      console.log("check user", user);
       let res = await editUser(user);
-      console.log("check res", res);
       if (res && res.errCode === 0) {
         this.setState({
           isOpenEditUser: false,

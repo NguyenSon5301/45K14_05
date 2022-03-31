@@ -19,6 +19,7 @@ class BlogManage extends Component {
 
       descriptionMD: "",
       descriptionHTML: "",
+      arrBlogs: [],
     };
   }
   handleOnChangeInput = (event, id) => {
@@ -46,14 +47,12 @@ class BlogManage extends Component {
       this.setState({
         imageBase64: base64,
       });
-      console.log("check base", base64);
     }
   };
   // save state
   handleSave = async () => {
     let res = await saveBlog(this.state);
     if (res && res.errCode === 0) {
-      console.log("check res", res);
       toast.success("add new Blog succeed");
       this.setState({
         name: "",
@@ -63,18 +62,18 @@ class BlogManage extends Component {
         imageBase64: "",
       });
     } else toast.error("add new Blog failded");
-    console.log("check state", this.state);
   };
 
   render() {
+    let arrBlogs = this.state;
     return (
       <div className="manage-blog-container">
-        <div
-          className="ms-title py-3"
-          style={{ "font-size": "30px", "text-align": "center" }}
-        >
-          Manage Blog
+        <div className="text-center">
+          <h2 className="title-manage" style={{ color: "blue" }}>
+            Manage Blog
+          </h2>
         </div>
+
         <div className="add-new-Blog row">
           <div className="col-6 form group">
             <lable>Tên Blog</lable>
@@ -103,7 +102,7 @@ class BlogManage extends Component {
           <div className="col-12 my-2">
             <MdEditor
               value={this.state.descriptionMD}
-              style={{ height: "500px" }}
+              style={{ height: "250px" }}
               renderHTML={(text) => mdParser.render(text)}
               onChange={this.handleEditorChange}
             />

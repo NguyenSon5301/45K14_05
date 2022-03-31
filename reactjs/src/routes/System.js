@@ -5,6 +5,8 @@ import UserManage from "../containers/System/UserManage";
 import ProductManage from "../containers/System/ProductManage";
 import Header from "../containers/Header/Header";
 import BlogManage from "../containers/System/BlogManage";
+import ContactManage from "../containers/System/ContactManage";
+import ProductOderManage from "../containers/System/ProductOderManage";
 
 class System extends Component {
   render() {
@@ -18,6 +20,11 @@ class System extends Component {
               <Route path="/system/user-manage" component={UserManage} />
               <Route path="/system/product-manage" component={ProductManage} />
               <Route path="/system/blog-manage" component={BlogManage} />
+              <Route path="/system/contact-manage" component={ContactManage} />
+              <Route
+                path="/system/order-manage"
+                component={ProductOderManage}
+              />
 
               <Route
                 component={() => {

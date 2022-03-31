@@ -86,9 +86,7 @@ class ProductItem extends Component {
       },
     ],
   };
-  MoveSinglePage = (id) => {
-    console.log("check id", id);
-  };
+  MoveSinglePage = (id) => {};
   render() {
     const settings = {
       dots: true,

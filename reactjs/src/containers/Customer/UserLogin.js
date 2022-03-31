@@ -76,7 +76,6 @@ class UserLogin extends Component {
     this.setState({
       showPassword: !this.state.showPassword,
     });
-    console.log(this.state.showPassword);
   };
 
   render() {

@@ -6,8 +6,6 @@ export const fetchAllUser = () => {
     try {
       let res = await getUser("All");
       if (res && res.errCode === 0) {
-        console.log("check res", res);
-
         dispatch({
           type: actionTypes.FETCH_ALL_USER_SUCCESS,
           users: res.data,
@@ -26,31 +24,41 @@ export const fetchAllUser = () => {
 export const fetchGenderData = () => {
   return async (dispatch) => {
     try {
-      let resGender = await getGender("GENDER");
-      let resRole = await getGender("ROLE");
-      if (
-        resGender &&
-        resGender.errCode === 0 &&
-        resRole &&
-        resRole.errCode === 0
-      ) {
-        let resRequire = {
-          resGender: resGender.data,
-          resRole: resRole.data,
-        };
-        console.log("check ", resRole, resGender);
+      let res = await getGender("GENDER");
+      if (res && res.errCode === 0) {
         dispatch({
-          type: actionTypes.FETCH_GENDER_ROLE_DATA_SUCCESS,
-          resRequire,
+          type: actionTypes.FETCH_GENDER_SUCCESS,
+          dataGender: res.data,
         });
       } else {
         toast.error("fetch all gender failded");
         dispatch({
-          type: actionTypes.FETCH_GENDER_ROLE_DATA_FAILDED,
+          type: actionTypes.FETCH_GENDER_FAILDED,
         });
       }
     } catch (e) {
-      toast.error("fetch all failded");
+      toast.error("fetch all gender failded");
+    }
+  };
+};
+// role
+export const fetchRoleData = () => {
+  return async (dispatch) => {
+    try {
+      let res = await getGender("ROLE");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ROLE_SUCCESS,
+          roleData: res.data,
+        });
+      } else {
+        toast.error("fetch all gender failded");
+        dispatch({
+          type: actionTypes.FETCH_ROLE_FAILDED,
+        });
+      }
+    } catch (e) {
+      toast.error("fetch all gender failded");
     }
   };
 };

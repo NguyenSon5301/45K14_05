@@ -18,6 +18,7 @@ class ModalCreateUser extends Component {
       phonenumber: "",
       address: "",
       genders: [],
+      roles: [],
     };
     this.listenToEmitter();
   }
@@ -37,6 +38,20 @@ class ModalCreateUser extends Component {
   }
   componentDidMount() {
     this.props.fetchGenderData();
+    this.props.fetchRoleData();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.genders !== prevProps.genders) {
+      let { genders } = this.props;
+      this.setState({
+        genders: genders,
+      });
+    }
+    if (this.props.genders !== prevProps.genders) {
+      this.setState({
+        roles: this.props.roleData,
+      });
+    }
   }
   handleChangeInput = (event, id) => {
     let copyState = { ...this.state };
@@ -76,8 +91,8 @@ class ModalCreateUser extends Component {
     toast.success("creating user is succeed");
   };
   render() {
-    let { dataUserRequire } = this.props;
-    console.log("check res", this.props.dataUserRequire);
+    let { roleData, genders } = this.props;
+    console.log("check res", this.props);
     return (
       <div>
         <Modal
@@ -132,10 +147,10 @@ class ModalCreateUser extends Component {
                     }
                   />
                 </div>
-                {/* <div className="form-group col-3 my-4 ">
+                <div className="form-group col-3">
+                  <label>Chức vụ</label>
                   <select class="form-select">
-                    {dataUserRequire.map((item, index) => {
-                      console.log("item", item);
+                    {roleData.map((item, index) => {
                       return (
                         <>
                           <option>{item.valueVi}</option>
@@ -144,10 +159,11 @@ class ModalCreateUser extends Component {
                     })}
                   </select>
                 </div>
-                <div className="form-group col-3 my-4 ">
+                <div className="form-group col-3">
+                  <label>Giới tính</label>
                   <select class="form-select">
-                    {dataUserRequire.map((item, index) => {
-                      console.log("item", item);
+                    <label>Giới tính</label>;
+                    {genders.map((item, index) => {
                       return (
                         <>
                           <option>{item.valueVi}</option>
@@ -155,7 +171,7 @@ class ModalCreateUser extends Component {
                       );
                     })}
                   </select>
-                </div> */}
+                </div>
 
                 <div className="form-group col-3 ">
                   <label>Phone Number</label>
@@ -168,7 +184,7 @@ class ModalCreateUser extends Component {
                     }
                   />
                 </div>
-                <div className="form-group col-9 ">
+                <div className="form-group col-6 ">
                   <label>Address</label>
                   <input
                     className="form-control"
@@ -197,7 +213,8 @@ class ModalCreateUser extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    dataUser: state.admin.dataUserRequire,
+    genders: state.admin.genders,
+    roleData: state.admin.roleData,
   };
 };
 
@@ -205,6 +222,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
     fetchGenderData: () => dispatch(actions.fetchGenderData()),
+    fetchRoleData: () => dispatch(actions.fetchRoleData()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ModalCreateUser);

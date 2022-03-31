@@ -22,7 +22,6 @@ class HeaderHomePage extends Component {
   async componentDidMount() {
     let userData = this.props.userData;
     let res = await handleLoginApi();
-    console.log("check res", res);
     this.setState({
       user: userData,
     });
@@ -31,7 +30,6 @@ class HeaderHomePage extends Component {
   render() {
     const { processLogout, userInfo, user } = this.props;
     const { history } = this.props;
-    console.log("chekc userinfo", this.state.user);
     return (
       <Fragment>
         <header className="header trans_300">
@@ -132,16 +130,6 @@ class HeaderHomePage extends Component {
                       </li>
                     </ul>
                     <ul className="navbar_user">
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-search" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-user" aria-hidden="true"></i>
-                        </a>
-                      </li>
                       <li className="checkout">
                         <a href="#">
                           <i

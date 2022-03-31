@@ -1,8 +1,14 @@
 import nodemailer from "nodemailer";
+import db from "../models/index";
 
 let sendMailSV = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
+      await db.Contact.create({
+        emailCT: data.email,
+        nameCT: data.name,
+        message: data.text,
+      });
       await sendEmail({
         Regmail: data.email,
         Rename: data.name,
@@ -14,6 +20,7 @@ let sendMailSV = (data) => {
     }
   });
 };
+
 let sendNewLetter = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -30,7 +37,6 @@ let sendNewLetter = (data) => {
 };
 
 let sendEmail = async (dataSend) => {
-  console.log(dataSend);
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,

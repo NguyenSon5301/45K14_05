@@ -11,6 +11,12 @@
 .blog_item {
     height: 255px;
     width : 100%;
+
+}
+
+.blog_item:hover {
+    cursor: pointer;
+
 }
 
 .blog_background {

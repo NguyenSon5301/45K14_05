@@ -27,4 +27,22 @@ export const adminMenu = [
       },
     ],
   },
+  {
+    name: "menu.admin.title-contact",
+    menus: [
+      {
+        name: "menu.admin.manage-contact",
+        link: "/system/contact-manage",
+      },
+    ],
+  },
+  {
+    name: "menu.admin.title-order",
+    menus: [
+      {
+        name: "menu.admin.manage-order",
+        link: "/system/order-manage",
+      },
+    ],
+  },
 ];
