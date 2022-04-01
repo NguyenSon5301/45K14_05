@@ -2,21 +2,24 @@ import React, { Component } from "react";
 import "./Blog.css";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 
 import { FormattedMessage } from "react-intl";
-import { getBlogs, handleLoginApi } from "../../services/userService";
 class Blog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrBlog: [],
+      arrBlogs: [],
     };
   }
-  async componentDidMount() {
-    let res = await getBlogs();
-    if (res && res.errCode === 0) {
+  componentDidMount() {
+    this.props.fetchAllBlogs();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.arrBlogs !== prevProps.arrBlogs) {
+      let { arrBlogs } = this.props;
       this.setState({
-        arrBlog: res.data,
+        arrBlogs: arrBlogs,
       });
     }
   }
@@ -25,7 +28,7 @@ class Blog extends Component {
     this.props.history.push(`/detail_blog/${item.id}`);
   };
   render() {
-    let { arrBlog } = this.state;
+    let { arrBlogs } = this.state;
     return (
       <div class="blogs">
         <div class="container">
@@ -40,7 +43,7 @@ class Blog extends Component {
           </div>
 
           <div class="row blogs_container">
-            {arrBlog.map((item, index) => {
+            {arrBlogs.map((item, index) => {
               let imageBase64 = "";
               if (item.image) {
                 imageBase64 = new Buffer(item.image, "base64").toString(
@@ -73,11 +76,15 @@ class Blog extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    arrBlogs: state.admin.blogData,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    fetchAllBlogs: () => dispatch(actions.fetchAllBlogs()),
+  };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Blog));

@@ -1,0 +1,648 @@
+10:22:42 PM  [main] 	Initializing Control Panel
+10:22:42 PM  [main] 	Windows Version:  Enterprise  64-bit
+10:22:42 PM  [main] 	XAMPP Version: 7.3.31
+10:22:42 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:22:42 PM  [main] 	Running with Administrator rights - good!
+10:22:42 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+10:22:42 PM  [main] 	Checking for prerequisites
+10:22:42 PM  [main] 	All prerequisites found
+10:22:42 PM  [main] 	Initializing Modules
+10:22:42 PM  [Apache] 	Apache Service detected with wrong path
+10:22:42 PM  [Apache] 	Change XAMPP Apache and Control Panel settings or
+10:22:42 PM  [Apache] 	Uninstall/disable the other service manually first
+10:22:42 PM  [Apache] 	Found Path: "C:\xampp\apache\bin\httpd.exe" -k runservice
+10:22:42 PM  [Apache] 	Expected Path: "d:\xampp\apache\bin\httpd.exe" -k runservice
+10:22:42 PM  [Apache] 	Problem detected!
+10:22:42 PM  [Apache] 	Port 443 in use by ""C:\Program Files (x86)\VMware\VMware Workstation\vmware-hostd.exe" -u "C:\ProgramData\VMware\hostd\config.xml"" with PID 5512!
+10:22:42 PM  [Apache] 	Apache WILL NOT start without the configured ports free!
+10:22:42 PM  [Apache] 	You need to uninstall/disable/reconfigure the blocking application
+10:22:42 PM  [Apache] 	or reconfigure Apache and the Control Panel to listen on a different port
+10:22:42 PM  [mysql] 	MySQL Service detected with wrong path
+10:22:42 PM  [mysql] 	Change XAMPP MySQL and Control Panel settings or
+10:22:42 PM  [mysql] 	Uninstall/disable the other service manually first
+10:22:42 PM  [mysql] 	Found Path: C:\xampp\mysql\bin\mysqld.exe --defaults-file=c:\xampp\mysql\bin\my.ini mysql
+10:22:42 PM  [mysql] 	Expected Path: d:\xampp\mysql\bin\mysqld.exe --defaults-file=d:\xampp\mysql\bin\my.ini mysql
+10:22:42 PM  [Tomcat] 	Problem detected!
+10:22:42 PM  [Tomcat] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe"!
+10:22:42 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+10:22:42 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+10:22:42 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+10:22:42 PM  [main] 	Starting Check-Timer
+10:22:42 PM  [main] 	Control Panel Ready
+10:22:44 PM  [Apache] 	Problem detected!
+10:22:44 PM  [Apache] 	Port 443 in use by ""C:\Program Files (x86)\VMware\VMware Workstation\vmware-hostd.exe" -u "C:\ProgramData\VMware\hostd\config.xml"" with PID 5512!
+10:22:44 PM  [Apache] 	Apache WILL NOT start without the configured ports free!
+10:22:44 PM  [Apache] 	You need to uninstall/disable/reconfigure the blocking application
+10:22:44 PM  [Apache] 	or reconfigure Apache and the Control Panel to listen on a different port
+10:22:44 PM  [Apache] 	Attempting to start Apache service...
+10:24:09 PM  [main] 	Executing "d:\xampp\apache"
+10:25:28 PM  [Apache] 	Problem detected!
+10:25:28 PM  [Apache] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe" with PID 11700!
+10:25:28 PM  [Apache] 	Apache WILL NOT start without the configured ports free!
+10:25:28 PM  [Apache] 	You need to uninstall/disable/reconfigure the blocking application
+10:25:28 PM  [Apache] 	or reconfigure Apache and the Control Panel to listen on a different port
+10:25:28 PM  [Apache] 	Attempting to start Apache service...
+10:25:29 PM  [mysql] 	Attempting to start MySQL service...
+10:26:22 PM  [main] 	Deinitializing Modules
+10:26:22 PM  [main] 	Deinitializing Control Panel
+
+10:26:28 PM  [main] 	Initializing Control Panel
+10:26:28 PM  [main] 	Windows Version:  Enterprise  64-bit
+10:26:28 PM  [main] 	XAMPP Version: 7.3.31
+10:26:28 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:26:28 PM  [main] 	Running with Administrator rights - good!
+10:26:28 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+10:26:28 PM  [main] 	Checking for prerequisites
+10:26:28 PM  [main] 	All prerequisites found
+10:26:28 PM  [main] 	Initializing Modules
+10:26:28 PM  [Apache] 	Apache Service detected with wrong path
+10:26:28 PM  [Apache] 	Change XAMPP Apache and Control Panel settings or
+10:26:28 PM  [Apache] 	Uninstall/disable the other service manually first
+10:26:28 PM  [Apache] 	Found Path: "C:\xampp\apache\bin\httpd.exe" -k runservice
+10:26:28 PM  [Apache] 	Expected Path: "d:\xampp\apache\bin\httpd.exe" -k runservice
+10:26:28 PM  [Apache] 	Problem detected!
+10:26:28 PM  [Apache] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe" with PID 11700!
+10:26:28 PM  [Apache] 	Apache WILL NOT start without the configured ports free!
+10:26:28 PM  [Apache] 	You need to uninstall/disable/reconfigure the blocking application
+10:26:28 PM  [Apache] 	or reconfigure Apache and the Control Panel to listen on a different port
+10:26:28 PM  [mysql] 	MySQL Service detected with wrong path
+10:26:28 PM  [mysql] 	Change XAMPP MySQL and Control Panel settings or
+10:26:28 PM  [mysql] 	Uninstall/disable the other service manually first
+10:26:28 PM  [mysql] 	Found Path: C:\xampp\mysql\bin\mysqld.exe --defaults-file=c:\xampp\mysql\bin\my.ini mysql
+10:26:28 PM  [mysql] 	Expected Path: d:\xampp\mysql\bin\mysqld.exe --defaults-file=d:\xampp\mysql\bin\my.ini mysql
+10:26:28 PM  [Tomcat] 	Problem detected!
+10:26:28 PM  [Tomcat] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe"!
+10:26:28 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+10:26:28 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+10:26:28 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+10:26:28 PM  [main] 	Enabling autostart for module "Apache"
+10:26:28 PM  [main] 	Enabling autostart for module "MySQL"
+10:26:28 PM  [main] 	Starting Check-Timer
+10:26:28 PM  [main] 	Control Panel Ready
+10:26:29 PM  [Apache] 	Autostart active: starting...
+10:26:29 PM  [Apache] 	Problem detected!
+10:26:29 PM  [Apache] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe" with PID 11700!
+10:26:29 PM  [Apache] 	Apache WILL NOT start without the configured ports free!
+10:26:29 PM  [Apache] 	You need to uninstall/disable/reconfigure the blocking application
+10:26:29 PM  [Apache] 	or reconfigure Apache and the Control Panel to listen on a different port
+10:26:29 PM  [Apache] 	Attempting to start Apache service...
+10:26:29 PM  [mysql] 	Autostart active: starting...
+10:26:29 PM  [mysql] 	Attempting to start MySQL service...
+10:27:13 PM  [main] 	Deinitializing Modules
+10:27:13 PM  [main] 	Deinitializing Control Panel
+
+10:27:20 PM  [main] 	Initializing Control Panel
+10:27:20 PM  [main] 	Windows Version:  Enterprise  64-bit
+10:27:20 PM  [main] 	XAMPP Version: 7.3.31
+10:27:20 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:27:20 PM  [main] 	Running with Administrator rights - good!
+10:27:20 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+10:27:20 PM  [main] 	Checking for prerequisites
+10:27:20 PM  [main] 	All prerequisites found
+10:27:20 PM  [main] 	Initializing Modules
+10:27:20 PM  [Apache] 	Apache Service detected with wrong path
+10:27:20 PM  [Apache] 	Change XAMPP Apache and Control Panel settings or
+10:27:20 PM  [Apache] 	Uninstall/disable the other service manually first
+10:27:20 PM  [Apache] 	Found Path: "C:\xampp\apache\bin\httpd.exe" -k runservice
+10:27:20 PM  [Apache] 	Expected Path: "d:\xampp\apache\bin\httpd.exe" -k runservice
+10:27:20 PM  [mysql] 	MySQL Service detected with wrong path
+10:27:20 PM  [mysql] 	Change XAMPP MySQL and Control Panel settings or
+10:27:20 PM  [mysql] 	Uninstall/disable the other service manually first
+10:27:20 PM  [mysql] 	Found Path: C:\xampp\mysql\bin\mysqld.exe --defaults-file=c:\xampp\mysql\bin\my.ini mysql
+10:27:20 PM  [mysql] 	Expected Path: d:\xampp\mysql\bin\mysqld.exe --defaults-file=d:\xampp\mysql\bin\my.ini mysql
+10:27:20 PM  [Tomcat] 	Problem detected
+10:27:20 PM  [Tomcat] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe"!
+10:27:20 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+10:27:20 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+10:27:20 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+10:27:20 PM  [main] 	Enabling autostart for module "Apache"
+10:27:20 PM  [main] 	Enabling autostart for module "MySQL"
+10:27:20 PM  [main] 	Starting Check-Timer
+10:27:20 PM  [main] 	Control Panel Ready
+10:27:21 PM  [Apache] 	Autostart active: starting...
+10:27:21 PM  [Apache] 	Attempting to start Apache service...
+10:27:21 PM  [mysql] 	Autostart active: starting...
+10:27:21 PM  [mysql] 	Attempting to start MySQL service...
+10:27:59 PM  [Apache] 	Attempting to start Apache service...
+10:28:00 PM  [mysql] 	Attempting to start MySQL service...
+10:28:06 PM  [main] 	Executing "d:\xampp\
+10:29:03 PM  [Apache] 	Attempting to start Apache service...
+10:29:03 PM  [Apache] 	Attempting to start Apache service...
+10:29:04 PM  [Apache] 	Attempting to start Apache service...
+10:29:04 PM  [Apache] 	Attempting to start Apache service...
+10:29:04 PM  [Apache] 	Attempting to start Apache service...
+10:29:04 PM  [Apache] 	Attempting to start Apache service...
+10:29:04 PM  [Apache] 	Attempting to start Apache service...
+10:29:04 PM  [Apache] 	Attempting to start Apache service...
+10:29:05 PM  [Apache] 	Attempting to start Apache service...
+10:29:06 PM  [mysql] 	Attempting to start MySQL service...
+10:29:10 PM  [main] 	Deinitializing Modules
+10:29:10 PM  [main] 	Deinitializing Control Panel
+
+2:36:00 PM  [main] 	Initializing Control Panel
+2:36:00 PM  [main] 	Windows Version:  Enterprise  64-bit
+2:36:00 PM  [main] 	XAMPP Version: 7.3.31
+2:36:00 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+2:36:00 PM  [main] 	Running with Administrator rights - good!
+2:36:00 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+2:36:00 PM  [main] 	Checking for prerequisites
+2:36:01 PM  [main] 	All prerequisites found
+2:36:01 PM  [main] 	Initializing Modules
+2:36:01 PM  [Apache] 	Apache Service detected with wrong path
+2:36:01 PM  [Apache] 	Change XAMPP Apache and Control Panel settings or
+2:36:01 PM  [Apache] 	Uninstall/disable the other service manually first
+2:36:01 PM  [Apache] 	Found Path: "C:\xampp\apache\bin\httpd.exe" -k runservice
+2:36:01 PM  [Apache] 	Expected Path: "d:\xampp\apache\bin\httpd.exe" -k runservice
+2:36:01 PM  [mysql] 	MySQL Service detected with wrong path
+2:36:01 PM  [mysql] 	Change XAMPP MySQL and Control Panel settings or
+2:36:01 PM  [mysql] 	Uninstall/disable the other service manually first
+2:36:01 PM  [mysql] 	Found Path: C:\xampp\mysql\bin\mysqld.exe --defaults-file=c:\xampp\mysql\bin\my.ini mysql
+2:36:01 PM  [mysql] 	Expected Path: d:\xampp\mysql\bin\mysqld.exe --defaults-file=d:\xampp\mysql\bin\my.ini mysql
+2:36:01 PM  [main] 	Enabling autostart for module "Apache"
+2:36:01 PM  [main] 	Enabling autostart for module "MySQL"
+2:36:01 PM  [main] 	Starting Check-Timer
+2:36:01 PM  [main] 	Control Panel Ready
+2:36:02 PM  [Apache] 	Autostart active: starting...
+2:36:02 PM  [Apache] 	Attempting to start Apache service...
+2:36:02 PM  [mysql] 	Autostart active: starting...
+2:36:02 PM  [mysql] 	Attempting to start MySQL service...
+2:36:35 PM  [Apache] 	Uninstalling service...
+2:36:36 PM  [Apache] 	Successful!
+2:36:39 PM  [mysql] 	Uninstalling service...
+2:36:40 PM  [mysql] 	Successful!
+2:36:42 PM  [Apache] 	Installing service...
+2:36:45 PM  [mysql] 	Installing service...
+2:36:45 PM  [mysql] 	Successful!
+2:36:45 PM  [Apache] 	Successful!
+2:36:47 PM  [Apache] 	Attempting to start Apache service...
+2:36:49 PM  [Apache] 	Status change detected: running
+2:36:51 PM  [mysql] 	Attempting to start MySQL service...
+2:36:52 PM  [mysql] 	Status change detected: running
+7:47:38 PM  [main] 	Deinitializing Modules
+7:47:38 PM  [main] 	Deinitializing Control Panel
+
+8:10:15 PM  [main] 	Initializing Control Panel
+8:10:15 PM  [main] 	Windows Version:  Enterprise  64-bit
+8:10:15 PM  [main] 	XAMPP Version: 7.3.31
+8:10:15 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+8:10:15 PM  [main] 	You are not running with administrator rights! This will work for
+8:10:15 PM  [main] 	most application stuff but whenever you do something with services
+8:10:15 PM  [main] 	there will be a security dialogue or things will break! So think 
+8:10:15 PM  [main] 	about running this application with administrator rights!
+8:10:15 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+8:10:15 PM  [main] 	Checking for prerequisites
+8:10:17 PM  [main] 	All prerequisites found
+8:10:17 PM  [main] 	Initializing Modules
+8:10:17 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+8:10:17 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+8:10:17 PM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+8:10:17 PM  [Tomcat] 	Problem detected!
+8:10:17 PM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+8:10:17 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+8:10:17 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+8:10:17 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+8:10:17 PM  [main] 	Enabling autostart for module "Apache"
+8:10:17 PM  [main] 	Enabling autostart for module "MySQL"
+8:10:17 PM  [main] 	Starting Check-Timer
+8:10:17 PM  [main] 	Control Panel Ready
+8:10:18 PM  [Apache] 	Autostart aborted: Apache is already running
+8:10:18 PM  [mysql] 	Autostart aborted: MySQL is already running
+11:23:34 PM  [main] 	Deinitializing Modules
+11:23:34 PM  [main] 	Deinitializing Control Panel
+
+3:31:58 PM  [main] 	Initializing Control Panel
+3:31:58 PM  [main] 	Windows Version:  Enterprise  64-bit
+3:31:58 PM  [main] 	XAMPP Version: 7.3.31
+3:31:58 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+3:31:58 PM  [main] 	You are not running with administrator rights! This will work for
+3:31:58 PM  [main] 	most application stuff but whenever you do something with services
+3:31:58 PM  [main] 	there will be a security dialogue or things will break! So think 
+3:31:58 PM  [main] 	about running this application with administrator rights!
+3:31:58 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+3:31:58 PM  [main] 	Checking for prerequisites
+3:32:05 PM  [main] 	All prerequisites found
+3:32:05 PM  [main] 	Initializing Modules
+3:32:05 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+3:32:05 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+3:32:05 PM  [Tomcat] 	Problem detected!
+3:32:05 PM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+3:32:05 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+3:32:05 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+3:32:05 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+3:32:05 PM  [main] 	Enabling autostart for module "Apache"
+3:32:05 PM  [main] 	Enabling autostart for module "MySQL"
+3:32:05 PM  [main] 	Starting Check-Timer
+3:32:05 PM  [main] 	Control Panel Ready
+3:32:06 PM  [Apache] 	Autostart aborted: Apache is already running
+3:32:06 PM  [mysql] 	Autostart aborted: MySQL is already running
+5:22:34 PM  [main] 	Deinitializing Modules
+5:22:34 PM  [main] 	Deinitializing Control Panel
+
+5:37:43 PM  [main] 	Initializing Control Panel
+5:37:43 PM  [main] 	Windows Version:  Enterprise  64-bit
+5:37:43 PM  [main] 	XAMPP Version: 7.3.31
+5:37:43 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+5:37:43 PM  [main] 	You are not running with administrator rights! This will work for
+5:37:43 PM  [main] 	most application stuff but whenever you do something with services
+5:37:43 PM  [main] 	there will be a security dialogue or things will break! So think 
+5:37:43 PM  [main] 	about running this application with administrator rights!
+5:37:43 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+5:37:43 PM  [main] 	Checking for prerequisites
+5:37:45 PM  [main] 	All prerequisites found
+5:37:45 PM  [main] 	Initializing Modules
+5:37:45 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+5:37:45 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+5:37:45 PM  [Tomcat] 	Problem detected!
+5:37:45 PM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+5:37:45 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+5:37:45 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+5:37:45 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+5:37:45 PM  [main] 	Enabling autostart for module "Apache"
+5:37:45 PM  [main] 	Enabling autostart for module "MySQL"
+5:37:45 PM  [main] 	Starting Check-Timer
+5:37:45 PM  [main] 	Control Panel Ready
+5:37:46 PM  [Apache] 	Autostart aborted: Apache is already running
+5:37:46 PM  [mysql] 	Autostart aborted: MySQL is already running
+10:09:42 PM  [main] 	Deinitializing Modules
+10:09:42 PM  [main] 	Deinitializing Control Panel
+
+8:36:47 AM  [main] 	Initializing Control Panel
+8:36:47 AM  [main] 	Windows Version:  Enterprise  64-bit
+8:36:47 AM  [main] 	XAMPP Version: 7.3.31
+8:36:47 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+8:36:47 AM  [main] 	You are not running with administrator rights! This will work for
+8:36:47 AM  [main] 	most application stuff but whenever you do something with services
+8:36:47 AM  [main] 	there will be a security dialogue or things will break! So think 
+8:36:47 AM  [main] 	about running this application with administrator rights!
+8:36:47 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+8:36:47 AM  [main] 	Checking for prerequisites
+8:36:47 AM  [main] 	All prerequisites found
+8:36:47 AM  [main] 	Initializing Modules
+8:36:47 AM  [Apache] 	XAMPP Apache Service is already running on port 8081
+8:36:47 AM  [Apache] 	XAMPP Apache Service is already running on port 4433
+8:36:47 AM  [Tomcat] 	Problem detected!
+8:36:47 AM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+8:36:47 AM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+8:36:47 AM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+8:36:47 AM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+8:36:47 AM  [main] 	Enabling autostart for module "Apache"
+8:36:47 AM  [main] 	Enabling autostart for module "MySQL"
+8:36:47 AM  [main] 	Starting Check-Timer
+8:36:47 AM  [main] 	Control Panel Ready
+8:36:48 AM  [Apache] 	Autostart aborted: Apache is already running
+8:36:48 AM  [mysql] 	Autostart aborted: MySQL is already running
+11:42:13 AM  [main] 	Deinitializing Modules
+11:42:13 AM  [main] 	Deinitializing Control Panel
+
+7:47:59 AM  [main] 	Initializing Control Panel
+7:47:59 AM  [main] 	Windows Version:  Enterprise  64-bit
+7:47:59 AM  [main] 	XAMPP Version: 7.3.31
+7:47:59 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+7:47:59 AM  [main] 	You are not running with administrator rights! This will work for
+7:47:59 AM  [main] 	most application stuff but whenever you do something with services
+7:47:59 AM  [main] 	there will be a security dialogue or things will break! So think 
+7:47:59 AM  [main] 	about running this application with administrator rights!
+7:47:59 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+7:47:59 AM  [main] 	Checking for prerequisites
+7:48:01 AM  [main] 	All prerequisites found
+7:48:01 AM  [main] 	Initializing Modules
+7:48:01 AM  [Apache] 	XAMPP Apache Service is already running on port 8081
+7:48:01 AM  [Apache] 	XAMPP Apache Service is already running on port 4433
+7:48:01 AM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+7:48:01 AM  [main] 	Enabling autostart for module "Apache"
+7:48:01 AM  [main] 	Enabling autostart for module "MySQL"
+7:48:01 AM  [main] 	Starting Check-Timer
+7:48:01 AM  [main] 	Control Panel Ready
+7:48:03 AM  [Apache] 	Autostart aborted: Apache is already running
+7:48:03 AM  [mysql] 	Autostart aborted: MySQL is already running
+12:14:18 AM  [main] 	Deinitializing Modules
+12:14:18 AM  [main] 	Deinitializing Control Panel
+
+9:52:15 PM  [main] 	Initializing Control Panel
+9:52:15 PM  [main] 	Windows Version:  Enterprise  64-bit
+9:52:15 PM  [main] 	XAMPP Version: 7.3.31
+9:52:15 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:52:15 PM  [main] 	You are not running with administrator rights! This will work for
+9:52:15 PM  [main] 	most application stuff but whenever you do something with services
+9:52:15 PM  [main] 	there will be a security dialogue or things will break! So think 
+9:52:15 PM  [main] 	about running this application with administrator rights!
+9:52:15 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+9:52:15 PM  [main] 	Checking for prerequisites
+9:52:15 PM  [main] 	All prerequisites found
+9:52:15 PM  [main] 	Initializing Modules
+9:52:15 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+9:52:15 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+9:52:15 PM  [Tomcat] 	Problem detected!
+9:52:15 PM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+9:52:15 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+9:52:15 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+9:52:15 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+9:52:15 PM  [main] 	Enabling autostart for module "Apache"
+9:52:15 PM  [main] 	Enabling autostart for module "MySQL"
+9:52:15 PM  [main] 	Starting Check-Timer
+9:52:15 PM  [main] 	Control Panel Ready
+9:52:16 PM  [Apache] 	Autostart aborted: Apache is already running
+9:52:16 PM  [mysql] 	Autostart aborted: MySQL is already running
+10:48:24 PM  [main] 	Deinitializing Modules
+10:48:24 PM  [main] 	Deinitializing Control Panel
+
+9:19:00 AM  [main] 	Initializing Control Panel
+9:19:00 AM  [main] 	Windows Version:  Enterprise  64-bit
+9:19:00 AM  [main] 	XAMPP Version: 7.3.31
+9:19:00 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:19:00 AM  [main] 	You are not running with administrator rights! This will work for
+9:19:00 AM  [main] 	most application stuff but whenever you do something with services
+9:19:00 AM  [main] 	there will be a security dialogue or things will break! So think 
+9:19:00 AM  [main] 	about running this application with administrator rights!
+9:19:00 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+9:19:00 AM  [main] 	Checking for prerequisites
+9:19:02 AM  [main] 	All prerequisites found
+9:19:02 AM  [main] 	Initializing Modules
+9:19:02 AM  [Apache] 	XAMPP Apache Service is already running on port 8081
+9:19:02 AM  [Apache] 	XAMPP Apache Service is already running on port 4433
+9:19:02 AM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+9:19:02 AM  [main] 	Enabling autostart for module "Apache"
+9:19:02 AM  [main] 	Enabling autostart for module "MySQL"
+9:19:02 AM  [main] 	Starting Check-Timer
+9:19:02 AM  [main] 	Control Panel Ready
+9:19:02 AM  [Apache] 	Autostart aborted: Apache is already running
+9:19:02 AM  [mysql] 	Autostart aborted: MySQL is already running
+6:36:23 PM  [main] 	Deinitializing Modules
+6:36:23 PM  [main] 	Deinitializing Control Panel
+
+9:26:50 PM  [main] 	Initializing Control Panel
+9:26:50 PM  [main] 	Windows Version:  Enterprise  64-bit
+9:26:50 PM  [main] 	XAMPP Version: 7.3.31
+9:26:50 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:26:50 PM  [main] 	You are not running with administrator rights! This will work for
+9:26:50 PM  [main] 	most application stuff but whenever you do something with services
+9:26:50 PM  [main] 	there will be a security dialogue or things will break! So think 
+9:26:50 PM  [main] 	about running this application with administrator rights!
+9:26:50 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+9:26:50 PM  [main] 	Checking for prerequisites
+9:26:51 PM  [main] 	All prerequisites found
+9:26:51 PM  [main] 	Initializing Modules
+9:26:51 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+9:26:51 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+9:26:51 PM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+9:26:51 PM  [main] 	Enabling autostart for module "Apache"
+9:26:51 PM  [main] 	Enabling autostart for module "MySQL"
+9:26:51 PM  [main] 	Starting Check-Timer
+9:26:51 PM  [main] 	Control Panel Ready
+9:26:52 PM  [Apache] 	Autostart aborted: Apache is already running
+9:26:52 PM  [mysql] 	Autostart aborted: MySQL is already running
+10:50:28 PM  [main] 	Deinitializing Modules
+10:50:28 PM  [main] 	Deinitializing Control Panel
+
+8:15:13 AM  [main] 	Initializing Control Panel
+8:15:13 AM  [main] 	Windows Version:  Enterprise  64-bit
+8:15:13 AM  [main] 	XAMPP Version: 7.3.31
+8:15:13 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+8:15:13 AM  [main] 	You are not running with administrator rights! This will work for
+8:15:13 AM  [main] 	most application stuff but whenever you do something with services
+8:15:13 AM  [main] 	there will be a security dialogue or things will break! So think 
+8:15:13 AM  [main] 	about running this application with administrator rights!
+8:15:13 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+8:15:13 AM  [main] 	Checking for prerequisites
+8:15:14 AM  [main] 	All prerequisites found
+8:15:14 AM  [main] 	Initializing Modules
+8:15:14 AM  [Apache] 	XAMPP Apache Service is already running on port 8081
+8:15:14 AM  [Apache] 	XAMPP Apache Service is already running on port 4433
+8:15:14 AM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+8:15:14 AM  [main] 	Enabling autostart for module "Apache"
+8:15:14 AM  [main] 	Enabling autostart for module "MySQL"
+8:15:14 AM  [main] 	Starting Check-Timer
+8:15:14 AM  [main] 	Control Panel Ready
+8:15:15 AM  [Apache] 	Autostart aborted: Apache is already running
+8:15:15 AM  [mysql] 	Autostart aborted: MySQL is already running
+11:04:07 AM  [main] 	Deinitializing Modules
+11:04:07 AM  [main] 	Deinitializing Control Panel
+
+5:17:44 PM  [main] 	Initializing Control Panel
+5:17:44 PM  [main] 	Windows Version:  Enterprise  64-bit
+5:17:44 PM  [main] 	XAMPP Version: 7.3.31
+5:17:44 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+5:17:44 PM  [main] 	You are not running with administrator rights! This will work for
+5:17:44 PM  [main] 	most application stuff but whenever you do something with services
+5:17:44 PM  [main] 	there will be a security dialogue or things will break! So think 
+5:17:44 PM  [main] 	about running this application with administrator rights!
+5:17:44 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+5:17:44 PM  [main] 	Checking for prerequisites
+5:17:45 PM  [main] 	All prerequisites found
+5:17:45 PM  [main] 	Initializing Modules
+5:17:45 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+5:17:45 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+5:17:45 PM  [Tomcat] 	Problem detected!
+5:17:45 PM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+5:17:45 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+5:17:45 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+5:17:45 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+5:17:45 PM  [main] 	Enabling autostart for module "Apache"
+5:17:45 PM  [main] 	Enabling autostart for module "MySQL"
+5:17:45 PM  [main] 	Starting Check-Timer
+5:17:45 PM  [main] 	Control Panel Ready
+5:17:46 PM  [Apache] 	Autostart aborted: Apache is already running
+5:17:46 PM  [mysql] 	Autostart aborted: MySQL is already running
+5:42:50 PM  [main] 	Deinitializing Modules
+5:42:50 PM  [main] 	Deinitializing Control Panel
+
+8:09:43 AM  [main] 	Initializing Control Panel
+8:09:43 AM  [main] 	Windows Version:  Enterprise  64-bit
+8:09:43 AM  [main] 	XAMPP Version: 7.3.31
+8:09:43 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+8:09:43 AM  [main] 	You are not running with administrator rights! This will work for
+8:09:43 AM  [main] 	most application stuff but whenever you do something with services
+8:09:43 AM  [main] 	there will be a security dialogue or things will break! So think 
+8:09:43 AM  [main] 	about running this application with administrator rights!
+8:09:43 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+8:09:43 AM  [main] 	Checking for prerequisites
+8:09:44 AM  [main] 	All prerequisites found
+8:09:44 AM  [main] 	Initializing Modules
+8:09:44 AM  [Apache] 	XAMPP Apache Service is already running on port 8081
+8:09:44 AM  [Apache] 	XAMPP Apache Service is already running on port 4433
+8:09:44 AM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+8:09:44 AM  [main] 	Enabling autostart for module "Apache"
+8:09:44 AM  [main] 	Enabling autostart for module "MySQL"
+8:09:44 AM  [main] 	Starting Check-Timer
+8:09:44 AM  [main] 	Control Panel Ready
+8:09:45 AM  [Apache] 	Autostart aborted: Apache is already running
+8:09:45 AM  [mysql] 	Autostart aborted: MySQL is already running
+11:25:36 AM  [main] 	Deinitializing Modules
+11:25:36 AM  [main] 	Deinitializing Control Panel
+
+12:30:25 PM  [main] 	Initializing Control Panel
+12:30:25 PM  [main] 	Windows Version:  Enterprise  64-bit
+12:30:25 PM  [main] 	XAMPP Version: 7.3.31
+12:30:25 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+12:30:25 PM  [main] 	You are not running with administrator rights! This will work for
+12:30:25 PM  [main] 	most application stuff but whenever you do something with services
+12:30:25 PM  [main] 	there will be a security dialogue or things will break! So think 
+12:30:25 PM  [main] 	about running this application with administrator rights!
+12:30:25 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+12:30:25 PM  [main] 	Checking for prerequisites
+12:30:27 PM  [main] 	All prerequisites found
+12:30:27 PM  [main] 	Initializing Modules
+12:30:27 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+12:30:27 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+12:30:27 PM  [Tomcat] 	Problem detected!
+12:30:27 PM  [Tomcat] 	Port 8080 in use by "C:\Users\byn28\AppData\Roaming\nvm\v14.18.0\node.exe"!
+12:30:27 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+12:30:27 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+12:30:27 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+12:30:27 PM  [main] 	Enabling autostart for module "Apache"
+12:30:27 PM  [main] 	Enabling autostart for module "MySQL"
+12:30:27 PM  [main] 	Starting Check-Timer
+12:30:27 PM  [main] 	Control Panel Ready
+12:30:28 PM  [Apache] 	Autostart aborted: Apache is already running
+12:30:28 PM  [mysql] 	Autostart aborted: MySQL is already running
+3:35:17 PM  [main] 	Deinitializing Modules
+3:35:17 PM  [main] 	Deinitializing Control Panel
+
+7:43:49 AM  [main] 	Initializing Control Panel
+7:43:49 AM  [main] 	Windows Version:  Enterprise  64-bit
+7:43:49 AM  [main] 	XAMPP Version: 7.3.31
+7:43:49 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+7:43:49 AM  [main] 	You are not running with administrator rights! This will work for
+7:43:49 AM  [main] 	most application stuff but whenever you do something with services
+7:43:49 AM  [main] 	there will be a security dialogue or things will break! So think 
+7:43:49 AM  [main] 	about running this application with administrator rights!
+7:43:49 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+7:43:49 AM  [main] 	Checking for prerequisites
+7:43:50 AM  [main] 	All prerequisites found
+7:43:50 AM  [main] 	Initializing Modules
+7:43:50 AM  [Apache] 	XAMPP Apache Service is already running on port 8081
+7:43:50 AM  [Apache] 	XAMPP Apache Service is already running on port 4433
+7:43:50 AM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+7:43:50 AM  [main] 	Enabling autostart for module "Apache"
+7:43:50 AM  [main] 	Enabling autostart for module "MySQL"
+7:43:50 AM  [main] 	Starting Check-Timer
+7:43:50 AM  [main] 	Control Panel Ready
+7:43:51 AM  [Apache] 	Autostart aborted: Apache is already running
+7:43:51 AM  [mysql] 	Autostart aborted: MySQL is already running
+9:32:11 AM  [main] 	Deinitializing Modules
+9:32:11 AM  [main] 	Deinitializing Control Panel
+
+5:09:44 PM  [main] 	Initializing Control Panel
+5:09:44 PM  [main] 	Windows Version:  Enterprise  64-bit
+5:09:44 PM  [main] 	XAMPP Version: 7.3.31
+5:09:44 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+5:09:44 PM  [main] 	You are not running with administrator rights! This will work for
+5:09:44 PM  [main] 	most application stuff but whenever you do something with services
+5:09:44 PM  [main] 	there will be a security dialogue or things will break! So think 
+5:09:44 PM  [main] 	about running this application with administrator rights!
+5:09:44 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+5:09:44 PM  [main] 	Checking for prerequisites
+5:09:46 PM  [main] 	All prerequisites found
+5:09:46 PM  [main] 	Initializing Modules
+5:09:46 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+5:09:46 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+5:09:46 PM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+5:09:46 PM  [Tomcat] 	Problem detected!
+5:09:46 PM  [Tomcat] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe"!
+5:09:46 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+5:09:46 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+5:09:46 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+5:09:46 PM  [main] 	Enabling autostart for module "Apache"
+5:09:46 PM  [main] 	Enabling autostart for module "MySQL"
+5:09:46 PM  [main] 	Starting Check-Timer
+5:09:46 PM  [main] 	Control Panel Ready
+5:09:47 PM  [Apache] 	Autostart aborted: Apache is already running
+5:09:47 PM  [mysql] 	Autostart aborted: MySQL is already running
+5:36:17 PM  [mysql] 	Status change detected: stopped
+5:36:17 PM  [mysql] 	Error: MySQL shutdown unexpectedly.
+5:36:17 PM  [mysql] 	This may be due to a blocked port, missing dependencies, 
+5:36:17 PM  [mysql] 	improper privileges, a crash, or a shutdown by another method.
+5:36:17 PM  [mysql] 	Press the Logs button to view error logs and check
+5:36:17 PM  [mysql] 	the Windows Event Viewer for more clues
+5:36:17 PM  [mysql] 	If you need more help, copy and post this
+5:36:17 PM  [mysql] 	entire log window on the forums
+5:49:54 PM  [main] 	Deinitializing Modules
+5:49:54 PM  [main] 	Deinitializing Control Panel
+
+8:47:31 PM  [main] 	Initializing Control Panel
+8:47:31 PM  [main] 	Windows Version:  Enterprise  64-bit
+8:47:31 PM  [main] 	XAMPP Version: 7.3.31
+8:47:31 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+8:47:31 PM  [main] 	You are not running with administrator rights! This will work for
+8:47:31 PM  [main] 	most application stuff but whenever you do something with services
+8:47:31 PM  [main] 	there will be a security dialogue or things will break! So think 
+8:47:31 PM  [main] 	about running this application with administrator rights!
+8:47:31 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+8:47:31 PM  [main] 	Checking for prerequisites
+8:47:33 PM  [main] 	All prerequisites found
+8:47:33 PM  [main] 	Initializing Modules
+8:47:33 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+8:47:33 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+8:47:33 PM  [mysql] 	XAMPP MySQL Service is already running on port 3306
+8:47:33 PM  [main] 	Enabling autostart for module "Apache"
+8:47:33 PM  [main] 	Enabling autostart for module "MySQL"
+8:47:33 PM  [main] 	Starting Check-Timer
+8:47:33 PM  [main] 	Control Panel Ready
+8:47:34 PM  [Apache] 	Autostart aborted: Apache is already running
+8:47:34 PM  [mysql] 	Autostart aborted: MySQL is already running
+10:30:59 PM  [main] 	Deinitializing Modules
+10:30:59 PM  [main] 	Deinitializing Control Panel
+
+10:22:48 AM  [main] 	Initializing Control Panel
+10:22:48 AM  [main] 	Windows Version:  Enterprise  64-bit
+10:22:48 AM  [main] 	XAMPP Version: 7.3.31
+10:22:48 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:22:48 AM  [main] 	You are not running with administrator rights! This will work for
+10:22:48 AM  [main] 	most application stuff but whenever you do something with services
+10:22:48 AM  [main] 	there will be a security dialogue or things will break! So think 
+10:22:48 AM  [main] 	about running this application with administrator rights!
+10:22:48 AM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+10:22:48 AM  [main] 	Checking for prerequisites
+10:22:51 AM  [main] 	All prerequisites found
+10:22:51 AM  [main] 	Initializing Modules
+10:22:51 AM  [mysql] 	Problem detected!
+10:22:51 AM  [mysql] 	Port 3306 in use by "C:\Program Files\Google\Chrome\Application\chrome.exe"!
+10:22:51 AM  [mysql] 	MySQL WILL NOT start without the configured ports free!
+10:22:51 AM  [mysql] 	You need to uninstall/disable/reconfigure the blocking application
+10:22:51 AM  [mysql] 	or reconfigure MySQL and the Control Panel to listen on a different port
+10:22:51 AM  [Tomcat] 	Problem detected!
+10:22:51 AM  [Tomcat] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe"!
+10:22:51 AM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+10:22:51 AM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+10:22:51 AM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+10:22:51 AM  [main] 	Enabling autostart for module "Apache"
+10:22:51 AM  [main] 	Enabling autostart for module "MySQL"
+10:22:51 AM  [main] 	Starting Check-Timer
+10:22:51 AM  [main] 	Control Panel Ready
+10:22:52 AM  [Apache] 	Autostart active: starting...
+10:22:52 AM  [Apache] 	Attempting to start Apache service...
+10:22:52 AM  [mysql] 	Autostart active: starting...
+10:22:52 AM  [mysql] 	Attempting to start MySQL service...
+10:23:00 AM  [mysql] 	Status change detected: running
+10:23:02 AM  [Apache] 	Status change detected: running
+11:14:46 AM  [main] 	Deinitializing Modules
+11:14:46 AM  [main] 	Deinitializing Control Panel
+
+8:05:37 PM  [main] 	Initializing Control Panel
+8:05:37 PM  [main] 	Windows Version:  Enterprise  64-bit
+8:05:37 PM  [main] 	XAMPP Version: 7.3.31
+8:05:37 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+8:05:37 PM  [main] 	You are not running with administrator rights! This will work for
+8:05:37 PM  [main] 	most application stuff but whenever you do something with services
+8:05:37 PM  [main] 	there will be a security dialogue or things will break! So think 
+8:05:37 PM  [main] 	about running this application with administrator rights!
+8:05:37 PM  [main] 	XAMPP Installation Directory: "d:\xampp\"
+8:05:37 PM  [main] 	Checking for prerequisites
+8:05:38 PM  [main] 	All prerequisites found
+8:05:38 PM  [main] 	Initializing Modules
+8:05:38 PM  [Apache] 	XAMPP Apache Service is already running on port 8081
+8:05:38 PM  [Apache] 	XAMPP Apache Service is already running on port 4433
+8:05:38 PM  [Tomcat] 	Problem detected!
+8:05:38 PM  [Tomcat] 	Port 8080 in use by "C:\Program Files\nodejs\node.exe"!
+8:05:38 PM  [Tomcat] 	Tomcat WILL NOT start without the configured ports free!
+8:05:38 PM  [Tomcat] 	You need to uninstall/disable/reconfigure the blocking application
+8:05:38 PM  [Tomcat] 	or reconfigure Tomcat and the Control Panel to listen on a different port
+8:05:38 PM  [main] 	Enabling autostart for module "Apache"
+8:05:38 PM  [main] 	Enabling autostart for module "MySQL"
+8:05:38 PM  [main] 	Starting Check-Timer
+8:05:38 PM  [main] 	Control Panel Ready
+8:05:39 PM  [Apache] 	Autostart aborted: Apache is already running
+8:05:39 PM  [mysql] 	Autostart aborted: MySQL is already running
+11:10:22 PM  [main] 	Deinitializing Modules
+11:10:22 PM  [main] 	Deinitializing Control Panel
+

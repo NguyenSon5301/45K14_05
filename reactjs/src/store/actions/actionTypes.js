@@ -21,6 +21,9 @@ const actionTypes = Object.freeze({
   //fetch role
   FETCH_ROLE_SUCCESS: "FETCH_ROLE_SUCCESS",
   FETCH_ROLE_FAILDED: "FETCH_ROLE_FAILDED",
+  //fetch all blogs
+  FETCH_ALL_BLOGS_SUCCEED: "FETCH_ALL_BLOGS_SUCCEED",
+  FETCH_ALL_BLOGS_FAILDED: "FETCH_ALL_BLOGS_FAILDED",
 });
 
 export default actionTypes;

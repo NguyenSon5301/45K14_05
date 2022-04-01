@@ -5,6 +5,7 @@ const initialState = {
   role: [],
   users: [],
   roleData: [],
+  blogData: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -42,6 +43,18 @@ const adminReducer = (state = initialState, action) => {
       };
     case actionTypes.FETCH_ROLE_FAILDED:
       state.roleData = [];
+      return {
+        ...state,
+      };
+    // fetch all blogs
+    case actionTypes.FETCH_ALL_BLOGS_SUCCEED:
+      state.blogData = action.blogData;
+
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_BLOGS_FAILDED:
+      state.blogData = [];
       return {
         ...state,
       };
