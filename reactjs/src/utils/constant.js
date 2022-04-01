@@ -9,7 +9,6 @@ export const path = {
   SINGLEPR: "/SinglePr",
   CONTACT: "/Contact",
   CATEGORY: "/Category",
-  BLOGUSER: "/Blog",
   DETAIL_BLOG: "/detail_blog/:id",
 };
 

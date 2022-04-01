@@ -24,7 +24,6 @@ import SinglePr from "./Navigator/SinglePr";
 import Contact from "./Navigator/Contact";
 import Category from "./Category/Category";
 import DetailBlog from "./Blog/DetailBlog";
-import Blog from "./Navigator/Blog";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -63,8 +62,6 @@ class App extends Component {
                   <Route path={path.USERLOGIN} exact component={UserLogin} />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.SINGLEPR} component={SinglePr} />
-                  <Route path={path.BLOGUSER} component={Blog} />
-
                   <Route path={path.CONTACT} component={Contact} />
                   <Route path={path.CATEGORY} component={Category} />
                   <Route path={path.DETAIL_BLOG} component={DetailBlog} />

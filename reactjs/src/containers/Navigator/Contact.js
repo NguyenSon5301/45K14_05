@@ -47,10 +47,10 @@ export default class Contact extends Component {
                     <NavLink to={path.HOMEPAGE}>Home</NavLink>
                   </li>
                   <li class="active">
-                    <NavLink to={path.CONTACT}>
+                    <a href="#">
                       <i class="fa fa-angle-right" aria-hidden="true"></i>
                       Contact
-                    </NavLink>
+                    </a>
                   </li>
                 </ul>
               </div>

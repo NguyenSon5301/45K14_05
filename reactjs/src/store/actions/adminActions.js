@@ -1,5 +1,5 @@
 import actionTypes from "./actionTypes";
-import { getUser, getGender, getBlogs } from "../../services/userService";
+import { getUser, getGender } from "../../services/userService";
 import { toast } from "react-toastify";
 export const fetchAllUser = () => {
   return async (dispatch) => {
@@ -59,27 +59,6 @@ export const fetchRoleData = () => {
       }
     } catch (e) {
       toast.error("fetch all gender failded");
-    }
-  };
-};
-// fetch all blogs
-export const fetchAllBlogs = () => {
-  return async (dispatch) => {
-    try {
-      let res = await getBlogs();
-      if (res && res.errCode === 0) {
-        dispatch({
-          type: actionTypes.FETCH_ALL_BLOGS_SUCCEED,
-          blogData: res.data,
-        });
-      } else {
-        toast.error("fetch all blogs failded");
-        dispatch({
-          type: actionTypes.FETCH_ALL_BLOGS_FAILDED,
-        });
-      }
-    } catch (e) {
-      toast.error("fetch all blogs failded");
     }
   };
 };

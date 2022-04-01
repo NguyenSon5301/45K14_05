@@ -5,6 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { LANGUAGE, path } from "../../utils/constant";
 import * as actions from "../../store/actions";
 import { handleLoginApi } from "../../services/userService";
+import Navigator from "../../components/Navigator";
 import { NavLink } from "react-router-dom";
 // import { userMenu } from "../Header/menuApp";
 
@@ -113,8 +114,8 @@ class HeaderHomePage extends Component {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to={path.BLOGUSER}>
-                          <FormattedMessage id={"HeaderHome.Blog"} />
+                        <NavLink to={path.HOMEPAGE}>
+                          <FormattedMessage id={"HeaderHome.Shop"} />
                         </NavLink>
                       </li>
                       <li>
