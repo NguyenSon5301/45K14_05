@@ -4,7 +4,7 @@ import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
 import connectDB from "./config/conectDB";
 import cors from "cors";
-require("dotenv").config(); // giup chayj dc dong process.env
+require("dotenv").config(); // giup chay dc dong process.env
 let app = express();
 app.use(cors({ origin: true }));
 app.use(bodyParser.json({ limit: "50mb" }));

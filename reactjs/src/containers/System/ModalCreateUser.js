@@ -6,6 +6,7 @@ import { emitter } from "../../utils/emitter";
 import { toast } from "react-toastify";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
+import { LANGUAGE } from "../../utils/constant";
 
 class ModalCreateUser extends Component {
   constructor(props) {
@@ -17,8 +18,11 @@ class ModalCreateUser extends Component {
       lastName: "",
       phonenumber: "",
       address: "",
-      genders: [],
-      roles: [],
+      gendersArr: [],
+      roleArr: [],
+
+      gender: "",
+      role: "",
     };
     this.listenToEmitter();
   }
@@ -41,24 +45,29 @@ class ModalCreateUser extends Component {
     this.props.fetchRoleData();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.genders !== prevProps.genders) {
-      let { genders } = this.props;
+    if (this.props.gendersArr !== prevProps.gendersArr) {
+      let { gendersArr } = this.props;
       this.setState({
-        genders: genders,
+        gendersArr: gendersArr,
       });
     }
-    if (this.props.genders !== prevProps.genders) {
+    if (this.props.gendersArr !== prevProps.gendersArr) {
       this.setState({
-        roles: this.props.roleData,
+        roleArr: this.props.roleData,
       });
     }
   }
   handleChangeInput = (event, id) => {
     let copyState = { ...this.state };
     copyState[id] = event.target.value;
-    this.setState({
-      ...copyState,
-    });
+    this.setState(
+      {
+        ...copyState,
+      },
+      () => {
+        console.log("check on change", this.state);
+      }
+    );
   };
   checkValidateInput = () => {
     let isValid = true;
@@ -91,8 +100,8 @@ class ModalCreateUser extends Component {
     toast.success("creating user is succeed");
   };
   render() {
-    let { roleData, genders } = this.props;
-    console.log("check res", this.props);
+    let { roleData, gendersArr, language } = this.props;
+    console.log("check state", this.state);
     return (
       <div>
         <Modal
@@ -149,27 +158,43 @@ class ModalCreateUser extends Component {
                 </div>
                 <div className="form-group col-3">
                   <label>Chức vụ</label>
-                  <select class="form-select">
+                  <select
+                    class="form-select"
+                    onChange={(event) => this.handleChangeInput(event, "role")}
+                  >
                     {roleData.map((item, index) => {
                       return (
-                        <>
-                          <option>{item.valueVi}</option>
-                        </>
+                        <option key={index} value={item.keyMap}>
+                          {language === LANGUAGE.VI
+                            ? item.valueVi
+                            : item.valueEn}
+                        </option>
                       );
                     })}
                   </select>
                 </div>
                 <div className="form-group col-3">
                   <label>Giới tính</label>
-                  <select class="form-select">
+                  <select
+                    class="form-select"
+                    onChange={(event) =>
+                      this.handleChangeInput(event, "gender")
+                    }
+                  >
                     <label>Giới tính</label>;
-                    {genders.map((item, index) => {
-                      return (
-                        <>
-                          <option>{item.valueVi}</option>
-                        </>
-                      );
-                    })}
+                    {gendersArr &&
+                      gendersArr.length > 0 &&
+                      gendersArr.map((item, index) => {
+                        return (
+                          <>
+                            <option key={index} value={item.keyMap}>
+                              {language === LANGUAGE.VI
+                                ? item.valueVi
+                                : item.valueEn}
+                            </option>
+                          </>
+                        );
+                      })}
                   </select>
                 </div>
 
@@ -213,8 +238,9 @@ class ModalCreateUser extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    genders: state.admin.genders,
+    gendersArr: state.admin.genders,
     roleData: state.admin.roleData,
+    language: state.app.language,
   };
 };
 

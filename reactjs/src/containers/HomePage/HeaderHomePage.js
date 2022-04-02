@@ -114,8 +114,8 @@ class HeaderHomePage extends Component {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to={path.HOMEPAGE}>
-                          <FormattedMessage id={"HeaderHome.Shop"} />
+                        <NavLink to={path.BLOGUSER}>
+                          <FormattedMessage id={"HeaderHome.Blog"} />
                         </NavLink>
                       </li>
                       <li>

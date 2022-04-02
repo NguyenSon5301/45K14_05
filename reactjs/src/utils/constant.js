@@ -10,6 +10,7 @@ export const path = {
   CONTACT: "/Contact",
   CATEGORY: "/Category",
   DETAIL_BLOG: "/detail_blog/:id",
+  BLOGUSER: "/Blog",
 };
 
 export const LANGUAGE = {

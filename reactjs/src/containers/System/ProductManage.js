@@ -85,23 +85,11 @@ class ProductManage extends Component {
             <label>
               <FormattedMessage id="Product.price" />
             </label>
-            <input
-              className="form-control"
-              type="text"
+            <select
               value={price}
-              onChange={(event) => this.onChangeInput(event, "price")}
-            />
-          </div>
-          <div className="col-4">
-            <label>
-              <FormattedMessage id="Product.count" />
-            </label>
-            <input
               className="form-control"
-              type="text"
-              value={countPr}
-              onChange={(event) => this.onChangeInput(event, "countPr")}
-            />
+              onChange={(event) => this.onChangeInput(event, "price")}
+            ></select>
           </div>
 
           <div className="col-4 my-2">
