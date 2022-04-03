@@ -6,10 +6,33 @@ const initialState = {
   users: [],
   roleData: [],
   blogData: [],
+  isLoggedIn: false,
+  userInfo: null,
 };
 
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
+    //login
+    case actionTypes.ADMIN_LOGIN_SUCCESS:
+      console.log("check action", action);
+      return {
+        ...state,
+        isLoggedIn: true,
+        userInfo: action.userInfo,
+      };
+    case actionTypes.ADMIN_LOGIN_FAIL:
+      return {
+        ...state,
+        isLoggedIn: false,
+        userInfo: null,
+      };
+    //log out
+    case actionTypes.PROCESS_LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        userInfo: null,
+      };
     //fetch all user
     case actionTypes.FETCH_ALL_USER_SUCCESS:
       state.users = action.users;

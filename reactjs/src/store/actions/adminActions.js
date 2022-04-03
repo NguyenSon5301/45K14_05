@@ -85,3 +85,11 @@ export const fetchAllBlogs = () => {
     }
   };
 };
+export const adminLoginSuccess = (userInfo) => ({
+  type: actionTypes.ADMIN_LOGIN_SUCCESS,
+  userInfo: userInfo,
+});
+
+export const adminLoginFail = () => ({
+  type: actionTypes.ADMIN_LOGIN_FAIL,
+});

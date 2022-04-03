@@ -4,6 +4,11 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { FormattedMessage } from "react-intl";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import "./Blog.css";
+
 class Blog extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +34,15 @@ class Blog extends Component {
   };
   render() {
     let { arrBlogs } = this.state;
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      accessibility: true,
+      arrows: true,
+    };
     return (
       <div class="blogs">
         <div class="container">
@@ -43,32 +57,34 @@ class Blog extends Component {
           </div>
 
           <div class="row blogs_container">
-            {arrBlogs.map((item, index) => {
-              let imageBase64 = "";
-              if (item.image) {
-                imageBase64 = new Buffer(item.image, "base64").toString(
-                  "binary"
-                );
-              }
-              return (
-                <div class="col-lg-4 blog_item_col">
-                  <div
-                    class="blog_item"
-                    key={item.id}
-                    onClick={() => this.handleViewDetailBlog(item)}
-                  >
+            <Slider {...settings}>
+              {arrBlogs.map((item, index) => {
+                let imageBase64 = "";
+                if (item.image) {
+                  imageBase64 = new Buffer(item.image, "base64").toString(
+                    "binary"
+                  );
+                }
+                return (
+                  <div class="col-lg-4 blog_item_col">
                     <div
-                      class="blog_background"
-                      style={{ backgroundImage: `url(${imageBase64})` }}
-                    ></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                      <h4 class="blog_title">{item.description}</h4>
-                      <span class="blog_meta">{item.createdAt}</span>
+                      class="blog_item"
+                      key={item.id}
+                      onClick={() => this.handleViewDetailBlog(item)}
+                    >
+                      <div
+                        class="blog_background"
+                        style={{ backgroundImage: `url(${imageBase64})` }}
+                      ></div>
+                      <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
+                        <h4 class="blog_title">{item.description}</h4>
+                        <span class="blog_meta">{item.createdAt}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </Slider>
           </div>
         </div>
       </div>

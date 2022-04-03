@@ -14,16 +14,21 @@ import Benefit from "../Benefit/Benefit";
 import BestSellter from "../BetstSeller/BestSellter";
 import DealOff from "../Deal/DealOff";
 import Blog from "../Blog/Blog";
+import HeaderBefore from "./HeaderBefore";
 
 class HomePage extends Component {
   ChangeLanguage = (language) => {
     this.props.ChangeLanguageRedux(language);
   };
   render() {
+    let check = this.props.isLoggedIn;
+    if (check === true) {
+    }
+    console.log("check ", check);
     return (
       <>
         <div className="super_container">
-          <HeaderHomePage />
+          {check === true ? <HeaderHomePage /> : <HeaderBefore />}
           <div
             className="main_slider"
             style={{ backgroundImage: `url(${sli1})` }}
@@ -66,6 +71,7 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
+    userInfo: state.user.userInfo,
   };
 };
 

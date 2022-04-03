@@ -3,6 +3,7 @@ import bg1 from "./bg_1.jpg";
 import "./styleLogin.scss";
 import { handleLoginApi } from "../../services/userService";
 import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 
 class UserLogin extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class UserLogin extends Component {
     }
     return isValid;
   };
+
   handleLogin = async () => {
     this.setState({
       errMessage: "",
@@ -55,6 +57,8 @@ class UserLogin extends Component {
           });
         }
         if (data && data.errCode === 0) {
+          this.props.userLoginSuccess(data.user);
+
           setTimeout(() => {
             this.props.history.push(`/home`);
           }, 1000);
@@ -148,6 +152,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    userLoginSuccess: (userInfo) =>
+      dispatch(actions.userLoginSuccess(userInfo)),
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

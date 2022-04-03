@@ -89,3 +89,15 @@
 .blog_more:hover {
     color: #FE7C7F;
 }
+
+/* slider */
+
+
+button.slick-arrow.slick-next,
+button.slick-arrow.slick-prev {
+    background-color: #d3d3d6;
+
+    width              : 30px;
+    height             : 100px;
+    transition-duration: 0.5s;
+}

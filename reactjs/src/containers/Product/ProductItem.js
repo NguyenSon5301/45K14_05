@@ -113,28 +113,16 @@ class ProductItem extends Component {
               <div className="col text-center">
                 <div className="new_arrivals_sorting">
                   <ul className="arrivals_grid_sorting clearfix button-group filters-button-group">
-                    <li
-                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
-                      data-filter="*"
-                    >
+                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked">
                       <FormattedMessage id={"NewArrivals.All"} />
                     </li>
-                    <li
-                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                      data-filter=".women"
-                    >
+                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">
                       <FormattedMessage id={"NewArrivals.WOMEN'S"} />
                     </li>
-                    <li
-                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                      data-filter=".accessories"
-                    >
+                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">
                       <FormattedMessage id={"NewArrivals.accessories"} />
                     </li>
-                    <li
-                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-                      data-filter=".men"
-                    >
+                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">
                       <FormattedMessage id={"NewArrivals.men's"} />
                     </li>
                   </ul>
@@ -167,9 +155,9 @@ class ProductItem extends Component {
                             </div>
                           </div>
                           <div class="red_button add_to_cart_button">
-                            <a href="#">
+                            <NavLink to={path.SINGLEPR}>
                               <FormattedMessage id={"NewArrivals.addCart"} />
-                            </a>
+                            </NavLink>
                           </div>
                         </div>
                       );

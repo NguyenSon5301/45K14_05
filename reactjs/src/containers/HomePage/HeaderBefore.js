@@ -4,12 +4,10 @@ import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGE, path } from "../../utils/constant";
 import * as actions from "../../store/actions";
-import { handleLoginApi } from "../../services/userService";
-import Navigator from "../../components/Navigator";
 import { NavLink } from "react-router-dom";
 // import { userMenu } from "../Header/menuApp";
 
-class HeaderHomePage extends Component {
+class HeaderBefore extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,21 +17,10 @@ class HeaderHomePage extends Component {
   ChangeLanguage = (language) => {
     this.props.ChangeLanguageRedux(language);
   };
-  componentDidMount() {
-    this.setState({
-      user: this.props.userInfo,
-    });
-  }
 
   render() {
-    let { processLogout, userInfo, isLoggedIn } = this.props;
-    console.log("check login", isLoggedIn);
-
-    console.log("check user", userInfo);
     return (
       <Fragment>
-        {this.props.isLoggedIn}
-
         <header className="header trans_300">
           {/* <Navigator menus={userMenu} /> */}
           <div className="top_nav">
@@ -66,11 +53,14 @@ class HeaderHomePage extends Component {
                       </li>
                       <li className="account">
                         <a>
-                          <span>My name is {this.state.user.firstName}</span>
+                          <span>My account</span>
 
                           <i className="fa fa-angle-down"></i>
                         </a>
-                        <ul className="account_selection">
+                        <ul
+                          className="account_selection"
+                          style={{ height: "100px" }}
+                        >
                           <li>
                             <NavLink to={path.USERLOGIN}>
                               <FormattedMessage id={"HeaderHome.Sign-in"} />
@@ -79,11 +69,6 @@ class HeaderHomePage extends Component {
                           <li>
                             <NavLink to={path.REGISTERUSER}>
                               <FormattedMessage id={"HeaderHome.Register"} />
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink to={path.USERLOGIN}>
-                              <FormattedMessage id={"HeaderHome.Sign-out"} />
                             </NavLink>
                           </li>
                         </ul>
@@ -154,18 +139,13 @@ class HeaderHomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    isLoggedIn: state.user.isLoggedIn,
-    language: state.app.language,
-    userInfo: state.user.userInfo,
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     ChangeLanguageRedux: (language) => dispatch(ChangeLanguage(language)),
-    processLogout: () => dispatch(actions.processLogout()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderHomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderBefore);

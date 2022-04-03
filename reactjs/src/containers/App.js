@@ -25,6 +25,7 @@ import Contact from "./Navigator/Contact";
 import Category from "./Category/Category";
 import DetailBlog from "./Blog/DetailBlog";
 import Blog from "./Navigator/Blog";
+import HeaderBefore from "./HomePage/HeaderBefore";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -66,6 +67,7 @@ class App extends Component {
                   <Route path={path.CATEGORY} component={Category} />
                   <Route path={path.DETAIL_BLOG} component={DetailBlog} />
                   <Route path={path.BLOGUSER} component={Blog} />
+                  <Route path={path.BFLOGIN} component={HeaderBefore} />
 
                   <Route
                     path={path.LOGIN}

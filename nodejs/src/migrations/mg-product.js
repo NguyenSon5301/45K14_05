@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       image: {
+        allowNull: false,
+        type: Sequelize.BLOB("long"),
+      },
+      description: {
         type: Sequelize.STRING,
       },
       createdAt: {
