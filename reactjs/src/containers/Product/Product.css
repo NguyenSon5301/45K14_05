@@ -99,12 +99,11 @@
 }
 
 .product_image {
-    width: 100%;
+    width : 100%;
+    height: 220px;
 }
 
-.product_image img {
-    width: 100%;
-}
+
 
 .product_info {
     text-align   : center;
@@ -155,7 +154,7 @@
     padding           : 0 20px;
     position          : absolute;
     left              : 25px;
-
+    bottom            : 20px;
 }
 
 .add_to_cart_button a {

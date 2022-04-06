@@ -60,6 +60,7 @@ let checkUserEmail = (userEmail) => {
 let handleAddNewUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
+      console.log("check data", data);
       let check = await checkUserEmail(data.email);
       if (check === true) {
         resolve({
@@ -76,7 +77,7 @@ let handleAddNewUser = (data) => {
           address: data.address,
           phonenumber: data.phonenumber,
           gender: data.gender,
-          roleId: data.roleId,
+          roleId: data.role,
         });
         resolve({
           errCode: 0,
@@ -112,6 +113,20 @@ let onGetAllUsers = (id) => {
         if (id === "All") {
           userData = await db.User.findAll({
             attributes: { exclude: ["password"] },
+            include: [
+              {
+                model: db.Allcode,
+                as: "roleData",
+                attributes: ["valueEn", "valueVi"],
+              },
+              {
+                model: db.Allcode,
+                as: "genderData",
+                attributes: ["valueEn", "valueVi"],
+              },
+            ],
+            raw: true,
+            nest: true,
           });
         } else if (id && id !== "All") {
           userData = await db.User.findOne({
@@ -162,6 +177,10 @@ let onEditUser = (data) => {
         user.lastName = data.lastName;
         user.address = data.address;
         user.phonenumber = data.phonenumber;
+        user.phonenumber = data.phonenumber;
+        user.gender = data.gender;
+        user.roleId = data.role;
+
         await user.save();
         resolve({ errCode: 0, errMessage: "OK" });
       } else {

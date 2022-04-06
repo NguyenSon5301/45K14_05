@@ -46,7 +46,8 @@
         "count": "Count",
         "price": "Price",
         "type": "Type",
-        "size": "Size"
+        "size": "Size",
+        "description": "Description"
     },
     "Contact": {
         "header": "Contact us",

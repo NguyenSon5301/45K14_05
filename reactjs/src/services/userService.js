@@ -21,7 +21,7 @@ const sendEmail = (data) => {
 const sendNewLetter = (data) => {
   return axios.post(`/api/send-newLetter`, data);
 };
-const getGender = (id) => {
+const getAllCode = (id) => {
   return axios.get(`/api/get-all-code?type=${id}`);
 };
 const saveBlog = (data) => {
@@ -40,7 +40,17 @@ const getContacts = (data) => {
   return axios.get(`/api/get-contacts`, data);
 };
 const deleteContact = (id) => {
-  return axios.get(`/api/delete-contacts?id=${id}`);
+  return axios.delete(`/api/delete-contacts?id=${id}`);
+};
+// product
+const createNewProduct = (data) => {
+  return axios.post(`/api/create-new-product`, data);
+};
+const getProduct = (id) => {
+  return axios.get(`/api/get-all-product?id=${id}`);
+};
+const deletePr = (id) => {
+  return axios.delete(`/api/delete-product`, { data: { id } });
 };
 
 export {
@@ -51,11 +61,14 @@ export {
   deleteUser,
   sendEmail,
   sendNewLetter,
-  getGender,
+  getAllCode,
   saveBlog,
   getBlogs,
   deleteBlog,
   getBlogByIdSV,
   getContacts,
   deleteContact,
+  getProduct,
+  createNewProduct,
+  deletePr,
 };

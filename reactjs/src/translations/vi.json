@@ -36,7 +36,8 @@
         "count": "Số lượng",
         "price": "Giá sản phẩm",
         "type": "Loại sản phẩm",
-        "size": "kích cỡ"
+        "size": "kích cỡ",
+        "description": "Mô tả"
     },
     "letter": {
         "title": "Bấm theo dõi chúng tôi, bạn sẽ nhận được giảm giá 20% khi mua hàng lần đầu",

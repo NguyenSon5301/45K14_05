@@ -1,6 +1,11 @@
 import actionTypes from "./actionTypes";
 
-import { getUser, getGender, getBlogs } from "../../services/userService";
+import {
+  getUser,
+  getAllCode,
+  getBlogs,
+  getProduct,
+} from "../../services/userService";
 import { toast } from "react-toastify";
 export const fetchAllUser = () => {
   return async (dispatch) => {
@@ -25,7 +30,7 @@ export const fetchAllUser = () => {
 export const fetchGenderData = () => {
   return async (dispatch) => {
     try {
-      let res = await getGender("GENDER");
+      let res = await getAllCode("GENDER");
       if (res && res.errCode === 0) {
         dispatch({
           type: actionTypes.FETCH_GENDER_SUCCESS,
@@ -46,7 +51,7 @@ export const fetchGenderData = () => {
 export const fetchRoleData = () => {
   return async (dispatch) => {
     try {
-      let res = await getGender("ROLE");
+      let res = await getAllCode("ROLE");
       if (res && res.errCode === 0) {
         dispatch({
           type: actionTypes.FETCH_ROLE_SUCCESS,
@@ -93,3 +98,68 @@ export const adminLoginSuccess = (userInfo) => ({
 export const adminLoginFail = () => ({
   type: actionTypes.ADMIN_LOGIN_FAIL,
 });
+// fetch all product
+export const fetchAllProduct = () => {
+  return async (dispatch) => {
+    try {
+      let res = await getProduct("All");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_PRODUCT_SUCCEED,
+          products: res.data,
+        });
+      } else {
+        toast.error("fetch all product failded");
+        dispatch({
+          type: actionTypes.FETCH_ALL_PRODUCT_FAILDED,
+        });
+      }
+    } catch (e) {
+      toast.error("fetch all product failded");
+    }
+  };
+};
+
+export const fetchAllPricePr = () => {
+  return async (dispatch) => {
+    try {
+      let res = await getAllCode("PRICE");
+      console.log("check res", res);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_PRICE_SUCCEED,
+          arrPrices: res.data,
+        });
+      } else {
+        toast.error("fetch all product failded");
+        dispatch({
+          type: actionTypes.FETCH_ALL_PRICE_FAILDED,
+        });
+      }
+    } catch (e) {
+      toast.error("fetch all product failded");
+    }
+  };
+};
+// fetch all type product
+export const fetchAllTypePr = () => {
+  return async (dispatch) => {
+    try {
+      let res = await getAllCode("TYPEPR");
+      console.log("res", res);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.FETCH_ALL_TYPE_SUCCEED,
+          arrType: res.data,
+        });
+      } else {
+        toast.error("fetch all type product failded");
+        dispatch({
+          type: actionTypes.FETCH_ALL_TYPE_FAILDED,
+        });
+      }
+    } catch (e) {
+      toast.error("fetch all type product failded");
+    }
+  };
+};

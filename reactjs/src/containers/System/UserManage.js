@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { toast } from "react-toastify";
 import "./UserManage.scss";
+import { LANGUAGE } from "../../utils/constant";
+
 import { connect } from "react-redux";
 import {
-  getUser,
   deleteUser,
   editUser,
   CreateNewUser,
@@ -59,7 +60,9 @@ class UserManage extends Component {
   };
   DoEditUser = async (user) => {
     try {
+      console.log("check user", user);
       let res = await editUser(user);
+
       if (res && res.errCode === 0) {
         this.setState({
           isOpenEditUser: false,
@@ -81,6 +84,7 @@ class UserManage extends Component {
   // handle add new user for child
   handleSubmit = async (data) => {
     try {
+      console.log("check data", data);
       let res = await CreateNewUser(data);
       if (res && res.errCode !== 0) {
         alert(res.errMessage);
@@ -103,6 +107,7 @@ class UserManage extends Component {
 
   render() {
     let { arrUser } = this.state;
+    let { language } = this.props;
     return (
       <div className="container">
         <ModalCreateUser
@@ -131,6 +136,8 @@ class UserManage extends Component {
               <th>Address</th>
               <th>Phone Numbers</th>
               <th>Gender</th>
+              <th>Role</th>
+
               <th>Action</th>
             </tr>
             {arrUser &&
@@ -143,7 +150,16 @@ class UserManage extends Component {
                     <td>{item.lastName}</td>
                     <td>{item.address}</td>
                     <td>{item.phonenumber}</td>
-                    <td>{item.Gender}</td>
+                    <td>
+                      {language === LANGUAGE.VI
+                        ? item.genderData.valueVi
+                        : item.genderData.valueEn}
+                    </td>
+                    <td>
+                      {language === LANGUAGE.VI
+                        ? item.roleData.valueVi
+                        : item.roleData.valueEn}
+                    </td>
                     <td className="button-sub">
                       <button
                         className="btn btn-primary mx-2"
@@ -181,6 +197,7 @@ const mapStateToProps = (state) => {
   return {
     users: state.admin.users,
     genders: state.admin.genders,
+    language: state.app.language,
   };
 };
 

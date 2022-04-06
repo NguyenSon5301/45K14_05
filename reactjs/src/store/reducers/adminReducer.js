@@ -8,6 +8,9 @@ const initialState = {
   blogData: [],
   isLoggedIn: false,
   userInfo: null,
+  products: [],
+  arrPrices: [],
+  arrType: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -78,6 +81,42 @@ const adminReducer = (state = initialState, action) => {
       };
     case actionTypes.FETCH_ALL_BLOGS_FAILDED:
       state.blogData = [];
+      return {
+        ...state,
+      };
+    //fetch all product
+    case actionTypes.FETCH_ALL_PRODUCT_SUCCEED:
+      state.products = action.products;
+
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_PRODUCT_FAILDED:
+      state.products = [];
+      return {
+        ...state,
+      };
+    // fetch all price product
+    case actionTypes.FETCH_ALL_PRICE_SUCCEED:
+      state.arrPrices = action.arrPrices;
+
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_PRICE_FAILDED:
+      state.arrPrices = [];
+      return {
+        ...state,
+      };
+    // fetch all type product
+    case actionTypes.FETCH_ALL_TYPE_SUCCEED:
+      state.arrType = action.arrType;
+
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_TYPE_FAILDED:
+      state.arrType = [];
       return {
         ...state,
       };

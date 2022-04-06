@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { ModalHeader, ModalBody, ModalFooter, Button, Modal } from "reactstrap";
 import "./ModalEditUser.scss";
+import { LANGUAGE } from "../../utils/constant";
+import * as actions from "../../store/actions";
+import { connect } from "react-redux";
+
 import _ from "lodash";
-export default class ModalEditUser extends Component {
+class ModalEditUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +16,11 @@ export default class ModalEditUser extends Component {
       lastName: "",
       phonenumber: "",
       address: "",
+      gendersArr: [],
+      roleArr: [],
+
+      gender: "",
+      role: "",
     };
   }
   handleInputUser = (event, id) => {
@@ -23,7 +32,15 @@ export default class ModalEditUser extends Component {
   };
   checkVaidInput = () => {
     let isValid = true;
-    let arrInput = ["email", "firstName", "lastName", "phonenumber", "address"];
+    let arrInput = [
+      "email",
+      "firstName",
+      "lastName",
+      "phonenumber",
+      "address",
+      "gender",
+      "role",
+    ];
     for (let i = 0; i < arrInput.length; i++) {
       if (!this.state[arrInput[i]]) {
         isValid = false;
@@ -42,11 +59,16 @@ export default class ModalEditUser extends Component {
     if (isValid === true) {
       // call api
       this.props.editUser(this.state);
+      console.log("check state", this.state);
+
       this.toggle();
     }
   };
   componentDidMount() {
+    this.props.fetchGenderData();
+    this.props.fetchRoleData();
     let { currentUser } = this.props;
+    console.log("currentUser", currentUser);
     if (currentUser && !_.isEmpty(currentUser)) {
       this.setState({
         id: currentUser.id,
@@ -56,11 +78,29 @@ export default class ModalEditUser extends Component {
         lastName: currentUser.lastName,
         phonenumber: currentUser.phonenumber,
         address: currentUser.address,
+        gender: currentUser.gender,
+        role: currentUser.roleId,
       });
     }
   }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.gendersArr !== prevProps.gendersArr) {
+      let { gendersArr } = this.props;
+      this.setState({
+        gendersArr: gendersArr,
+      });
+    }
 
+    if (this.props.roleData !== prevProps.roleData) {
+      let { roleData } = this.props;
+      this.setState({
+        roleArr: roleData,
+      });
+    }
+  }
   render() {
+    let { roleData, gendersArr, language } = this.props;
+
     return (
       <Modal
         isOpen={this.props.isOpen}
@@ -116,6 +156,45 @@ export default class ModalEditUser extends Component {
                   onChange={(event) => this.handleInputUser(event, "address")}
                 />
               </div>
+              <div className="form-group col-3">
+                <label>Chức vụ</label>
+                <select
+                  class="form-select"
+                  value={this.state.role}
+                  onChange={(event) => this.handleInputUser(event, "role")}
+                >
+                  {roleData.map((item, index) => {
+                    return (
+                      <option key={index} value={item.keyMap}>
+                        {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div className="form-group col-3">
+                <label>Giới tính</label>
+                <select
+                  value={this.state.gender}
+                  class="form-select"
+                  onChange={(event) => this.handleInputUser(event, "gender")}
+                >
+                  <label>Giới tính</label>;
+                  {gendersArr &&
+                    gendersArr.length > 0 &&
+                    gendersArr.map((item, index) => {
+                      return (
+                        <>
+                          <option key={index} value={item.keyMap}>
+                            {language === LANGUAGE.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
+                        </>
+                      );
+                    })}
+                </select>
+              </div>
             </div>
           </div>
         </ModalBody>
@@ -131,3 +210,19 @@ export default class ModalEditUser extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    gendersArr: state.admin.genders,
+    roleData: state.admin.roleData,
+    language: state.app.language,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
+    fetchGenderData: () => dispatch(actions.fetchGenderData()),
+    fetchRoleData: () => dispatch(actions.fetchRoleData()),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEditUser);

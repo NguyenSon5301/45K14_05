@@ -26,6 +26,7 @@ let AddNewUser = async (req, res) => {
     let data = await userService.handleAddNewUser(req.body);
     res.status(200).json(data);
   } catch (error) {
+    console.log("check error", error);
     res.status(200).json({
       errCode: -1,
       errMessage: "Error from server",
@@ -50,6 +51,7 @@ let deleteUser = async (req, res) => {
     let data = await userService.onDeleteUser(id);
     return res.status(200).json(data);
   } catch (error) {
+    console.log("check err", error);
     res.status(200).json({
       errCode: -1,
       errMessage: "Error from server",

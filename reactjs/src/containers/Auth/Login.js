@@ -109,12 +109,14 @@ class Login extends Component {
                   <div className="col-12" style={{ color: "red" }}>
                     {this.state.errMessage}
                   </div>
-                  <input
+                  <button
                     type="submit"
                     value="Log In"
                     className="btn btn-block btn-primary"
                     onClick={() => this.handleLogin()}
-                  />
+                  >
+                    Login
+                  </button>
                 </div>
               </div>
             </div>

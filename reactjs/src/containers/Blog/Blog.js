@@ -65,6 +65,7 @@ class Blog extends Component {
                     "binary"
                   );
                 }
+                console.log("check item image blog", item);
                 return (
                   <div class="col-lg-4 blog_item_col">
                     <div

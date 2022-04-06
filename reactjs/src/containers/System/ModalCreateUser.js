@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { CreateNewUser } from "../../services/userService";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "./ModalCreateUser.scss";
 import { emitter } from "../../utils/emitter";
@@ -29,6 +28,7 @@ class ModalCreateUser extends Component {
 
   // clear modal data when add new user
   listenToEmitter() {
+    let { roleData, gendersArr } = this.props;
     emitter.on("EVENT_CLEAR_DATA_MODAL", () => {
       this.setState({
         email: "",
@@ -49,25 +49,24 @@ class ModalCreateUser extends Component {
       let { gendersArr } = this.props;
       this.setState({
         gendersArr: gendersArr,
+        gender: gendersArr && gendersArr.length > 0 ? gendersArr[0].keyMap : "",
       });
     }
-    if (this.props.gendersArr !== prevProps.gendersArr) {
+
+    if (this.props.roleData !== prevProps.roleData) {
+      let { roleData } = this.props;
       this.setState({
-        roleArr: this.props.roleData,
+        roleArr: roleData,
+        role: roleData && roleData.length > 0 ? roleData[0].keyMap : "",
       });
     }
   }
   handleChangeInput = (event, id) => {
     let copyState = { ...this.state };
     copyState[id] = event.target.value;
-    this.setState(
-      {
-        ...copyState,
-      },
-      () => {
-        console.log("check on change", this.state);
-      }
-    );
+    this.setState({
+      ...copyState,
+    });
   };
   checkValidateInput = () => {
     let isValid = true;
@@ -101,7 +100,6 @@ class ModalCreateUser extends Component {
   };
   render() {
     let { roleData, gendersArr, language } = this.props;
-    console.log("check state", this.state);
     return (
       <div>
         <Modal

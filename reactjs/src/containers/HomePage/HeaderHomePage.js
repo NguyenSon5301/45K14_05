@@ -66,7 +66,7 @@ class HeaderHomePage extends Component {
                       </li>
                       <li className="account">
                         <a>
-                          <span>My name is {this.state.user.firstName}</span>
+                          <span>Hello {this.state.user.firstName}</span>
 
                           <i className="fa fa-angle-down"></i>
                         </a>

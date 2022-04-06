@@ -1,6 +1,6 @@
 import express from "express";
-import homeController from "../controllers/homeController";
 import userController from "../controllers/userController";
+import productController from "../controllers/productController";
 
 let router = express.Router();
 
@@ -25,7 +25,11 @@ let initWebRoutes = (app) => {
   //contact
   router.get("/api/get-contacts", userController.getContact);
   router.delete("/api/delete-contacts", userController.deleteContact);
-
+  // product
+  router.post("/api/create-new-product", productController.AddNewPr);
+  router.get("/api/get-all-product", productController.getAllPr);
+  router.delete("/api/delete-product", productController.deletePr);
+  // router.put("/api/edit-product", productController.editPr);
   return app.use("/", router);
 };
 

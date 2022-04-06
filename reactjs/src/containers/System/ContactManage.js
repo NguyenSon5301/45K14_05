@@ -13,8 +13,6 @@ export default class ContactManage extends Component {
   fetchAllContact = async () => {
     let res = await getContacts();
     if (res && res.errCode === 0) {
-      toast.success("fetch contact succeed");
-
       this.setState({
         arrContact: res.data,
       });
