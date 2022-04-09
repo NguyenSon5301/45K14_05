@@ -69,7 +69,7 @@ class Blog extends Component {
                 return (
                   <div class="col-lg-4 blog_item_col">
                     <div
-                      class="blog_item"
+                      className="blog_item"
                       key={item.id}
                       onClick={() => this.handleViewDetailBlog(item)}
                     >

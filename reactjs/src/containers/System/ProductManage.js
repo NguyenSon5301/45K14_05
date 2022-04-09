@@ -103,14 +103,6 @@ class ProductManage extends Component {
       if (res && res.errCode === 0) {
         toast.success("create product succeed");
         await this.props.fetchAllProduct();
-        this.setState({
-          namePr: "",
-          price: "",
-          typePr: "",
-          description: "",
-          image: "",
-          size: "",
-        });
       }
     }
   };
@@ -123,7 +115,23 @@ class ProductManage extends Component {
       await this.props.fetchAllProduct();
     }
   };
+  onEdit = (item) => {
+    let language = this.props.language;
+    console.log("check edit", item);
+    this.setState({
+      id: item.id,
+      namePr: item.namePR,
+      price:
+        language === LANGUAGE.VI
+          ? item.priceData.valueVi
+          : item.priceData.valueEn,
+      typePr: this.state.typePr.value,
 
+      description: item.description,
+      image: item.image,
+      size: item.sizeId,
+    });
+  };
   render() {
     let {
       namePr,
@@ -267,7 +275,7 @@ class ProductManage extends Component {
               products.length > 0 &&
               products.map((item, index) => {
                 return (
-                  <tr key={index}>
+                  <tr key={item.id}>
                     <td>{item.namePR}</td>
                     <td>{item.description}</td>
                     <td>{item.sizeId}</td>

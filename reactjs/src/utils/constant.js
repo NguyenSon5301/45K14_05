@@ -6,7 +6,7 @@ export const path = {
   HOMEPAGE: "/home",
   REGISTERUSER: "/home/register",
   USERLOGIN: "/home/userlogin",
-  SINGLEPR: "/SinglePr",
+  SINGLEPR: "/SinglePr/:id",
   CONTACT: "/Contact",
   CATEGORY: "/Category",
   DETAIL_BLOG: "/detail_blog/:id",

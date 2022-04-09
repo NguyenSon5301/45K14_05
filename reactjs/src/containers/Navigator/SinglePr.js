@@ -1,19 +1,38 @@
 import React, { Component } from "react";
 import Benefit from "../Benefit/Benefit";
 import FooterPage from "../Footer/FooterPage";
-import single1 from "../../More/images/single_1.jpg";
-import single2 from "../../More/images/single_2.jpg";
-import single3 from "../../More/images/single_3.jpg";
-import single1_tb from "../../More/images/single_1_thumb.jpg";
-import single2_tb from "../../More/images/single_2_thumb.jpg";
-import single3_tb from "../../More/images/single_3_thumb.jpg";
+import NumberFormat from "react-number-format";
 import "../../More/styles/single_styles.css";
 import "./SinglePr.scss";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
+import { LANGUAGE } from "../../utils/constant";
+
 import { FormattedMessage } from "react-intl";
 import HeaderHomePage from "../HomePage/HeaderHomePage";
 import NewLetter from "../NewLetter/NewLetter";
-export default class SinglePr extends Component {
+class SinglePr extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
+  async componentDidMount() {
+    await this.props.fetchAllProduct();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.products !== prevProps.products) {
+      let { products } = this.props;
+      this.setState({
+        products: products,
+      });
+    }
+  }
   render() {
+    let { products } = this.state;
+    let { language } = this.props;
+
     return (
       <>
         <HeaderHomePage />
@@ -24,90 +43,90 @@ export default class SinglePr extends Component {
                 <div className="row">
                   <div className="col-lg-3 thumbnails_col order-lg-1 order-2">
                     <div className="single_product_thumbnails">
-                      <ul>
-                        <li>
-                          <img src={single1_tb} />
-                        </li>
-                        <li className="active">
-                          <img src={single2_tb} />
-                        </li>
-                        <li>
-                          <img src={single3_tb} />
-                        </li>
-                      </ul>
+                      <ul></ul>
                     </div>
                   </div>
                   <div className="col-lg-9  order-1">
                     <div className="single_product_image">
-                      <div className="single_product_image_background">
-                        <img src={single2} />
-                      </div>
+                      {products &&
+                        products.length > 0 &&
+                        products.map((item, index) => {
+                          let imageBase64 = "";
+                          if (item.image) {
+                            imageBase64 = new Buffer(
+                              item.image,
+                              "base64"
+                            ).toString("binary");
+                          }
+                          return (
+                            <div
+                              className="single_product_image_background"
+                              style={{
+                                backgroundImage: `url(${imageBase64})`,
+                              }}
+                            ></div>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-5">
-              <div className="product_details">
-                <div className="product_details_title">
-                  <h2>
-                    Pocket cotton
-                    <br />
-                    sweatshirt
-                  </h2>
-                  <p>
-                    Nam tempus turpis at metus scelerisque placerat nulla
-                    deumantos solicitud felis. Pellentesque diam dolor,
-                    elementum etos lobortis des mollis ut...
-                  </p>
-                </div>
-                <div className="free_delivery d-flex flex-row align-items-center justify-content-center">
-                  <span className="ti-truck"></span>
-                  <span>free delivery</span>
-                </div>
-                <div className="original_price">$629.99</div>
-                <div className="product_price">$495.00</div>
-                <ul className="star_rating">
-                  <li>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                  </li>
-                  <li>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                  </li>
-                  <li>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                  </li>
-                  <li>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                  </li>
-                </ul>
-                <div className="product_color">
-                  <span>Select Color:</span>
-                  <ul>
-                    <li style={{ background: "#e54e5d" }}></li>
+              {products &&
+                products.length > 0 &&
+                products.map((item, index) => {
+                  return (
+                    <div className="product_details">
+                      <div className="product_details_title">
+                        <h2>{item.namePR}</h2>
+                        <p>{item.description}</p>
+                      </div>
+                      <div className="free_delivery d-flex flex-row align-items-center justify-content-center">
+                        <span className="ti-truck"></span>
+                        <span>free delivery</span>
+                      </div>
+                      <div className="product_prices" sty>
+                        {language === LANGUAGE.VI && (
+                          <NumberFormat
+                            className="currency"
+                            value={item.priceData.valueVi}
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"VND"}
+                          />
+                        )}
+                        {language === LANGUAGE.EN && (
+                          <NumberFormat
+                            className="currency"
+                            value={item.priceData.valueEn}
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            suffix={"$"}
+                          />
+                        )}
+                      </div>
 
-                    <li style={{ background: "#252525" }}></li>
-                    <li style={{ background: "#60b3f3" }}></li>
-                  </ul>
-                </div>
-                <div className="quantity d-flex flex-column flex-sm-row align-items-sm-center">
-                  <span>Quantity:</span>
-                  <div className="quantity_selector">
-                    <span className="minus">
-                      <i className="fa fa-minus" aria-hidden="true"></i>
-                    </span>
-                    <span id="quantity_value">1</span>
-                    <span className="plus">
-                      <i className="fa fa-plus" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <div className="button-add">
-                    <button className="btn-add-product">
-                      <FormattedMessage id={"NewArrivals.addCart"} />
-                    </button>
-                  </div>
-                </div>
-              </div>
+                      <div className="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                        <span>Quantity:</span>
+                        <div className="quantity_selector">
+                          <span className="minus">
+                            <i className="fa fa-minus"></i>
+                          </span>
+                          <span id="quantity_value">1</span>
+                          <span className="plus">
+                            <i className="fa fa-plus"></i>
+                          </span>
+                        </div>
+                        <div className="button-add">
+                          <button className="btn-add-product">
+                            <FormattedMessage id={"NewArrivals.addCart"} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
           <Benefit />
@@ -118,3 +137,21 @@ export default class SinglePr extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    products: state.admin.products,
+    arrPrices: state.admin.arrPrices,
+    arrType: state.admin.arrType,
+    language: state.app.language,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAllProduct: () => dispatch(actions.fetchAllProduct()),
+    fetchAllPricePr: () => dispatch(actions.fetchAllPricePr()),
+    fetchAllTypePr: () => dispatch(actions.fetchAllTypePr()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePr);

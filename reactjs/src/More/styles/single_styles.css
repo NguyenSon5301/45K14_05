@@ -1432,3 +1432,18 @@ section {
 .footer_social ul li a:hover {
 	color: #fe4c50;
 }
+
+.product_prices {
+	color      : red;
+	font-size  : 20px;
+	padding-top: 10px;
+	font-weight: 550;
+}
+
+.product_background {
+	background     : no-repeat no-repeat;
+	width          : 100%;
+	border         : 1px solid red;
+	height         : 100%;
+	background-size: cover;
+}

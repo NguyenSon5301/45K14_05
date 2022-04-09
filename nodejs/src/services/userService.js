@@ -194,6 +194,7 @@ let onEditUser = (data) => {
 let getAllCodeSV = (typeInput) => {
   return new Promise(async (resolve, reject) => {
     try {
+      console.log("check type", typeInput);
       if (!typeInput) {
         resolve({ errCode: 1, errMessage: "Missing parameter" });
       } else {

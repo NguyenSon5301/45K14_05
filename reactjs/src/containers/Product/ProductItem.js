@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { LANGUAGE } from "../../utils/constant";
-
+import { withRouter } from "react-router";
 import Slider from "react-slick";
 import SinglePr from "../Navigator/SinglePr";
 import { path } from "../../utils/constant";
@@ -32,6 +32,9 @@ class ProductItem extends Component {
       });
     }
   }
+  handleViewDetailProduct = (item) => {
+    this.props.history.push(`/SinglePr/${item.id}`);
+  };
 
   render() {
     let { products } = this.state;
@@ -91,6 +94,7 @@ class ProductItem extends Component {
                           "binary"
                         );
                       }
+                      console.log("check item", item);
                       return (
                         <div class="product-item ">
                           <div class="product discount product_filter">
@@ -102,9 +106,14 @@ class ProductItem extends Component {
                             ></div>
                             <div class="product_info">
                               <h6 class="product_name">
-                                <NavLink exact to={path.SINGLEPR}>
+                                <div
+                                  key={item.id}
+                                  onClick={() =>
+                                    this.handleViewDetailProduct(item)
+                                  }
+                                >
                                   {item.namePR}
-                                </NavLink>
+                                </div>
                               </h6>
                               <div class="product_price">
                                 <td>
@@ -115,10 +124,13 @@ class ProductItem extends Component {
                               </div>
                             </div>
                           </div>
-                          <div class="red_button add_to_cart_button">
-                            <NavLink to={path.SINGLEPR}>
+                          <div className="red_button add_to_cart_button">
+                            <div
+                              key={item.id}
+                              onClick={() => this.handleViewDetailProduct(item)}
+                            >
                               <FormattedMessage id={"NewArrivals.addCart"} />
-                            </NavLink>
+                            </div>
                           </div>
                         </div>
                       );
@@ -147,4 +159,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductItem);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ProductItem)
+);

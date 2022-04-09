@@ -34,9 +34,21 @@ let deletePr = async (req, res) => {
     });
   }
 };
+let getProductById = async (req, res) => {
+  try {
+    let data = await userService.getProductByIdSV(req.query.id);
 
+    return res.status(200).json(data);
+  } catch (error) {
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
   AddNewPr,
   getAllPr,
   deletePr,
+  getProductById,
 };

@@ -57,6 +57,20 @@ let onGetAllProduct = (id) => {
         } else if (id && id !== "All") {
           productData = await db.Product.findOne({
             where: { id: id },
+            include: [
+              {
+                model: db.Allcode,
+                as: "priceData",
+                attributes: ["valueEn", "valueVi"],
+              },
+              {
+                model: db.Allcode,
+                as: "typeData",
+                attributes: ["valueEn", "valueVi"],
+              },
+            ],
+            raw: true,
+            nest: true,
           });
         }
         resolve({ data: productData, errCode: 0, errMessage: "OK" });
@@ -90,4 +104,26 @@ let onDeletePr = (id) => {
     }
   });
 };
-module.exports = { onAddNewPrSV, onGetAllProduct, onDeletePr };
+let getProductByIdSV = (inputId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Product.findOne({
+        where: { id: inputId },
+      });
+
+      resolve({
+        errCode: 0,
+        errMessage: "OK",
+        data,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+module.exports = {
+  onAddNewPrSV,
+  onGetAllProduct,
+  onDeletePr,
+  getProductByIdSV,
+};

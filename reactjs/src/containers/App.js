@@ -66,6 +66,7 @@ class App extends Component {
                   <Route path={path.CONTACT} component={Contact} />
                   <Route path={path.CATEGORY} component={Category} />
                   <Route path={path.DETAIL_BLOG} component={DetailBlog} />
+
                   <Route path={path.BLOGUSER} component={Blog} />
                   <Route path={path.BFLOGIN} component={HeaderBefore} />
 

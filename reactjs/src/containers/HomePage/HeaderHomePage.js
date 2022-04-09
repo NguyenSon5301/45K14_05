@@ -66,8 +66,8 @@ class HeaderHomePage extends Component {
                       </li>
                       <li className="account">
                         <a>
-                          <span>Hello {this.state.user.firstName}</span>
-
+                          {/* <span>Hello hieu {this.state.user.firstName}</span> */}
+                          <span>Hello hieu</span>
                           <i className="fa fa-angle-down"></i>
                         </a>
                         <ul className="account_selection">
@@ -115,11 +115,7 @@ class HeaderHomePage extends Component {
                           <FormattedMessage id={"HeaderHome.Blog"} />
                         </NavLink>
                       </li>
-                      <li>
-                        <NavLink to={path.CATEGORY}>
-                          <FormattedMessage id={"HeaderHome.Category"} />
-                        </NavLink>
-                      </li>
+
                       <li>
                         <NavLink to={path.CONTACT}>
                           <FormattedMessage id={"HeaderHome.Contact"} />
