@@ -2,8 +2,9 @@ import productServices from "../services/productServices";
 let AddNewPr = async (req, res) => {
   try {
     let data = await productServices.onAddNewPrSV(req.body);
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
+    console.log("check err", error);
     res.status(200).json({
       errCode: -1,
       errMessage: "Error from server",
@@ -14,7 +15,7 @@ let getAllPr = async (req, res) => {
   try {
     let id = req.query.id;
     let data = await productServices.onGetAllProduct(id);
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
     res.status(200).json({
       errCode: -1,
@@ -36,10 +37,24 @@ let deletePr = async (req, res) => {
 };
 let getProductById = async (req, res) => {
   try {
-    let data = await userService.getProductByIdSV(req.query.id);
+    let id = req.query.id;
+    let data = await productServices.getProductByIdSV(id);
 
     return res.status(200).json(data);
   } catch (error) {
+    console.log("check err", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let editProduct = async (req, res) => {
+  try {
+    let data = await productServices.onEditProduct(req.body);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log("check error", error);
     res.status(200).json({
       errCode: -1,
       errMessage: "Error from server",
@@ -51,4 +66,5 @@ module.exports = {
   getAllPr,
   deletePr,
   getProductById,
+  editProduct,
 };

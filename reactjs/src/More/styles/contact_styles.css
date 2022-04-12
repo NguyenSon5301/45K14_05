@@ -406,7 +406,7 @@ section {
 	-ms-transition    : opacity 0.3s ease;
 	-o-transition     : opacity 0.3s ease;
 	transition        : all 0.3s ease;
-	height            : 150px;
+	height            : 100px;
 	padding-left      : 0px;
 
 }

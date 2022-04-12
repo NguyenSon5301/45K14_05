@@ -6,8 +6,13 @@ import "./ProductManage.scss";
 import { LANGUAGE } from "../../utils/constant";
 
 import * as actions from "../../store/actions";
-import { createNewProduct, deletePr } from "../../services/userService";
+import {
+  createNewProduct,
+  deletePr,
+  editProduct,
+} from "../../services/userService";
 import { toast } from "react-toastify";
+import ModalEditProduct from "./ModalEditProduct";
 class ProductManage extends Component {
   constructor(props) {
     super(props);
@@ -18,16 +23,18 @@ class ProductManage extends Component {
       description: "",
       image: "",
       size: "",
-      products: [],
+      arrProducts: [],
       arrType: [],
       arrPrice: [],
+      isOpenModalEdit: false,
+      productEdit: {},
     };
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.products !== prevProps.products) {
       let { products } = this.props;
       this.setState({
-        products: products,
+        arrProducts: products,
       });
     }
     if (this.props.arrPrices !== prevProps.arrPrices) {
@@ -101,51 +108,64 @@ class ProductManage extends Component {
         description: this.state.description,
       });
       if (res && res.errCode === 0) {
-        toast.success("create product succeed");
+        toast.success("Create product succeed");
+
         await this.props.fetchAllProduct();
+      }
+      if (res && res.errCode === 1) {
+        toast.error(res.errMessage);
       }
     }
   };
   // delete product
   onDelete = async (id) => {
-    console.log("check id", id);
     let res = await deletePr(id);
     if (res && res.errCode === 0) {
       toast.success("Delete product succeed");
       await this.props.fetchAllProduct();
     }
   };
-  onEdit = (item) => {
-    let language = this.props.language;
-    console.log("check edit", item);
+  onEdit = async (product) => {
     this.setState({
-      id: item.id,
-      namePr: item.namePR,
-      price:
-        language === LANGUAGE.VI
-          ? item.priceData.valueVi
-          : item.priceData.valueEn,
-      typePr: this.state.typePr.value,
-
-      description: item.description,
-      image: item.image,
-      size: item.sizeId,
+      isOpenModalEdit: true,
+      productEdit: product,
     });
+  };
+  toogleEditProduct = () => {
+    this.setState({
+      isOpenModalEdit: !this.state.isOpenModalEdit,
+    });
+  };
+  DoEditProduct = async (product) => {
+    try {
+      let res = await editProduct(product);
+
+      if (res && res.errCode === 0) {
+        this.setState({
+          isOpenModalEdit: false,
+        });
+        await this.props.fetchAllProduct();
+      } else {
+        alert(res.errMessage);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
   render() {
     let {
       namePr,
       price,
       typePr,
-      image,
+
       size,
       description,
-      products,
+      arrProducts,
       arrType,
       arrPrice,
     } = this.state;
     let { language } = this.props;
-    console.log("check state product", this.state);
+    console.log("check state", this.state);
     return (
       <div className="container">
         <div className="row">
@@ -153,9 +173,9 @@ class ProductManage extends Component {
             <label
               className="text-center"
               style={{
-                "font-size": "25px",
+                fontSize: "25px",
                 color: "Blue",
-                "text-align": "center",
+                textAlign: "center",
                 margin: "20px 0px",
               }}
             >
@@ -271,45 +291,56 @@ class ProductManage extends Component {
               <th>Price</th>
               <th>Action</th>
             </tr>
-            {products &&
-              products.length > 0 &&
-              products.map((item, index) => {
+            {arrProducts &&
+              arrProducts.length > 0 &&
+              arrProducts.map((item, index) => {
+                console.log("check product", arrProducts);
                 return (
-                  <tr key={item.id}>
-                    <td>{item.namePR}</td>
-                    <td>{item.description}</td>
-                    <td>{item.sizeId}</td>
+                  <tbody key={index}>
+                    <tr>
+                      <td>{item.namePR}</td>
+                      <td>{item.description}</td>
+                      <td>{item.sizeId}</td>
 
-                    <td>
-                      {language === LANGUAGE.VI
-                        ? item.typeData.valueVi
-                        : item.typeData.valueEn}
-                    </td>
-                    <td>
-                      {language === LANGUAGE.VI
-                        ? item.priceData.valueVi
-                        : item.priceData.valueEn}
-                    </td>
-                    <td className="button-sub">
-                      <button
-                        className="btn btn-primary mx-2"
-                        onClick={() => this.onEdit(item)}
-                      >
-                        Edit
-                      </button>
+                      <td>
+                        {language === LANGUAGE.VI
+                          ? item.typeData.valueVi
+                          : item.typeData.valueEn}
+                      </td>
+                      <td>
+                        {language === LANGUAGE.VI
+                          ? item.priceData.valueVi
+                          : item.priceData.valueEn}
+                      </td>
+                      <td className="button-sub">
+                        <button
+                          className="btn btn-primary mx-2"
+                          onClick={() => this.onEdit(item)}
+                        >
+                          Edit
+                        </button>
 
-                      <button
-                        className="btn btn-warning"
-                        onClick={() => this.onDelete(item.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
+                        <button
+                          className="btn btn-warning"
+                          onClick={() => this.onDelete(item.id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
                 );
               })}
           </table>
         </div>
+        {this.state.isOpenModalEdit && (
+          <ModalEditProduct
+            isOpen={this.state.isOpenModalEdit}
+            toogleEditProduct={this.toogleEditProduct}
+            currentProduct={this.state.productEdit}
+            editProduct={this.DoEditProduct}
+          />
+        )}
       </div>
     );
   }

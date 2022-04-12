@@ -21,48 +21,42 @@ class HomePage extends Component {
     this.props.ChangeLanguageRedux(language);
   };
   render() {
-    let check = this.props.isLoggedIn;
-    if (check === true) {
-    }
-    console.log("check ", check);
     return (
-      <>
-        <div className="super_container">
-          {check === true ? <HeaderHomePage /> : <HeaderBefore />}
-          <div
-            className="main_slider"
-            style={{ backgroundImage: `url(${sli1})` }}
-          >
-            <div className="container fill_height">
-              <div className="row align-items-center fill_height">
-                <div className="col">
-                  <div className="main_slider_content">
-                    <h6>
-                      <FormattedMessage id={"Banner.title-banner"} />
-                    </h6>
-                    <h1>
-                      <FormattedMessage id={"Banner.title-banner-price"} />
-                    </h1>
-                    <div className="red_button shop_now_button">
-                      <a href="#">
-                        <FormattedMessage id={"Banner.shopButton"} />
-                      </a>
-                    </div>
+      <div className="super_container">
+        {this.props.isLoggedIn ? <HeaderHomePage /> : <HeaderBefore />}
+        <div
+          className="main_slider"
+          style={{ backgroundImage: `url(${sli1})` }}
+        >
+          <div className="container fill_height">
+            <div className="row align-items-center fill_height">
+              <div className="col">
+                <div className="main_slider_content">
+                  <h6>
+                    <FormattedMessage id={"Banner.title-banner"} />
+                  </h6>
+                  <h1>
+                    <FormattedMessage id={"Banner.title-banner-price"} />
+                  </h1>
+                  <div className="red_button shop_now_button">
+                    <a href="#">
+                      <FormattedMessage id={"Banner.shopButton"} />
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Banner />
-          <ProductItem />
-          <DealOff />
-          <BestSellter />
-          <Benefit />
-          <Blog />
-          <NewLetter />
-          <FooterPage />
         </div>
-      </>
+        <Banner />
+        <ProductItem />
+        <DealOff />
+        <BestSellter />
+        <Benefit />
+        <Blog />
+        <NewLetter />
+        <FooterPage />
+      </div>
     );
   }
 }

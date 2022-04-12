@@ -60,7 +60,6 @@ class UserManage extends Component {
   };
   DoEditUser = async (user) => {
     try {
-      console.log("check user", user);
       let res = await editUser(user);
 
       if (res && res.errCode === 0) {
@@ -84,7 +83,6 @@ class UserManage extends Component {
   // handle add new user for child
   handleSubmit = async (data) => {
     try {
-      console.log("check data", data);
       let res = await CreateNewUser(data);
       if (res && res.errCode !== 0) {
         alert(res.errMessage);

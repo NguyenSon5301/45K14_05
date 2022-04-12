@@ -22,7 +22,6 @@ class HeaderBefore extends Component {
     return (
       <Fragment>
         <header className="header trans_300">
-          {/* <Navigator menus={userMenu} /> */}
           <div className="top_nav">
             <div className="container">
               <div className="row">
@@ -53,7 +52,7 @@ class HeaderBefore extends Component {
                       </li>
                       <li className="account">
                         <a>
-                          <span>My account</span>
+                          <span>Not Login</span>
 
                           <i className="fa fa-angle-down"></i>
                         </a>
@@ -100,11 +99,7 @@ class HeaderBefore extends Component {
                           <FormattedMessage id={"HeaderHome.Blog"} />
                         </NavLink>
                       </li>
-                      <li>
-                        <NavLink to={path.CATEGORY}>
-                          <FormattedMessage id={"HeaderHome.Category"} />
-                        </NavLink>
-                      </li>
+
                       <li>
                         <NavLink to={path.CONTACT}>
                           <FormattedMessage id={"HeaderHome.Contact"} />

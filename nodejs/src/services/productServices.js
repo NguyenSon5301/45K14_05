@@ -2,12 +2,15 @@ import db from "../models/index";
 let onAddNewPrSV = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!data) {
+      let check = await checkProductExist(data.namePr);
+      if (check === true) {
         resolve({
           errCode: 1,
-          errMessage: "Missing parameter",
+          errMessage: "Your product is already exist, Pls try another product",
         });
-      } else {
+      }
+      // check product is exist
+      else {
         await db.Product.create({
           namePR: data.namePr,
           sizeId: data.size,
@@ -109,8 +112,25 @@ let getProductByIdSV = (inputId) => {
     try {
       let data = await db.Product.findOne({
         where: { id: inputId },
-      });
 
+        include: [
+          {
+            model: db.Allcode,
+            as: "priceData",
+            attributes: ["valueEn", "valueVi"],
+          },
+          {
+            model: db.Allcode,
+            as: "typeData",
+            attributes: ["valueEn", "valueVi"],
+          },
+        ],
+        raw: true,
+        nest: true,
+      });
+      if (data && data.image) {
+        data.image = new Buffer(data.image, "base64").toString("binary");
+      }
       resolve({
         errCode: 0,
         errMessage: "OK",
@@ -121,9 +141,51 @@ let getProductByIdSV = (inputId) => {
     }
   });
 };
+let checkProductExist = (product) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let productData = await db.Product.findOne({
+        where: { namePR: product },
+      });
+      if (productData) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let onEditProduct = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let product = await db.Product.findOne({
+        where: { id: data.id },
+        raw: false,
+      });
+      if (product) {
+        product.namePR = data.namePr;
+        product.sizeId = data.size;
+        product.typeId = data.typePr;
+        product.priceId = data.price;
+        product.image = data.image;
+        product.description = data.description;
+
+        await product.save();
+        resolve({ errCode: 0, errMessage: "OK" });
+      } else {
+        resolve({ errCode: 2, errMessage: "The product is not exist" });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   onAddNewPrSV,
   onGetAllProduct,
   onDeletePr,
   getProductByIdSV,
+  onEditProduct,
 };

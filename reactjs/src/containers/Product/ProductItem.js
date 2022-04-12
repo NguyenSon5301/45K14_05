@@ -94,7 +94,6 @@ class ProductItem extends Component {
                           "binary"
                         );
                       }
-                      console.log("check item", item);
                       return (
                         <div class="product-item ">
                           <div class="product discount product_filter">

@@ -40,7 +40,44 @@ let handleUserLogin = (email, password) => {
     }
   });
 };
-
+let handleAdminLoginSV = (email, password) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let userData = {};
+      let isExist = await checkUserEmail(email);
+      if (isExist) {
+        //user already exist
+        let user = await db.User.findOne({
+          attributes: ["email", "password", "firstName", "lastName", "roleId"],
+          where: { email: email, roleId: "R1" },
+          raw: true,
+        });
+        if (user) {
+          let check = await bcrypt.compare(password, user.password);
+          if (check) {
+            userData.errCode = 0;
+            userData.errMessage = "OK";
+            delete user.password;
+            userData.user = user;
+          } else {
+            userData.errCode = 3;
+            userData.errMessage = "Wrong password";
+          }
+        } else {
+          userData.errCode = 2;
+          userData.errMessage = `User are not Admin`;
+        }
+      } else {
+        //return error
+        userData.errCode = 1;
+        userData.errMessage = `Your's Email isn't exist in our system, plz try other email`;
+      }
+      resolve(userData);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 let checkUserEmail = (userEmail) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -60,7 +97,6 @@ let checkUserEmail = (userEmail) => {
 let handleAddNewUser = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("check data", data);
       let check = await checkUserEmail(data.email);
       if (check === true) {
         resolve({
@@ -194,7 +230,6 @@ let onEditUser = (data) => {
 let getAllCodeSV = (typeInput) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("check type", typeInput);
       if (!typeInput) {
         resolve({ errCode: 1, errMessage: "Missing parameter" });
       } else {
@@ -338,6 +373,7 @@ let deleteContactSV = (id) => {
 
 module.exports = {
   handleUserLogin,
+  handleAdminLoginSV,
   handleAddNewUser,
   onGetAllUsers,
   onDeleteUser,

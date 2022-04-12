@@ -3,6 +3,9 @@ import axios from "../axios";
 const handleLoginApi = (email, password) => {
   return axios.post("api/login", { email, password });
 };
+const handleAdminLogin = (email, password) => {
+  return axios.post("/api/admin-login", { email, password });
+};
 const CreateNewUser = (data) => {
   return axios.post("/api/Register", data);
 };
@@ -52,9 +55,15 @@ const getProduct = (id) => {
 const deletePr = (id) => {
   return axios.delete(`/api/delete-product`, { data: { id } });
 };
-
+const editProduct = (data) => {
+  return axios.put(`/api/edit-product`, data);
+};
+const getProductById = (id) => {
+  return axios.get(`/api/get-product-by-id?id=${id}`);
+};
 export {
   handleLoginApi,
+  handleAdminLogin,
   CreateNewUser,
   getUser,
   editUser,
@@ -71,4 +80,6 @@ export {
   getProduct,
   createNewProduct,
   deletePr,
+  editProduct,
+  getProductById,
 };

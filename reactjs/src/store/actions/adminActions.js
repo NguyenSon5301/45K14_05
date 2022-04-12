@@ -124,7 +124,6 @@ export const fetchAllPricePr = () => {
   return async (dispatch) => {
     try {
       let res = await getAllCode("PRICE");
-      console.log("check res", res);
       if (res && res.errCode === 0) {
         dispatch({
           type: actionTypes.FETCH_ALL_PRICE_SUCCEED,
@@ -146,7 +145,6 @@ export const fetchAllTypePr = () => {
   return async (dispatch) => {
     try {
       let res = await getAllCode("TYPEPR");
-      console.log("res", res);
       if (res && res.errCode === 0) {
         dispatch({
           type: actionTypes.FETCH_ALL_TYPE_SUCCEED,

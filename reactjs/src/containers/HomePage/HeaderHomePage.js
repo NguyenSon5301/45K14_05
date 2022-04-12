@@ -7,6 +7,7 @@ import * as actions from "../../store/actions";
 import { handleLoginApi } from "../../services/userService";
 import Navigator from "../../components/Navigator";
 import { NavLink } from "react-router-dom";
+import HeaderBefore from "./HeaderBefore";
 // import { userMenu } from "../Header/menuApp";
 
 class HeaderHomePage extends Component {
@@ -24,9 +25,13 @@ class HeaderHomePage extends Component {
       user: this.props.userInfo,
     });
   }
+  handleLoginOut = () => {
+    this.props.processLogout();
+  };
 
   render() {
     let { processLogout, userInfo, isLoggedIn } = this.props;
+    let user = this.state.user;
     console.log("check login", isLoggedIn);
 
     console.log("check user", userInfo);
@@ -66,23 +71,33 @@ class HeaderHomePage extends Component {
                       </li>
                       <li className="account">
                         <a>
-                          {/* <span>Hello hieu {this.state.user.firstName}</span> */}
-                          <span>Hello hieu</span>
+                          <span>
+                            {user
+                              ? user.firstName + user.lastName
+                              : "Not Login"}
+                          </span>
+
                           <i className="fa fa-angle-down"></i>
                         </a>
-                        <ul className="account_selection">
-                          <li>
+                        <ul
+                          className="account_selection"
+                          style={{ height: "50px" }}
+                        >
+                          {/* <li>
                             <NavLink to={path.USERLOGIN}>
                               <FormattedMessage id={"HeaderHome.Sign-in"} />
                             </NavLink>
-                          </li>
-                          <li>
+                          </li> */}
+                          {/* <li>
                             <NavLink to={path.REGISTERUSER}>
                               <FormattedMessage id={"HeaderHome.Register"} />
                             </NavLink>
-                          </li>
+                          </li> */}
                           <li>
-                            <NavLink to={path.USERLOGIN}>
+                            <NavLink
+                              to={path.HOMEPAGE}
+                              onClick={() => this.handleLoginOut()}
+                            >
                               <FormattedMessage id={"HeaderHome.Sign-out"} />
                             </NavLink>
                           </li>

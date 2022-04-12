@@ -6,6 +6,8 @@ let router = express.Router();
 
 let initWebRoutes = (app) => {
   router.post("/api/login", userController.handleLoging);
+  router.post("/api/admin-login", userController.handleAdminLogin);
+
   // user
   router.post("/api/Register", userController.AddNewUser);
   router.get("/api/get-all-users", userController.getAllUser);
@@ -28,8 +30,9 @@ let initWebRoutes = (app) => {
   // product
   router.post("/api/create-new-product", productController.AddNewPr);
   router.get("/api/get-all-product", productController.getAllPr);
+  router.get("/api/get-product-by-id", productController.getProductById);
   router.delete("/api/delete-product", productController.deletePr);
-  // router.put("/api/edit-product", productController.editPr);
+  router.put("/api/edit-product", productController.editProduct);
   return app.use("/", router);
 };
 

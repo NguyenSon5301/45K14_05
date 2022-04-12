@@ -29,7 +29,6 @@ class Blog extends Component {
   };
   render() {
     let { arrBlogs } = this.state;
-    console.log("check blog", this.props.arrBlogs);
     return (
       <div className="container">
         <div class="row blogs_container">

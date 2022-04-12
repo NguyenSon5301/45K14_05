@@ -17,7 +17,6 @@ const adminReducer = (state = initialState, action) => {
   switch (action.type) {
     //login
     case actionTypes.ADMIN_LOGIN_SUCCESS:
-      console.log("check action", action);
       return {
         ...state,
         isLoggedIn: true,

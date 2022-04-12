@@ -59,7 +59,6 @@ class ModalEditUser extends Component {
     if (isValid === true) {
       // call api
       this.props.editUser(this.state);
-      console.log("check state", this.state);
 
       this.toggle();
     }
@@ -68,7 +67,6 @@ class ModalEditUser extends Component {
     this.props.fetchGenderData();
     this.props.fetchRoleData();
     let { currentUser } = this.props;
-    console.log("currentUser", currentUser);
     if (currentUser && !_.isEmpty(currentUser)) {
       this.setState({
         id: currentUser.id,
@@ -220,7 +218,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
     fetchGenderData: () => dispatch(actions.fetchGenderData()),
     fetchRoleData: () => dispatch(actions.fetchRoleData()),
   };
