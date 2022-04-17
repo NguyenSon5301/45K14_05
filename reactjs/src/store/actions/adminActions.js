@@ -161,3 +161,16 @@ export const fetchAllTypePr = () => {
     }
   };
 };
+export const addQuatityProduct = () => {
+  return async (dispatch) => {
+    try {
+      let count = 0;
+      dispatch({
+        type: actionTypes.FETCH_ALL_TYPE_SUCCEED,
+        sumCount: count + 1,
+      });
+    } catch (e) {
+      toast.error("fetch all count product failded");
+    }
+  };
+};

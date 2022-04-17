@@ -6,15 +6,10 @@ import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { LANGUAGE } from "../../utils/constant";
 import { withRouter } from "react-router";
-import Slider from "react-slick";
-import SinglePr from "../Navigator/SinglePr";
-import { path } from "../../utils/constant";
+
 import "./Product.css";
 
 class ProductItem extends Component {
-  ChangeLanguage = (language) => {
-    this.props.ChangeLanguageRedux(language);
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +20,7 @@ class ProductItem extends Component {
     await this.props.fetchAllProduct();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.products !== prevProps.products) {
+    if (prevProps.products !== this.props.products) {
       let { products } = this.props;
       this.setState({
         products: products,
@@ -106,7 +101,7 @@ class ProductItem extends Component {
                             <div class="product_info">
                               <h6 class="product_name">
                                 <div
-                                  key={item.id}
+                                  key={index}
                                   onClick={() =>
                                     this.handleViewDetailProduct(item)
                                   }
@@ -125,7 +120,7 @@ class ProductItem extends Component {
                           </div>
                           <div className="red_button add_to_cart_button">
                             <div
-                              key={item.id}
+                              key={index}
                               onClick={() => this.handleViewDetailProduct(item)}
                             >
                               <FormattedMessage id={"NewArrivals.addCart"} />

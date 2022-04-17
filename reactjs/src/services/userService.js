@@ -9,6 +9,10 @@ const handleAdminLogin = (email, password) => {
 const CreateNewUser = (data) => {
   return axios.post("/api/Register", data);
 };
+const CreateNewAdmin = (data) => {
+  return axios.post("/api/Register-admin", data);
+};
+
 const getUser = (id) => {
   return axios.get(`/api/get-all-users?id=${id}`);
 };
@@ -82,4 +86,5 @@ export {
   deletePr,
   editProduct,
   getProductById,
+  CreateNewAdmin,
 };

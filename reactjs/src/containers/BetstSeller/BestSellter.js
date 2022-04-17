@@ -1,22 +1,40 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
-import prd1 from "../../More/images/product_1.png";
-import prd2 from "../../More/images/product_2.png";
-import prd3 from "../../More/images/product_3.png";
-import prd4 from "../../More/images/product_4.png";
-import prd5 from "../../More/images/product_5.png";
-import prd6 from "../../More/images/product_6.png";
-import prd7 from "../../More/images/product_7.png";
-import prd8 from "../../More/images/product_8.png";
-import prd9 from "../../More/images/product_9.png";
-import prd10 from "../../More/images/product_10.png";
+import * as actions from "../../store/actions";
 import Slider from "react-slick";
 import "./BestSeller.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { connect } from "react-redux";
+import { ChangeLanguage } from "../../store/actions/appActions";
+import { LANGUAGE } from "../../utils/constant";
+import { withRouter } from "react-router";
 
-export default class BestSellter extends Component {
+class BestSellter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
+  async componentDidMount() {
+    await this.props.fetchAllProduct();
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.products !== this.props.products) {
+      let { products } = this.props;
+      this.setState({
+        products: products,
+      });
+    }
+  }
+  handleViewDetailProduct = (item) => {
+    this.props.history.push(`/SinglePr/${item.id}`);
+  };
+
   render() {
+    let { products } = this.state;
+    let { language } = this.props;
     const settings = {
       dots: true,
       infinite: true,
@@ -36,60 +54,35 @@ export default class BestSellter extends Component {
               </div>
             </div>
             <div className="section-product">
-              <div className="section-content">
-                <Slider {...settings}>
-                  <div className="img-customer">
-                    <img src={prd1} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd2} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd3} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd4} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd5} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd6} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd7} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd8} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd9} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                  <div className="img-customer">
-                    <img src={prd10} />
-                    <div className="title-product">product 1</div>
-                    <div className="title-price">price 1</div>
-                  </div>
-                </Slider>
-              </div>
+              <Slider {...settings}>
+                {products &&
+                  products.length > 0 &&
+                  products.map((item, index) => {
+                    let imageBase64 = "";
+                    if (item.image) {
+                      imageBase64 = new Buffer(item.image, "base64").toString(
+                        "binary"
+                      );
+                    }
+                    return (
+                      <div className="section-content">
+                        <div className="img-customer" key={index}>
+                          <img
+                            style={{
+                              backgroundImage: `url(${imageBase64})`,
+                            }}
+                          />
+                          <div className="title-product"> {item.namePR}</div>
+                          <div className="title-price">
+                            {language === LANGUAGE.VI
+                              ? item.priceData.valueVi
+                              : item.priceData.valueEn}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </Slider>
             </div>
           </div>
         </div>
@@ -97,3 +90,20 @@ export default class BestSellter extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    language: state.app.language,
+    products: state.admin.products,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ChangeLanguageRedux: (language) => dispatch(ChangeLanguage(language)),
+    fetchAllProduct: () => dispatch(actions.fetchAllProduct()),
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(BestSellter)
+);

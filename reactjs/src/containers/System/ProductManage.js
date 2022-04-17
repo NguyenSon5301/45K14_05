@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CommonUtils from "../../utils/CommonUtils";
 import "./ProductManage.scss";
 import { LANGUAGE } from "../../utils/constant";
+import { emitter } from "../../utils/emitter";
 
 import * as actions from "../../store/actions";
 import {
@@ -29,22 +30,35 @@ class ProductManage extends Component {
       isOpenModalEdit: false,
       productEdit: {},
     };
+    this.listenToEmitter();
+  }
+  listenToEmitter() {
+    emitter.on("EVENT_CLEAR_DATA_MODAL_CREATE", () => {
+      this.setState({
+        namePr: "",
+        price: "",
+        typePr: "",
+        description: "",
+        image: "",
+        size: "",
+      });
+    });
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.products !== prevProps.products) {
+    if (prevProps.products !== this.props.products) {
       let { products } = this.props;
       this.setState({
         arrProducts: products,
       });
     }
-    if (this.props.arrPrices !== prevProps.arrPrices) {
+    if (prevProps.arrPrices !== this.props.arrPrices) {
       let { arrPrices } = this.props;
       this.setState({
         arrPrice: arrPrices,
         price: arrPrices && arrPrices.length > 0 ? arrPrices[0].keyMap : "",
       });
     }
-    if (this.props.arrType !== prevProps.arrType) {
+    if (prevProps.arrType !== this.props.arrType) {
       let { arrType } = this.props;
       this.setState({
         arrType: arrType,
@@ -108,8 +122,7 @@ class ProductManage extends Component {
         description: this.state.description,
       });
       if (res && res.errCode === 0) {
-        toast.success("Create product succeed");
-
+        emitter.emit("EVENT_CLEAR_DATA_MODAL_CREATE");
         await this.props.fetchAllProduct();
       }
       if (res && res.errCode === 1) {
@@ -157,7 +170,6 @@ class ProductManage extends Component {
       namePr,
       price,
       typePr,
-
       size,
       description,
       arrProducts,
@@ -218,11 +230,9 @@ class ProductManage extends Component {
                 arrPrice.length > 0 &&
                 arrPrice.map((item, index) => {
                   return (
-                    <>
-                      <option key={index} value={item.keyMap}>
-                        {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
-                      </option>
-                    </>
+                    <option key={index} value={item.keyMap}>
+                      {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
+                    </option>
                   );
                 })}
             </select>
@@ -251,11 +261,9 @@ class ProductManage extends Component {
                 arrType.length > 0 &&
                 arrType.map((item, index) => {
                   return (
-                    <>
-                      <option key={index} value={item.keyMap}>
-                        {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
-                      </option>
-                    </>
+                    <option key={index} value={item.keyMap}>
+                      {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
+                    </option>
                   );
                 })}
             </select>
@@ -268,7 +276,9 @@ class ProductManage extends Component {
             <div className="preview-img-container">
               <input
                 type="file"
-                onChange={(event) => this.handleUpload(event)}
+                onChange={(event) => {
+                  this.handleUpload(event, "image");
+                }}
               />
             </div>
           </div>
@@ -283,21 +293,23 @@ class ProductManage extends Component {
 
         <div className="content">
           <table>
-            <tr>
-              <th>Product Name</th>
-              <th>Description</th>
-              <th>Size</th>
-              <th>Type</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-            {arrProducts &&
-              arrProducts.length > 0 &&
-              arrProducts.map((item, index) => {
-                console.log("check product", arrProducts);
-                return (
-                  <tbody key={index}>
-                    <tr>
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {arrProducts &&
+                arrProducts.length > 0 &&
+                arrProducts.map((item, index) => {
+                  console.log("check item ", item);
+                  return (
+                    <tr key={index}>
                       <td>{item.namePR}</td>
                       <td>{item.description}</td>
                       <td>{item.sizeId}</td>
@@ -328,9 +340,9 @@ class ProductManage extends Component {
                         </button>
                       </td>
                     </tr>
-                  </tbody>
-                );
-              })}
+                  );
+                })}
+            </tbody>
           </table>
         </div>
         {this.state.isOpenModalEdit && (

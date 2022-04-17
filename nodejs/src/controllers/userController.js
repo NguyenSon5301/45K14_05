@@ -59,6 +59,18 @@ let AddNewUser = async (req, res) => {
     });
   }
 };
+let AddNewAdmin = async (req, res) => {
+  try {
+    let data = await userService.handleAddNewAdmin(req.body);
+    res.status(200).json(data);
+  } catch (error) {
+    console.log("check error", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 let getAllUser = async (req, res) => {
   try {
     let id = req.query.id;
@@ -222,4 +234,5 @@ module.exports = {
   deleteBlog,
   getContact,
   deleteContact,
+  AddNewAdmin,
 };

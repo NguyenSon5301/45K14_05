@@ -17,7 +17,7 @@ class Blog extends Component {
     this.props.fetchAllBlogs();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.arrBlogs !== prevProps.arrBlogs) {
+    if (prevProps.arrBlogs !== this.props.arrBlogs) {
       let { arrBlogs } = this.props;
       this.setState({
         arrBlogs: arrBlogs,
@@ -58,7 +58,7 @@ class Blog extends Component {
                 <div
                   class="blog_item"
                   style={{ "margin-bottom": "30px", "margin-top": "0" }}
-                  key={item.id}
+                  key={index}
                   onClick={() => this.handleViewDetailBlog(item)}
                 >
                   <div

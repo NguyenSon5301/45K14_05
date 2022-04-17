@@ -1,39 +1,3 @@
-$font-family-sans-serif-2: 'Roboto',
-sans-serif;
-$font-family-serif: 'Source Serif Pro',
-serif;
-$font-family-sans-serif: 'Roboto',
-sans-serif;
-
-body {
-	font-family     : $font-family-sans-serif;
-	background-color: #fff;
-}
-
-p {
-	color      : darken(#ccc, 10%);
-	font-weight: 300;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-	font-family: $font-family-sans-serif;
-}
-
-.content {
-	padding: 7rem 0;
-}
-
 h2 {
 	font-size: 20px;
 }
@@ -42,80 +6,45 @@ h2 {
 
 	&,
 	& .container>.row {
-		height: 100vh;
+		height: 50vh;
 	}
 
 
 
 	.contents,
 	.bg {
-		width: 50%;
-
-
-		.form-group {
-			overflow     : hidden;
-			margin-bottom: 0;
-			border       : 1px solid #efefef;
-			min-height   : 55px;
-			border-bottom: none;
-			position     : relative;
-
-			&.first {
-				border-top-left-radius : 7px;
-				border-top-right-radius: 7px;
-			}
-
-			&.last {
-				border-bottom             : 1px solid #efefef;
-				border-bottom-left-radius : 7px;
-				border-bottom-right-radius: 7px;
-			}
-
-		}
-
-
-		.form-control {
-			border       : none;
-			padding      : 0;
-			font-size    : 20px;
-			border-radius: 0;
-			position     : absolute;
-			top          : 15px;
-			left         : 20px;
-
-
-
-
-		}
+		width: 100%;
 
 		.login-password {
-			position     : relative;
-			border-bottom: 1px solid #efefef;
+			position: relative;
 
-
-			.icon-show {
-				position: absolute;
-				top     : 20px;
-				right   : 20px;
-			}
 		}
 
-		.last-child {
-			position     : relative;
-			border-bottom: 1px solid #efefef;
-		}
+
 	}
 
 	.bg {
 		background-size    : cover;
 		background-position: center;
+
+
 	}
+
 
 	.btn {
 		height       : 54px;
 		padding-left : 30px;
 		padding-right: 30px;
+
 	}
 
+	.color-title {
+		font-weight: 500;
+	}
 
+	span.icon-show {
+		position: absolute;
+		top     : 20px;
+		right   : 12px;
+	}
 }

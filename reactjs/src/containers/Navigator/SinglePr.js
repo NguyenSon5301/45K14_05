@@ -16,13 +16,20 @@ class SinglePr extends Component {
     super(props);
     this.state = {
       products: [],
-      count: 0,
+      sumCount: 0,
       sumVi: 0,
       sumEn: 0,
     };
   }
-
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.sumCount !== this.props.sumCount) {
+      this.setState({
+        sumCount: this.props.sumCount,
+      });
+    }
+  }
   async componentDidMount() {
+    await this.props.addQuatityProduct();
     if (
       this.props.match &&
       this.props.match.params &&
@@ -47,6 +54,7 @@ class SinglePr extends Component {
         count: this.state.count + 1,
         sumVi: this.state.sumVi,
         sumEn: this.state.sumEn,
+        sumCount: this.props.sumCount + 1,
       });
     } else {
       this.state.sumEn = (this.state.count + 1) * priceEn;
@@ -210,11 +218,15 @@ class SinglePr extends Component {
 const mapStateToProps = (state) => {
   return {
     language: state.app.language,
+    sumCount: state.admin.sumCount,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    addQuatityProduct: (sumCount) =>
+      dispatch(actions.addQuatityProduct(sumCount)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePr);

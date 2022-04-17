@@ -11,6 +11,7 @@ const initialState = {
   products: [],
   arrPrices: [],
   arrType: [],
+  sumCount: 0,
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -110,6 +111,12 @@ const adminReducer = (state = initialState, action) => {
     // fetch all type product
     case actionTypes.FETCH_ALL_TYPE_SUCCEED:
       state.arrType = action.arrType;
+
+      return {
+        ...state,
+      };
+    case actionTypes.ADD_QUATITY_PRODUCT:
+      state.sumCount = action.sumCount + 1;
 
       return {
         ...state,

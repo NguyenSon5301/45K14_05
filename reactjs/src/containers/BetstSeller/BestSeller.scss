@@ -8,14 +8,17 @@
     height: 330px;
     cursor: pointer;
 
+
+
     .section-content {
         padding-bottom: 20px;
 
 
 
+
+
         .img-customer {
             height             : 340px;
-            border-right       : 1px solid #e9e9e9;
             transition-duration: 0.05s;
 
             &:hover {
@@ -30,7 +33,7 @@
 
 
             img {
-
+                border: none;
                 height: 221px;
                 width : 100%;
             }
@@ -60,7 +63,15 @@
                 text-align : center;
             }
 
-            // background: url('../../More/images/product_1.png') no-repeat no-repeat;
         }
     }
+}
+
+button.slick-arrow.slick-next,
+button.slick-arrow.slick-prev {
+    background-color: #d3d3d6;
+
+    width              : 30px;
+    height             : 100px;
+    transition-duration: 0.5s;
 }

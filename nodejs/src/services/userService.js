@@ -113,8 +113,41 @@ let handleAddNewUser = (data) => {
           address: data.address,
           phonenumber: data.phonenumber,
           gender: data.gender,
+          roleId: "R2",
+        });
+
+        resolve({
+          errCode: 0,
+          errMessage: "Create New User success",
+        });
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+let handleAddNewAdmin = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let check = await checkUserEmail(data.email);
+      if (check === true) {
+        resolve({
+          errCode: 1,
+          errMessage: "Your email is already in used, Pls try another email",
+        });
+      } else {
+        let hashPassWordFromBcrypt = await hashUserPassword(data.password);
+        await db.User.create({
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          password: hashPassWordFromBcrypt,
+          address: data.address,
+          phonenumber: data.phonenumber,
+          gender: data.gender,
           roleId: data.role,
         });
+
         resolve({
           errCode: 0,
           errMessage: "Create New User success",
@@ -385,4 +418,5 @@ module.exports = {
   onDeleteBlog,
   getContactSV,
   deleteContactSV,
+  handleAddNewAdmin,
 };

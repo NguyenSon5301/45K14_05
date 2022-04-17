@@ -28,7 +28,6 @@ class ModalCreateUser extends Component {
 
   // clear modal data when add new user
   listenToEmitter() {
-    let { roleData, gendersArr } = this.props;
     emitter.on("EVENT_CLEAR_DATA_MODAL", () => {
       this.setState({
         email: "",
@@ -45,7 +44,7 @@ class ModalCreateUser extends Component {
     this.props.fetchRoleData();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.gendersArr !== prevProps.gendersArr) {
+    if (prevProps.gendersArr !== this.props.gendersArr) {
       let { gendersArr } = this.props;
       this.setState({
         gendersArr: gendersArr,
@@ -53,7 +52,7 @@ class ModalCreateUser extends Component {
       });
     }
 
-    if (this.props.roleData !== prevProps.roleData) {
+    if (prevProps.roleData !== this.props.roleData) {
       let { roleData } = this.props;
       this.setState({
         roleArr: roleData,
@@ -154,10 +153,11 @@ class ModalCreateUser extends Component {
                     }
                   />
                 </div>
+
                 <div className="form-group col-3">
                   <label>Chức vụ</label>
                   <select
-                    class="form-select"
+                    className="form-select"
                     onChange={(event) => this.handleChangeInput(event, "role")}
                   >
                     {roleData.map((item, index) => {
@@ -171,26 +171,24 @@ class ModalCreateUser extends Component {
                     })}
                   </select>
                 </div>
+
                 <div className="form-group col-3">
                   <label>Giới tính</label>
                   <select
-                    class="form-select"
+                    className="form-select"
                     onChange={(event) =>
                       this.handleChangeInput(event, "gender")
                     }
                   >
-                    <label>Giới tính</label>;
                     {gendersArr &&
                       gendersArr.length > 0 &&
                       gendersArr.map((item, index) => {
                         return (
-                          <>
-                            <option key={index} value={item.keyMap}>
-                              {language === LANGUAGE.VI
-                                ? item.valueVi
-                                : item.valueEn}
-                            </option>
-                          </>
+                          <option key={index} value={item.keyMap}>
+                            {language === LANGUAGE.VI
+                              ? item.valueVi
+                              : item.valueEn}
+                          </option>
                         );
                       })}
                   </select>
@@ -244,7 +242,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
+    fetchAllUser: () => dispatch(actions.fetchAllUser()),
+
     fetchGenderData: () => dispatch(actions.fetchGenderData()),
     fetchRoleData: () => dispatch(actions.fetchRoleData()),
   };

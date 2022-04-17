@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import {
   deleteUser,
   editUser,
-  CreateNewUser,
+  CreateNewAdmin,
 } from "../../services/userService";
 import ModalEditUser from "./ModalEditUser";
 import ModalCreateUser from "./ModalCreateUser";
@@ -25,7 +25,12 @@ class UserManage extends Component {
       isOpenMidalCreate: false,
     };
   }
-
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
   async componentDidMount() {
     await this.props.fetchAllUser();
     await this.props.fetchGenderData();
@@ -83,15 +88,15 @@ class UserManage extends Component {
   // handle add new user for child
   handleSubmit = async (data) => {
     try {
-      let res = await CreateNewUser(data);
+      let res = await CreateNewAdmin(data);
       if (res && res.errCode !== 0) {
         alert(res.errMessage);
       } else {
-        await this.props.fetchAllUser();
         this.setState({
           isOpenMidalCreate: false,
         });
         emitter.emit("EVENT_CLEAR_DATA_MODAL");
+        await this.props.fetchAllUser();
       }
     } catch (e) {
       console.log(e);
@@ -127,55 +132,59 @@ class UserManage extends Component {
         </button>
         <div className="content">
           <table>
-            <tr>
-              <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Address</th>
-              <th>Phone Numbers</th>
-              <th>Gender</th>
-              <th>Role</th>
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Phone Numbers</th>
+                <th>Gender</th>
+                <th>Role</th>
 
-              <th>Action</th>
-            </tr>
-            {arrUser &&
-              arrUser.length > 0 &&
-              arrUser.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{item.email}</td>
-                    <td>{item.firstName}</td>
-                    <td>{item.lastName}</td>
-                    <td>{item.address}</td>
-                    <td>{item.phonenumber}</td>
-                    <td>
-                      {language === LANGUAGE.VI
-                        ? item.genderData.valueVi
-                        : item.genderData.valueEn}
-                    </td>
-                    <td>
-                      {language === LANGUAGE.VI
-                        ? item.roleData.valueVi
-                        : item.roleData.valueEn}
-                    </td>
-                    <td className="button-sub">
-                      <button
-                        className="btn btn-primary mx-2"
-                        onClick={() => this.onEdit(item)}
-                      >
-                        Edit
-                      </button>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {arrUser &&
+                arrUser.length > 0 &&
+                arrUser.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{item.email}</td>
+                      <td>{item.firstName}</td>
+                      <td>{item.lastName}</td>
+                      <td>{item.address}</td>
+                      <td>{item.phonenumber}</td>
+                      <td>
+                        {language === LANGUAGE.VI
+                          ? item.genderData.valueVi
+                          : item.genderData.valueEn}
+                      </td>
+                      <td>
+                        {language === LANGUAGE.VI
+                          ? item.roleData.valueVi
+                          : item.roleData.valueEn}
+                      </td>
+                      <td className="button-sub">
+                        <button
+                          className="btn btn-primary mx-2"
+                          onClick={() => this.onEdit(item)}
+                        >
+                          Edit
+                        </button>
 
-                      <button
-                        className="btn btn-warning"
-                        onClick={() => this.onDelete(item.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
+                        <button
+                          className="btn btn-warning"
+                          onClick={() => this.onDelete(item.id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
         </div>
         {this.state.isOpenModalEdit && (
@@ -201,7 +210,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // fetchAllUserRedux: () => dispatch(fetchAllUserRedux),
     fetchAllUser: () => dispatch(actions.fetchAllUser()),
     fetchGenderData: () => dispatch(actions.fetchGenderData()),
   };

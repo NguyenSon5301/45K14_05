@@ -58,7 +58,7 @@ class HeaderBefore extends Component {
                         </a>
                         <ul
                           className="account_selection"
-                          style={{ height: "100px" }}
+                          style={{ height: "100px", width: "128px" }}
                         >
                           <li>
                             <NavLink to={path.USERLOGIN}>

@@ -4,17 +4,14 @@ import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGE, path } from "../../utils/constant";
 import * as actions from "../../store/actions";
-import { handleLoginApi } from "../../services/userService";
-import Navigator from "../../components/Navigator";
 import { NavLink } from "react-router-dom";
-import HeaderBefore from "./HeaderBefore";
-// import { userMenu } from "../Header/menuApp";
 
 class HeaderHomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {},
+      count: 0,
     };
   }
   ChangeLanguage = (language) => {
@@ -24,6 +21,13 @@ class HeaderHomePage extends Component {
     this.setState({
       user: this.props.userInfo,
     });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.sumCount !== this.props.sumCount) {
+      this.setState({
+        count: this.props.sumCount,
+      });
+    }
   }
   handleLoginOut = () => {
     this.props.processLogout();
@@ -71,17 +75,19 @@ class HeaderHomePage extends Component {
                       </li>
                       <li className="account">
                         <a>
-                          <span>
-                            {user
-                              ? user.firstName + user.lastName
-                              : "Not Login"}
+                          <span className="px-3">
+                            {user ? (
+                              user.firstName + user.lastName
+                            ) : (
+                              <span className="not-login"> Not Login</span>
+                            )}
                           </span>
 
                           <i className="fa fa-angle-down"></i>
                         </a>
                         <ul
                           className="account_selection"
-                          style={{ height: "50px" }}
+                          style={{ height: "50px", width: "128px" }}
                         >
                           {/* <li>
                             <NavLink to={path.USERLOGIN}>
@@ -145,7 +151,7 @@ class HeaderHomePage extends Component {
                             aria-hidden="true"
                           ></i>
                           <span id="checkout_items" className="checkout_items">
-                            2
+                            {this.state.count}
                           </span>
                         </a>
                       </li>
@@ -169,6 +175,7 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
     userInfo: state.user.userInfo,
+    sumCount: state.admin.sumCount,
   };
 };
 

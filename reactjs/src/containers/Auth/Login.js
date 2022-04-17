@@ -68,61 +68,61 @@ class Login extends Component {
   render() {
     let { username, password } = this.state;
     return (
-      <div className="d-lg-flex half">
+      <div className="d-lg-flex half ">
         <div
-          className="bg order-1 order-md-2"
+          className="bg order-1 order-md-2 "
           style={{ backgroundImage: `url(${bg1})` }}
         ></div>
-        <div className="contents order-2 order-md-1">
-          <div className="container">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-md-7">
-                <div className="mb-4">
-                  <h3>Sign In</h3>
+
+        <div className="container color-title">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-md-7">
+              <div className="mb-4">
+                <h3>Sign in</h3>
+              </div>
+              <div>
+                <label>Email</label>
+                <div className="form-group py-2">
+                  <input
+                    placeholder="Email"
+                    type="email"
+                    className="form-control"
+                    value={username}
+                    onChange={(e) => this.handleChangeInput(e, "username")}
+                  />
                 </div>
-                <div>
-                  <div className="form-group ">
-                    <input
-                      placeholder="Email"
-                      type="text"
-                      className="form-control"
-                      value={username}
-                      onChange={(e) => this.handleChangeInput(e, "username")}
-                    />
-                  </div>
-                  <div className="form-group login-password  mb-3">
-                    <input
-                      placeholder="Password"
-                      type={this.state.showPassword ? "text" : "password"}
-                      className="form-control"
-                      value={password}
-                      onChange={(e) => this.handleChangeInput(e, "password")}
-                    />
-                    <span
-                      className="icon-show"
-                      onClick={() => this.handleShowHidePassword()}
-                    >
-                      <i
-                        className={
-                          this.state.showPassword
-                            ? "fas fa-eye show-password"
-                            : "fas fa-eye-slash show-password"
-                        }
-                      ></i>
-                    </span>
-                  </div>
-                  <div className="col-12" style={{ color: "red" }}>
-                    {this.state.errMessage}
-                  </div>
-                  <button
-                    type="submit"
-                    value="Log In"
-                    className="btn btn-block btn-primary"
-                    onClick={() => this.handleLogin()}
+
+                <label>Password</label>
+                <div className="form-group col-12 py-3 login-password">
+                  <input
+                    type={this.state.showPassword ? "text" : "password"}
+                    className="form-control "
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => this.handleChangeInput(e, "password")}
+                  />
+                  <span
+                    className="icon-show"
+                    onClick={() => this.handleShowHidePassword()}
                   >
-                    Login
-                  </button>
+                    <i
+                      className={
+                        this.state.showPassword
+                          ? "fas fa-eye show-password"
+                          : "fas fa-eye-slash show-password"
+                      }
+                    ></i>
+                  </span>
                 </div>
+                <div className="col-12" style={{ color: "red" }}>
+                  {this.state.errMessage}
+                </div>
+                <button
+                  className="btn btn-block btn-primary"
+                  onClick={() => this.handleLogin()}
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>

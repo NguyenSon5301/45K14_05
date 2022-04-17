@@ -46,11 +46,7 @@ export default class DealOff extends Component {
                     <div className="timer_unit">Sec</div>
                   </li>
                 </ul>
-                <div className="red_button deal_ofthe_week_button px-3">
-                  <a href="#">
-                    <FormattedMessage id={"Deal-Of-The-Week.shopButton"} />
-                  </a>
-                </div>
+                <div className="red_button deal_ofthe_week_button px-3"></div>
               </div>
             </div>
           </div>

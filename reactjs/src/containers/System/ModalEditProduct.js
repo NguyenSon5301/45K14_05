@@ -29,9 +29,9 @@ class ModalEditUser extends Component {
       ...coppyState,
     });
   };
-  checkVaidInput = () => {
+  checkValidateInput = () => {
     let isValid = true;
-    let arrInput = [
+    let arrCheck = [
       "namePr",
       "price",
       "typePr",
@@ -39,25 +39,25 @@ class ModalEditUser extends Component {
       "image",
       "size",
     ];
-    for (let i = 0; i < arrInput.length; i++) {
-      if (!this.state[arrInput[i]]) {
+    for (let i = 0; i < arrCheck.length; i++) {
+      if (!this.state[arrCheck[i]]) {
+        alert("Missing required parameter: " + arrCheck[i]);
         isValid = false;
-        alert("Missing parameter: " + arrInput[i]);
         break;
       }
-      return isValid;
     }
+    return isValid;
   };
   //toggle
   toggle = () => {
     this.props.toogleEditProduct();
   };
   handleSaveProduct = () => {
-    let isValid = this.checkVaidInput();
+    let isValid = this.checkValidateInput();
+    if (isValid === false) return;
     if (isValid === true) {
       // call api
       this.props.editProduct(this.state);
-
       this.toggle();
     }
   };
@@ -68,7 +68,7 @@ class ModalEditUser extends Component {
     if (currentProduct && !_.isEmpty(currentProduct)) {
       this.setState({
         id: currentProduct.id,
-        namePr: currentProduct.namePR,
+        namePr: currentProduct.namePr,
         price: currentProduct.priceId,
         typePr: currentProduct.typeId,
         description: currentProduct.description,
@@ -78,14 +78,14 @@ class ModalEditUser extends Component {
     }
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.arrPrices !== prevProps.arrPrices) {
+    if (prevProps.arrPrices !== this.props.arrPrices) {
       let { arrPrices } = this.props;
       this.setState({
         arrPrice: arrPrices,
         price: arrPrices && arrPrices.length > 0 ? arrPrices[0].keyMap : "",
       });
     }
-    if (this.props.arrType !== prevProps.arrType) {
+    if (prevProps.arrType !== this.props.arrType) {
       let { arrType } = this.props;
       this.setState({
         arrType: arrType,
@@ -109,7 +109,6 @@ class ModalEditUser extends Component {
       namePr,
       price,
       typePr,
-      image,
       size,
       description,
       arrProducts,
@@ -205,7 +204,7 @@ class ModalEditUser extends Component {
                 <label>file</label>
                 <input
                   type="file"
-                  onChange={(event) => this.handleUpload(event)}
+                  onChange={(event) => this.handleUpload(event, "image")}
                 />
               </div>
             </div>

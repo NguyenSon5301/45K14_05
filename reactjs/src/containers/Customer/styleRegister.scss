@@ -1,35 +1,3 @@
-$font-family-sans-serif-2: 'Roboto',
-sans-serif;
-$font-family-serif: 'Source Serif Pro',
-serif;
-$font-family-sans-serif: 'Roboto',
-sans-serif;
-
-body {
-	font-family     : $font-family-sans-serif;
-	background-color: #fff;
-}
-
-p {
-	color      : darken(#ccc, 10%);
-	font-weight: 300;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-	font-family: $font-family-sans-serif;
-}
-
 a {
 	transition: .3s all ease;
 
@@ -57,21 +25,20 @@ h2 {
 
 	.contents,
 	.bg {
-		width: 50%;
+		width: 100%;
 
 
 		.form-group {
 			overflow     : hidden;
 			margin-bottom: 0;
 			border       : 1px solid #efefef;
-			min-height   : 55px;
-
 			border-bottom: none;
 			position     : relative;
+			margin       : 50px 0px;
+
 
 
 		}
-
 
 		.form-control {
 			border       : none;
@@ -117,6 +84,10 @@ h2 {
 		height       : 54px;
 		padding-left : 30px;
 		padding-right: 30px;
+	}
+
+	.color-title {
+		font-weight: 500;
 	}
 
 

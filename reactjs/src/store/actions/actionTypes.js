@@ -7,7 +7,7 @@ const actionTypes = Object.freeze({
   ADD_USER_SUCCESS: "ADD_USER_SUCCESS",
   USER_LOGIN_SUCCESS: "USER_LOGIN_SUCCESS",
   USER_LOGIN_FAIL: "USER_LOGIN_FAIL",
-  PROCESS_LOGOUT: "PROCESS_LOGOUT",
+
   // admin
   ADMIN_LOGIN_SUCCESS: "ADMIN_LOGIN_SUCCESS",
   ADMIN_LOGIN_FAIL: "ADMIN_LOGIN_FAIL",
@@ -36,6 +36,9 @@ const actionTypes = Object.freeze({
   // fetch all type
   FETCH_ALL_TYPE_SUCCEED: "FETCH_ALL_TYPE_SUCCEED",
   FETCH_ALL_TYPE_FAILDED: "FETCH_ALL_TYPE_FAILDED",
+
+  // add quatity product
+  ADD_QUATITY_PRODUCT: "ADD_QUATITY_PRODUCT",
 });
 
 export default actionTypes;

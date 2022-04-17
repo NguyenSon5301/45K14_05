@@ -56,6 +56,8 @@ class ModalEditUser extends Component {
   };
   handleSaveUser = () => {
     let isValid = this.checkVaidInput();
+    if (isValid === false) return;
+
     if (isValid === true) {
       // call api
       this.props.editUser(this.state);
@@ -82,14 +84,14 @@ class ModalEditUser extends Component {
     }
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.gendersArr !== prevProps.gendersArr) {
+    if (prevProps.gendersArr !== this.props.gendersArr) {
       let { gendersArr } = this.props;
       this.setState({
         gendersArr: gendersArr,
       });
     }
 
-    if (this.props.roleData !== prevProps.roleData) {
+    if (prevProps.roleData !== this.props.roleData) {
       let { roleData } = this.props;
       this.setState({
         roleArr: roleData,

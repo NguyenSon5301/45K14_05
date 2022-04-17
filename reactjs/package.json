@@ -17,7 +17,6 @@
     "markdown-it": "^12.3.2",
     "moment": "^2.29.0",
     "node-sass": "^6.0.0",
-    "react": "^17.0.2",
     "react-auth-wrapper": "^1.0.0",
     "react-autosuggest": "^10.1.0",
     "react-bootstrap-table-next": "^4.0.3",
@@ -68,5 +67,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react": "^18.0.0"
   }
 }
