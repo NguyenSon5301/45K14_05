@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { LANGUAGE } from "../../utils/constant";
 import { withRouter } from "react-router";
+import NumberFormat from "react-number-format";
 
 import "./Product.css";
 
@@ -42,16 +43,17 @@ class ProductItem extends Component {
       slidesToShow: 3,
       slidesToScroll: 3,
     };
-    let { arrItem } = this.state;
+
     return (
       <Fragment>
         <div className="new_arrivals">
           <div className="container">
             <div className="row">
               <div className="col text-center">
-                <div className=" new_arrivals_title">
-                  <h2>
+                <div className="new_arrivals_title">
+                  <h2 className="title-product">
                     <FormattedMessage id={"NewArrivals.Title"} />
+                    <hr className="underline" />
                   </h2>
                 </div>
               </div>
@@ -109,12 +111,29 @@ class ProductItem extends Component {
                                   {item.namePR}
                                 </div>
                               </h6>
-                              <div class="product_price">
-                                <td>
-                                  {language === LANGUAGE.VI
-                                    ? item.priceData.valueVi
-                                    : item.priceData.valueEn}
-                                </td>
+                              <div className="product_prices">
+                                {item &&
+                                  item.priceData &&
+                                  language === LANGUAGE.VI && (
+                                    <NumberFormat
+                                      className="currency"
+                                      value={item.priceData.valueVi}
+                                      displayType={"text"}
+                                      thousandSeparator={true}
+                                      suffix={"VND"}
+                                    />
+                                  )}
+                                {item &&
+                                  item.priceData &&
+                                  language === LANGUAGE.EN && (
+                                    <NumberFormat
+                                      className="currency"
+                                      value={item.priceData.valueEn}
+                                      displayType={"text"}
+                                      thousandSeparator={true}
+                                      suffix={"$"}
+                                    />
+                                  )}
                               </div>
                             </div>
                           </div>

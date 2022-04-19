@@ -126,6 +126,35 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    // buy product
+    case actionTypes.BUY_PRODUCT_FAILDED:
+      const productInCart = state.cartAr.find(
+        (p) => p.id === action.payload.id
+      );
+      if (!productInCart) {
+        return {
+          cartAr: [...state.cartAr, action.payload],
+        };
+      } else {
+        let newcart = state.cartAr;
+        const objIndex = newcart.findIndex(
+          (obj) => obj.id == action.payload.id
+        );
+        if (newcart[objIndex].quantity === undefined) {
+          newcart[objIndex].quantity = 2;
+        } else {
+          newcart[objIndex].quantity = newcart[objIndex].quantity + 1;
+        }
+
+        return { cartAr: [...newcart] };
+      }
+    // delele product
+    case actionTypes.DELETE_PRODUCT_SUCCESS:
+      let newcart = state.cartAr;
+      const objIndex = newcart.findIndex((obj) => obj.id == action.payload.id);
+      newcart.splice(objIndex, 1);
+      console.log(">>newcart", newcart);
+      return { cartAr: [...newcart], totalprice: 0 };
     default:
       return state;
   }

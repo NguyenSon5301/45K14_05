@@ -92,7 +92,6 @@ class SinglePr extends Component {
   render() {
     let { products, count, sumVi, sumEn } = this.state;
     let { language } = this.props;
-    console.log("type of", typeof sumVi);
     return (
       <>
         <HeaderHomePage />

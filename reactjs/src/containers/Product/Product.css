@@ -8,6 +8,18 @@
     font-weight: 600;
 }
 
+.title-product {
+    font-size  : 50px;
+    font-weight: 600;
+}
+
+.underline {
+    width      : 500px;
+    margin     : 0 auto;
+    font-weight: 800;
+    color      : red;
+}
+
 /*********************************
 5.1 New Arrivals Sorting
 *********************************/
@@ -153,7 +165,7 @@
     transition        : all 0.3s ease;
     padding           : 0 20px;
     position          : absolute;
-    left              : 30px;
+    left              : 40px;
     color             : white;
     bottom            : 20px;
 }

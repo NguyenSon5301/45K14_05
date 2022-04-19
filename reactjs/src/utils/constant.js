@@ -12,6 +12,7 @@ export const path = {
   DETAIL_BLOG: "/detail_blog/:id",
   BLOGUSER: "/Blog",
   BFLOGIN: "/home",
+  Cart: "/Cart",
 };
 
 export const LANGUAGE = {

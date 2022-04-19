@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { ChangeLanguage } from "../../store/actions/appActions";
 import { LANGUAGE } from "../../utils/constant";
 import { withRouter } from "react-router";
+import NumberFormat from "react-number-format";
 
 class BestSellter extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class BestSellter extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 4,
-      slidesToScroll: 2,
+      slidesToScroll: 4,
     };
     return (
       <div className="best_sellers">
@@ -67,16 +68,36 @@ class BestSellter extends Component {
                     return (
                       <div className="section-content">
                         <div className="img-customer" key={index}>
-                          <img
+                          <div
+                            className="img-product"
                             style={{
                               backgroundImage: `url(${imageBase64})`,
                             }}
-                          />
+                          ></div>
                           <div className="title-product"> {item.namePR}</div>
                           <div className="title-price">
-                            {language === LANGUAGE.VI
-                              ? item.priceData.valueVi
-                              : item.priceData.valueEn}
+                            {item &&
+                              item.priceData &&
+                              language === LANGUAGE.VI && (
+                                <NumberFormat
+                                  className="currency"
+                                  value={item.priceData.valueVi}
+                                  displayType={"text"}
+                                  thousandSeparator={true}
+                                  suffix={"VND"}
+                                />
+                              )}
+                            {item &&
+                              item.priceData &&
+                              language === LANGUAGE.EN && (
+                                <NumberFormat
+                                  className="currency"
+                                  value={item.priceData.valueEn}
+                                  displayType={"text"}
+                                  thousandSeparator={true}
+                                  suffix={"$"}
+                                />
+                              )}
                           </div>
                         </div>
                       </div>

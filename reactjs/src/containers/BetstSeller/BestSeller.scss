@@ -14,12 +14,17 @@
         padding-bottom: 20px;
 
 
-
-
-
         .img-customer {
             height             : 340px;
             transition-duration: 0.05s;
+
+            .img-product {
+                background: no-repeat no-repeat center;
+                height    : 200px;
+
+
+
+            }
 
             &:hover {
                 visibility: visible;

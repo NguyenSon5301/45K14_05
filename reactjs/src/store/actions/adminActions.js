@@ -174,3 +174,23 @@ export const addQuatityProduct = () => {
     }
   };
 };
+export const BuyProduct = () => {
+  return async (dispatch) => {
+    try {
+      let res = await getProduct("All");
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: actionTypes.BUY_PRODUCT_SUCCESS,
+          payload: res.data,
+        });
+      } else {
+        toast.error("buy  product failded");
+        dispatch({
+          type: actionTypes.BUY_PRODUCT_FAILDED,
+        });
+      }
+    } catch (e) {
+      toast.error("buy  product failded");
+    }
+  };
+};

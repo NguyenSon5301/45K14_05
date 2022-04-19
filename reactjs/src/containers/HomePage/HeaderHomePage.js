@@ -145,15 +145,12 @@ class HeaderHomePage extends Component {
                     </ul>
                     <ul className="navbar_user">
                       <li className="checkout">
-                        <a href="#">
-                          <i
-                            className="fa fa-shopping-cart"
-                            aria-hidden="true"
-                          ></i>
+                        <NavLink to={path.Cart}>
+                          <i className="fa fa-shopping-cart"></i>
                           <span id="checkout_items" className="checkout_items">
                             {this.state.count}
                           </span>
-                        </a>
+                        </NavLink>
                       </li>
                     </ul>
                     <div className="hamburger_container">

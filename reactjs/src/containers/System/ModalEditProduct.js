@@ -65,10 +65,11 @@ class ModalEditUser extends Component {
     await this.props.fetchAllPricePr();
     await this.props.fetchAllTypePr();
     let { currentProduct } = this.props;
+    console.log("check current", this.props.currentProduct);
     if (currentProduct && !_.isEmpty(currentProduct)) {
       this.setState({
         id: currentProduct.id,
-        namePr: currentProduct.namePr,
+        namePr: currentProduct.namePR,
         price: currentProduct.priceId,
         typePr: currentProduct.typeId,
         description: currentProduct.description,
@@ -115,6 +116,7 @@ class ModalEditUser extends Component {
       arrType,
       arrPrice,
     } = this.state;
+    console.log("check name", this.state);
     return (
       <Modal isOpen={this.props.isOpen} toggle={() => this.toggle()} size="lg">
         <ModalHeader toggle={() => this.toggle()}>Edit user</ModalHeader>
@@ -167,13 +169,11 @@ class ModalEditUser extends Component {
                     arrPrice.length > 0 &&
                     arrPrice.map((item, index) => {
                       return (
-                        <>
-                          <option key={index} value={item.keyMap}>
-                            {language === LANGUAGE.VI
-                              ? item.valueVi
-                              : item.valueEn}
-                          </option>
-                        </>
+                        <option key={index} value={item.keyMap}>
+                          {language === LANGUAGE.VI
+                            ? item.valueVi
+                            : item.valueEn}
+                        </option>
                       );
                     })}
                 </select>
@@ -189,13 +189,11 @@ class ModalEditUser extends Component {
                     arrType.length > 0 &&
                     arrType.map((item, index) => {
                       return (
-                        <>
-                          <option key={index} value={item.keyMap}>
-                            {language === LANGUAGE.VI
-                              ? item.valueVi
-                              : item.valueEn}
-                          </option>
-                        </>
+                        <option key={index} value={item.keyMap}>
+                          {language === LANGUAGE.VI
+                            ? item.valueVi
+                            : item.valueEn}
+                        </option>
                       );
                     })}
                 </select>

@@ -38,17 +38,12 @@ class HomePage extends Component {
                   <h1>
                     <FormattedMessage id={"Banner.title-banner-price"} />
                   </h1>
-                  <div className="red_button shop_now_button">
-                    <a href="#">
-                      <FormattedMessage id={"Banner.shopButton"} />
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Banner />
+        {/* <Banner /> */}
         <ProductItem />
         <DealOff />
         <BestSellter />
