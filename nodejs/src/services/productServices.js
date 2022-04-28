@@ -128,9 +128,9 @@ let getProductByIdSV = (inputId) => {
         raw: true,
         nest: true,
       });
-      if (data && data.image) {
-        data.image = new Buffer(data.image, "base64").toString("binary");
-      }
+      // if (data && data.image) {
+      //   data.image = new Buffer(data.image, "base64").toString("binary");
+      // }
       resolve({
         errCode: 0,
         errMessage: "OK",
@@ -182,10 +182,110 @@ let onEditProduct = (data) => {
     }
   });
 };
+let getProductByTypeSV = (typeId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Product.findAll({
+        where: { typeId: typeId },
+      });
+
+      if (typeId == "All") {
+        data = await db.Product.findAll();
+      }
+      resolve({ errCode: 0, errMessage: "fetch all product success", data });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let buyProductOrderSV = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!data) {
+        resolve({ errCode: 2, errMessage: "Missing parameter" });
+      } else {
+        let user = await db.User.findAll({
+          where: { id: data.userId },
+        });
+        console.log("check list", data.ListCart);
+        let Cart = data.ListCart;
+        if (Cart && Cart.length > 0) {
+          Cart = Cart.map((item) => {
+            return item;
+          });
+        }
+
+        let dataDB = await db.ProductOrder.bulkCreate({
+          userId: user.id,
+          productId: Cart.ListCart.id,
+          sumPr: data.sumPR,
+          countPr: Cart.quantity,
+        });
+        console.log("dataDB", dataDB);
+      }
+
+      // db = await db.ProductOrder.bulkCreate(data);
+
+      resolve({ errCode: 0, errMessage: "Create product order success", data });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let deleteProductOrderSV = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!id) {
+        resolve({
+          errCode: 2,
+          errMessage: "Missing parameter",
+        });
+      } else {
+        let Product = await db.Product.findOne({
+          where: { id: id },
+          raw: false,
+        });
+        if (!Product) {
+          resolve({ errCode: 3, errMessage: "The product is not exist" });
+        }
+        await Product.destroy();
+        resolve({ errCode: 0, errMessage: "The product is deleted successed" });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let getProductOrderSV = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.ProductOrder.findAll({
+        include: [
+          {
+            model: db.User,
+            attributes: ["firstName"],
+            as: "userData",
+          },
+        ],
+        raw: true,
+        nest: true,
+      });
+
+      resolve({ errCode: 0, errMessage: "fetch  order success", data });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   onAddNewPrSV,
   onGetAllProduct,
   onDeletePr,
   getProductByIdSV,
   onEditProduct,
+  getProductByTypeSV,
+  buyProductOrderSV,
+  deleteProductOrderSV,
+  getProductOrderSV,
 };

@@ -16,7 +16,7 @@ class ModalEditUser extends Component {
       price: "",
       typePr: "",
       description: "",
-      image: "",
+      // image: "",
       size: "",
       arrType: [],
       arrPrice: [],
@@ -65,7 +65,6 @@ class ModalEditUser extends Component {
     await this.props.fetchAllPricePr();
     await this.props.fetchAllTypePr();
     let { currentProduct } = this.props;
-    console.log("check current", this.props.currentProduct);
     if (currentProduct && !_.isEmpty(currentProduct)) {
       this.setState({
         id: currentProduct.id,
@@ -73,7 +72,7 @@ class ModalEditUser extends Component {
         price: currentProduct.priceId,
         typePr: currentProduct.typeId,
         description: currentProduct.description,
-        image: currentProduct.image,
+        // image: currentProduct.image,
         size: currentProduct.sizeId,
       });
     }
@@ -94,16 +93,16 @@ class ModalEditUser extends Component {
       });
     }
   }
-  handleUpload = async (event) => {
-    let data = event.target.files;
-    let file = data[0];
-    if (file) {
-      let base64 = await CommonUtils.getBase64(file);
-      this.setState({
-        image: base64,
-      });
-    }
-  };
+  // handleUpload = async (event) => {
+  //   let data = event.target.files;
+  //   let file = data[0];
+  //   if (file) {
+  //     let base64 = await CommonUtils.getBase64(file);
+  //     this.setState({
+  //       image: base64,
+  //     });
+  //   }
+  // };
   render() {
     let { language } = this.props;
     let {
@@ -116,7 +115,6 @@ class ModalEditUser extends Component {
       arrType,
       arrPrice,
     } = this.state;
-    console.log("check name", this.state);
     return (
       <Modal isOpen={this.props.isOpen} toggle={() => this.toggle()} size="lg">
         <ModalHeader toggle={() => this.toggle()}>Edit user</ModalHeader>
@@ -198,13 +196,13 @@ class ModalEditUser extends Component {
                     })}
                 </select>
               </div>
-              <div className="form-group col-3 ">
+              {/* <div className="form-group col-3 ">
                 <label>file</label>
                 <input
                   type="file"
                   onChange={(event) => this.handleUpload(event, "image")}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </ModalBody>

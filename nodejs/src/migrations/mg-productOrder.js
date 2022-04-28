@@ -11,6 +11,13 @@ module.exports = {
       statusId: {
         type: Sequelize.STRING,
       },
+      productId: {
+        type: Sequelize.STRING,
+      },
+      userId: {
+        type: Sequelize.STRING,
+      },
+
       SumPr: {
         type: Sequelize.INTEGER,
       },

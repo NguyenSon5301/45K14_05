@@ -177,7 +177,6 @@ class ProductManage extends Component {
       arrPrice,
     } = this.state;
     let { language } = this.props;
-    console.log("check state", this.state);
     return (
       <div className="container">
         <div className="row">
@@ -230,7 +229,7 @@ class ProductManage extends Component {
                 arrPrice.length > 0 &&
                 arrPrice.map((item, index) => {
                   return (
-                    <option key={index} value={item.keyMap}>
+                    <option key="{index}" value={item.keyMap}>
                       {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
                     </option>
                   );
@@ -261,7 +260,7 @@ class ProductManage extends Component {
                 arrType.length > 0 &&
                 arrType.map((item, index) => {
                   return (
-                    <option key={index} value={item.keyMap}>
+                    <option key="{index}" value={item.keyMap}>
                       {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
                     </option>
                   );
@@ -307,9 +306,8 @@ class ProductManage extends Component {
               {arrProducts &&
                 arrProducts.length > 0 &&
                 arrProducts.map((item, index) => {
-                  console.log("check item ", item);
                   return (
-                    <tr key={index}>
+                    <tr key="{index}">
                       <td>{item.namePR}</td>
                       <td>{item.description}</td>
                       <td>{item.sizeId}</td>

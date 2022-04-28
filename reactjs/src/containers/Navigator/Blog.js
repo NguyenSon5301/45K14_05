@@ -6,6 +6,7 @@ import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { path } from "../../utils/constant";
+import HeaderBefore from "../HomePage/HeaderBefore";
 class Blog extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +59,7 @@ class Blog extends Component {
                 <div
                   class="blog_item"
                   style={{ "margin-bottom": "30px", "margin-top": "0" }}
-                  key={index}
+                  key="{index}"
                   onClick={() => this.handleViewDetailBlog(item)}
                 >
                   <div
@@ -75,7 +76,8 @@ class Blog extends Component {
           })}
         </div>
 
-        <HeaderHomePage />
+        {this.props.isLoggedIn ? <HeaderHomePage /> : <HeaderBefore />}
+
         <NewLetter />
 
         <FooterPage />
@@ -86,6 +88,7 @@ class Blog extends Component {
 const mapStateToProps = (state) => {
   return {
     arrBlogs: state.admin.blogData,
+    isLoggedIn: state.user.isLoggedIn,
   };
 };
 

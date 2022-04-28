@@ -35,6 +35,16 @@ let initWebRoutes = (app) => {
   router.get("/api/get-product-by-id", productController.getProductById);
   router.delete("/api/delete-product", productController.deletePr);
   router.put("/api/edit-product", productController.editProduct);
+  // fetch product by type
+  router.get("/api/get-type-product", productController.getProductByType);
+  // buy product
+  router.post("/api/buy-product", productController.buyProductOrder);
+  router.delete("/api/delete-product", productController.deleteProductOrder);
+  router.get(
+    "/api/get-all-product-order",
+    productController.fetchAllProductOrder
+  );
+
   return app.use("/", router);
 };
 

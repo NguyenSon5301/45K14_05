@@ -65,12 +65,25 @@ const editProduct = (data) => {
 const getProductById = (id) => {
   return axios.get(`/api/get-product-by-id?id=${id}`);
 };
+// get all product by type
+const getProductByType = (typeId) => {
+  return axios.get(`/api/get-type-product?typeId=${typeId}`);
+};
+
+const buyProductOrder = (data) => {
+  return axios.post(`/api/buy-product`, data);
+};
+const getAllProductOrder = () => {
+  return axios.get(`/api/get-all-product-order`);
+};
+
 export {
   handleLoginApi,
   handleAdminLogin,
   CreateNewUser,
   getUser,
   editUser,
+  getProductByType,
   deleteUser,
   sendEmail,
   sendNewLetter,
@@ -87,4 +100,6 @@ export {
   editProduct,
   getProductById,
   CreateNewAdmin,
+  buyProductOrder,
+  getAllProductOrder,
 };

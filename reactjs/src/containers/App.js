@@ -14,10 +14,8 @@ import {
 import { path } from "../utils";
 import Home from "../routes/Home";
 import Login from "./Auth/Login";
-import Header from "./Header/Header";
 import System from "../routes/System";
-import { CustomToastCloseButton } from "../components/CustomToast";
-import ConfirmModal from "../components/ConfirmModal";
+
 import RegisterUser from "./Customer/RegisterUser";
 import UserLogin from "./Customer/UserLogin";
 import SinglePr from "./Navigator/SinglePr";
@@ -27,6 +25,7 @@ import DetailBlog from "./Blog/DetailBlog";
 import Blog from "./Navigator/Blog";
 import HeaderBefore from "./HomePage/HeaderBefore";
 import Cart from "./Cart/Cart";
+import ScrollToTop from "./System/ScrollToTop";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -49,7 +48,8 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Router history={history}>
+        <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
+          {/* <ScrollToTop /> */}
           <div className="main-container" style={{ fontFamily: "Arial" }}>
             <div className="content-container">
               <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
@@ -70,7 +70,7 @@ class App extends Component {
 
                   <Route path={path.BLOGUSER} component={Blog} />
                   <Route path={path.BFLOGIN} component={HeaderBefore} />
-                  <Route path={path.Cart} component={Cart} />
+                  <Route path={path.Cart} exact component={Cart} />
 
                   <Route
                     path={path.LOGIN}

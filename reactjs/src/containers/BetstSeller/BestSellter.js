@@ -10,7 +10,7 @@ import { ChangeLanguage } from "../../store/actions/appActions";
 import { LANGUAGE } from "../../utils/constant";
 import { withRouter } from "react-router";
 import NumberFormat from "react-number-format";
-
+import { getProduct } from "../../services/userService";
 class BestSellter extends Component {
   constructor(props) {
     super(props);
@@ -18,17 +18,16 @@ class BestSellter extends Component {
       products: [],
     };
   }
+
   async componentDidMount() {
-    await this.props.fetchAllProduct();
-  }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.products !== this.props.products) {
-      let { products } = this.props;
+    let res = await getProduct("All");
+    if (res && res.errCode === 0) {
       this.setState({
-        products: products,
+        products: res.data,
       });
     }
   }
+
   handleViewDetailProduct = (item) => {
     this.props.history.push(`/SinglePr/${item.id}`);
   };
@@ -66,8 +65,11 @@ class BestSellter extends Component {
                       );
                     }
                     return (
-                      <div className="section-content">
-                        <div className="img-customer" key={index}>
+                      <div
+                        className="section-content"
+                        onClick={() => this.handleViewDetailProduct(item)}
+                      >
+                        <div className="img-customer" key="{index}">
                           <div
                             className="img-product"
                             style={{

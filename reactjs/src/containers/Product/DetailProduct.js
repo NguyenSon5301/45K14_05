@@ -33,7 +33,7 @@ export default class DetailProduct extends Component {
       <div className="detail-Product-container">
         <HeaderHomePage />
         <div className="detail-cn-body">
-          <div className="description-cn"></div>
+          <div className="description-cn">Hell</div>
         </div>
         <NewLetter />
         <FooterPage />

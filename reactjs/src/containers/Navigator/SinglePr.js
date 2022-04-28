@@ -11,25 +11,17 @@ import { getProductById } from "../../services/userService";
 import { FormattedMessage } from "react-intl";
 import HeaderHomePage from "../HomePage/HeaderHomePage";
 import NewLetter from "../NewLetter/NewLetter";
+import HeaderBefore from "../HomePage/HeaderBefore";
 class SinglePr extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
-      sumCount: 0,
-      sumVi: 0,
-      sumEn: 0,
     };
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.sumCount !== this.props.sumCount) {
-      this.setState({
-        sumCount: this.props.sumCount,
-      });
-    }
-  }
+
   async componentDidMount() {
-    await this.props.addQuatityProduct();
+    await window.scrollTo(0, 0);
     if (
       this.props.match &&
       this.props.match.params &&
@@ -44,74 +36,34 @@ class SinglePr extends Component {
       }
     }
   }
-  handlePlus = () => {
-    let priceVi = +this.state.products.priceData.valueVi;
-    let priceEn = +this.state.products.priceData.valueEn;
-    if (this.props.language === LANGUAGE.VI) {
-      this.state.sumVi = (this.state.count + 1) * priceVi;
-      this.state.sumEn = (this.state.count + 1) * priceEn;
-      this.setState({
-        count: this.state.count + 1,
-        sumVi: this.state.sumVi,
-        sumEn: this.state.sumEn,
-        sumCount: this.props.sumCount + 1,
-      });
-    } else {
-      this.state.sumEn = (this.state.count + 1) * priceEn;
-      this.state.sumVi = (this.state.count + 1) * priceVi;
-      this.setState({
-        count: this.state.count + 1,
-        sumEn: this.state.sumEn,
-        sumVi: this.state.sumVi,
-      });
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
     }
-  };
-  handleSubtract = () => {
-    if (this.state.count > 0) {
-      let priceVi = +this.state.products.priceData.valueVi;
-      let priceEn = +this.state.products.priceData.valueEn;
-      if (this.props.language === LANGUAGE.VI) {
-        this.state.sumVi = (this.state.count - 1) * priceVi;
-        this.state.sumEn = (this.state.count - 1) * priceEn;
-        this.setState({
-          count: this.state.count - 1,
-          sumVi: this.state.sumVi,
-          sumEn: this.state.sumEn,
-        });
-      } else {
-        this.state.sumEn = (this.state.count - 1) * priceEn;
-        this.state.sumVi = (this.state.count - 1) * priceVi;
-        this.setState({
-          count: this.state.count - 1,
-          sumEn: this.state.sumEn,
-          sumVi: this.state.sumVi,
-        });
-      }
-    }
-  };
+  }
   render() {
-    let { products, count, sumVi, sumEn } = this.state;
+    let { products } = this.state;
+    console.log("check products", products.image);
     let { language } = this.props;
+    let imageBase64 = "";
+    if (products.image) {
+      imageBase64 = new Buffer(products.image, "base64").toString("binary");
+    }
     return (
       <>
-        <HeaderHomePage />
+        {this.props.isLoggedIn ? <HeaderHomePage /> : <HeaderBefore />}
         <div className="super_container mg-single">
           <div className="row">
             <div className="col-lg-6">
               <div className="single_product_pics">
                 <div className="row">
-                  <div className="col-lg-3 thumbnails_col order-lg-1 order-2">
-                    <div className="single_product_thumbnails">
-                      <ul></ul>
-                    </div>
-                  </div>
                   <div className="col-lg-9  order-1">
                     <div className="single_product_image">
                       {products && (
                         <div
                           className="single_product_image_background"
                           style={{
-                            backgroundImage: `url(${products.image})`,
+                            backgroundImage: `url(${imageBase64})`,
                           }}
                         ></div>
                       )}
@@ -155,52 +107,17 @@ class SinglePr extends Component {
                         />
                       )}
                   </div>
-                  <div>
-                    {language === LANGUAGE.VI && (
-                      <div>
-                        Tổng tiền:&nbsp;
-                        <NumberFormat
-                          className="currency"
-                          value={sumVi}
-                          displayType={"text"}
-                          thousandSeparator={true}
-                          suffix={"VND"}
-                        />
-                      </div>
-                    )}
-                    {language === LANGUAGE.EN && (
-                      <div>
-                        Sum: &nbsp;
-                        <NumberFormat
-                          className="currency"
-                          value={sumEn}
-                          displayType={"text"}
-                          thousandSeparator={true}
-                          suffix={"$"}
-                        />
-                      </div>
-                    )}
-                  </div>
 
-                  <div className="quantity d-flex flex-column flex-sm-row align-items-sm-center">
-                    <span>Quantity:</span>
-                    <div className="quantity_selector">
-                      <span
-                        className="minus"
-                        onClick={() => this.handleSubtract()}
-                      >
-                        <i className="fa fa-minus"></i>
-                      </span>
-                      <span id="quantity_value">{count}</span>
-                      <span className="plus" onClick={() => this.handlePlus()}>
-                        <i className="fa fa-plus"></i>
-                      </span>
-                    </div>
-                    <div className="button-add">
-                      <button className="btn-add-product">
-                        <FormattedMessage id={"NewArrivals.addCart"} />
-                      </button>
-                    </div>
+                  <div
+                    className="button-add"
+                    style={{ width: "120px", "margin-left": "-20px" }}
+                  >
+                    <button
+                      className="btn-add-product my-2"
+                      onClick={() => this.props.AddCart(products)}
+                    >
+                      <FormattedMessage id={"NewArrivals.addCart"} />
+                    </button>
                   </div>
                 </div>
               )}
@@ -217,14 +134,15 @@ class SinglePr extends Component {
 const mapStateToProps = (state) => {
   return {
     language: state.app.language,
-    sumCount: state.admin.sumCount,
+    isLoggedIn: state.user.isLoggedIn,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addQuatityProduct: (sumCount) =>
-      dispatch(actions.addQuatityProduct(sumCount)),
+    IncreaseQuantity: (item) => dispatch(actions.IncreaseQuantity(item)),
+    DecreaseQuantity: (item) => dispatch(actions.DecreaseQuantity(item)),
+    AddCart: (item) => dispatch(actions.AddCart(item)),
   };
 };
 

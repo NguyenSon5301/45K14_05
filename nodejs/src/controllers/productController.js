@@ -61,10 +61,62 @@ let editProduct = async (req, res) => {
     });
   }
 };
+let getProductByType = async (req, res) => {
+  try {
+    let data = await productServices.getProductByTypeSV(req.query.typeId);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log("check error", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let buyProductOrder = async (req, res) => {
+  try {
+    let data = await productServices.buyProductOrderSV(req.body);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log("check error", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let deleteProductOrder = async (req, res) => {
+  try {
+    let data = await productServices.deleteProductOrderSV(req.query.id);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log("check error", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
+let fetchAllProductOrder = async (req, res) => {
+  try {
+    let data = await productServices.getProductOrderSV();
+    return res.status(200).json(data);
+  } catch (error) {
+    console.log("check error", error);
+    res.status(200).json({
+      errCode: -1,
+      errMessage: "Error from server",
+    });
+  }
+};
 module.exports = {
   AddNewPr,
   getAllPr,
   deletePr,
   getProductById,
   editProduct,
+  getProductByType,
+  buyProductOrder,
+  deleteProductOrder,
+  fetchAllProductOrder,
 };

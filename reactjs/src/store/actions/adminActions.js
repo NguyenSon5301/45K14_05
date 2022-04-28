@@ -5,6 +5,8 @@ import {
   getAllCode,
   getBlogs,
   getProduct,
+  getProductById,
+  buyProductOrder,
 } from "../../services/userService";
 import { toast } from "react-toastify";
 export const fetchAllUser = () => {
@@ -161,36 +163,69 @@ export const fetchAllTypePr = () => {
     }
   };
 };
-export const addQuatityProduct = () => {
-  return async (dispatch) => {
-    try {
-      let count = 0;
-      dispatch({
-        type: actionTypes.FETCH_ALL_TYPE_SUCCEED,
-        sumCount: count + 1,
-      });
-    } catch (e) {
-      toast.error("fetch all count product failded");
-    }
-  };
-};
-export const BuyProduct = () => {
+
+/*GET_ALL_PRODUCT*/
+export const actFetchProductsRequest = () => {
   return async (dispatch) => {
     try {
       let res = await getProduct("All");
       if (res && res.errCode === 0) {
-        dispatch({
-          type: actionTypes.BUY_PRODUCT_SUCCESS,
-          payload: res.data,
-        });
+        dispatch(GetAllProduct(res.data));
       } else {
-        toast.error("buy  product failded");
+        toast.error("fetch all product failded");
         dispatch({
-          type: actionTypes.BUY_PRODUCT_FAILDED,
+          type: actionTypes.FETCH_ALL_PRODUCT_FAILDED,
         });
       }
     } catch (e) {
-      toast.error("buy  product failded");
+      toast.error("fetch all product failded");
     }
   };
 };
+
+/*GET_ALL_PRODUCT*/
+export function GetAllProduct(payload) {
+  return {
+    type: "GET_ALL_PRODUCT",
+    payload,
+  };
+}
+
+/*GET NUMBER CART*/
+export function GetNumberCart() {
+  return {
+    type: "GET_NUMBER_CART",
+  };
+}
+
+export function AddCart(payload) {
+  return {
+    type: "ADD_CART",
+    payload,
+  };
+}
+export function UpdateCart(payload) {
+  return {
+    type: "UPDATE_CART",
+    payload,
+  };
+}
+export function DeleteCart(payload) {
+  return {
+    type: "DELETE_CART",
+    payload,
+  };
+}
+
+export function IncreaseQuantity(payload) {
+  return {
+    type: "INCREASE_QUANTITY",
+    payload,
+  };
+}
+export function DecreaseQuantity(payload) {
+  return {
+    type: "DECREASE_QUANTITY",
+    payload,
+  };
+}

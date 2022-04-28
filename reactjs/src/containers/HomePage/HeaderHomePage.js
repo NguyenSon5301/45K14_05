@@ -23,9 +23,9 @@ class HeaderHomePage extends Component {
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.sumCount !== this.props.sumCount) {
+    if (prevProps.cartAr !== this.props.cartAr) {
       this.setState({
-        count: this.props.sumCount,
+        count: this.props.cartAr.quantity,
       });
     }
   }
@@ -34,11 +34,7 @@ class HeaderHomePage extends Component {
   };
 
   render() {
-    let { processLogout, userInfo, isLoggedIn } = this.props;
     let user = this.state.user;
-    console.log("check login", isLoggedIn);
-
-    console.log("check user", userInfo);
     return (
       <Fragment>
         {this.props.isLoggedIn}
@@ -148,7 +144,7 @@ class HeaderHomePage extends Component {
                         <NavLink to={path.Cart}>
                           <i className="fa fa-shopping-cart"></i>
                           <span id="checkout_items" className="checkout_items">
-                            {this.state.count}
+                            {this.props.numberCart}
                           </span>
                         </NavLink>
                       </li>
@@ -172,7 +168,8 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
     userInfo: state.user.userInfo,
-    sumCount: state.admin.sumCount,
+    numberCart: state.admin.numberCart,
+    cartAr: state.admin.cartAr,
   };
 };
 

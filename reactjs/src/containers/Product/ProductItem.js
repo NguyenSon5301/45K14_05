@@ -2,39 +2,61 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { ChangeLanguage } from "../../store/actions/appActions";
 import { FormattedMessage } from "react-intl";
-import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { LANGUAGE } from "../../utils/constant";
 import { withRouter } from "react-router";
 import NumberFormat from "react-number-format";
+import {
+  getProductByType,
+  getProduct,
+  buyProductOrder,
+} from "../../services/userService";
 
 import "./Product.css";
+import Cart from "../Cart/Cart";
 
 class ProductItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
+
+      productId: 0,
+      productData: [],
+      cartAr: [],
     };
   }
   async componentDidMount() {
-    await this.props.fetchAllProduct();
+    await this.props.actFetchProductsRequest();
+    // let res = await getProduct("All");
+
+    this.setState({
+      products: this.props.products,
+    });
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.products !== this.props.products) {
-      let { products } = this.props;
+    if (prevProps.cartAr !== this.props.cartAr) {
+      let { cartAr } = this.props;
       this.setState({
-        products: products,
+        cartAr: cartAr,
       });
     }
   }
   handleViewDetailProduct = (item) => {
     this.props.history.push(`/SinglePr/${item.id}`);
   };
+  handleViewType = async (id) => {
+    let res = await getProductByType(id);
+    if (res && res.errCode === 0 && id) {
+      this.setState({
+        products: res.data,
+      });
+    }
+  };
 
   render() {
     let { products } = this.state;
-    let { language } = this.props;
+    let { language, cartAr } = this.props;
 
     const settings = {
       dots: true,
@@ -62,16 +84,30 @@ class ProductItem extends Component {
               <div className="col text-center">
                 <div className="new_arrivals_sorting">
                   <ul className="arrivals_grid_sorting clearfix button-group filters-button-group">
-                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked">
+                    <li
+                      onClick={() => this.handleViewType("All")}
+                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active  "
+                    >
                       <FormattedMessage id={"NewArrivals.All"} />
                     </li>
-                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">
+
+                    <li
+                      onClick={() => this.handleViewType("F")}
+                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center  "
+                    >
                       <FormattedMessage id={"NewArrivals.WOMEN'S"} />
                     </li>
-                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">
+
+                    <li
+                      onClick={() => this.handleViewType("AC")}
+                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center  "
+                    >
                       <FormattedMessage id={"NewArrivals.accessories"} />
                     </li>
-                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center">
+                    <li
+                      onClick={() => this.handleViewType("M")}
+                      className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center  "
+                    >
                       <FormattedMessage id={"NewArrivals.men's"} />
                     </li>
                   </ul>
@@ -99,11 +135,13 @@ class ProductItem extends Component {
                               style={{
                                 backgroundImage: `url(${imageBase64})`,
                               }}
+                              onClick={() => this.handleViewDetailProduct(item)}
                             ></div>
                             <div class="product_info">
                               <h6 class="product_name">
                                 <div
-                                  key={index}
+                                  key="{index}"
+                                  id={item.id}
                                   onClick={() =>
                                     this.handleViewDetailProduct(item)
                                   }
@@ -137,11 +175,11 @@ class ProductItem extends Component {
                               </div>
                             </div>
                           </div>
-                          <div className="red_button add_to_cart_button">
-                            <div
-                              key={index}
-                              onClick={() => this.handleViewDetailProduct(item)}
-                            >
+                          <div
+                            className="red_button add_to_cart_button"
+                            onClick={() => this.props.AddCart(item)}
+                          >
+                            <div>
                               <FormattedMessage id={"NewArrivals.addCart"} />
                             </div>
                           </div>
@@ -153,6 +191,7 @@ class ProductItem extends Component {
             </div>
           </div>
         </div>
+        {/* <Cart cartAr={this.state.cartAr} /> */}
       </Fragment>
     );
   }
@@ -162,6 +201,8 @@ const mapStateToProps = (state) => {
   return {
     language: state.app.language,
     products: state.admin.products,
+    productData: state.admin.productData,
+    cartAr: state.admin.cartAr,
   };
 };
 
@@ -169,6 +210,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     ChangeLanguageRedux: (language) => dispatch(ChangeLanguage(language)),
     fetchAllProduct: () => dispatch(actions.fetchAllProduct()),
+    actFetchProductsRequest: () => dispatch(actions.actFetchProductsRequest()),
+    AddCart: (item) => dispatch(actions.AddCart(item)),
   };
 };
 

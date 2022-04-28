@@ -159,13 +159,13 @@ class ModalEditUser extends Component {
               <div className="form-group col-3">
                 <label>Chức vụ</label>
                 <select
-                  class="form-select"
+                  className="form-select"
                   value={this.state.role}
                   onChange={(event) => this.handleInputUser(event, "role")}
                 >
                   {roleData.map((item, index) => {
                     return (
-                      <option key={index} value={item.keyMap}>
+                      <option key="{index}" value={item.keyMap}>
                         {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
                       </option>
                     );
@@ -176,7 +176,7 @@ class ModalEditUser extends Component {
                 <label>Giới tính</label>
                 <select
                   value={this.state.gender}
-                  class="form-select"
+                  className="form-select"
                   onChange={(event) => this.handleInputUser(event, "gender")}
                 >
                   <label>Giới tính</label>;
@@ -185,7 +185,7 @@ class ModalEditUser extends Component {
                     gendersArr.map((item, index) => {
                       return (
                         <>
-                          <option key={index} value={item.keyMap}>
+                          <option key="{index}" value={item.keyMap}>
                             {language === LANGUAGE.VI
                               ? item.valueVi
                               : item.valueEn}

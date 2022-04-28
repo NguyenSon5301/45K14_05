@@ -12,6 +12,9 @@ const initialState = {
   arrPrices: [],
   arrType: [],
   sumCount: 0,
+  cartAr: [],
+  numberCart: 0,
+  Carts: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -115,46 +118,81 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case actionTypes.ADD_QUATITY_PRODUCT:
-      state.sumCount = action.sumCount + 1;
-
-      return {
-        ...state,
-      };
     case actionTypes.FETCH_ALL_TYPE_FAILDED:
       state.arrType = [];
       return {
         ...state,
       };
-    // buy product
-    case actionTypes.BUY_PRODUCT_FAILDED:
-      const productInCart = state.cartAr.find(
-        (p) => p.id === action.payload.id
-      );
-      if (!productInCart) {
-        return {
-          cartAr: [...state.cartAr, action.payload],
-        };
-      } else {
-        let newcart = state.cartAr;
-        const objIndex = newcart.findIndex(
-          (obj) => obj.id == action.payload.id
-        );
-        if (newcart[objIndex].quantity === undefined) {
-          newcart[objIndex].quantity = 2;
-        } else {
-          newcart[objIndex].quantity = newcart[objIndex].quantity + 1;
-        }
 
-        return { cartAr: [...newcart] };
+    case actionTypes.GET_ALL_PRODUCT:
+      return {
+        ...state,
+        products: action.payload,
+      };
+    case actionTypes.GET_NUMBER_CART:
+      return {
+        ...state,
+      };
+    case actionTypes.ADD_CART:
+      if (state.numberCart == 0) {
+        let cart = {
+          id: action.payload.id,
+          quantity: 1,
+          name: action.payload.namePR,
+          image: action.payload.image,
+          price: action.payload.priceData,
+        };
+        state.Carts.push(cart);
+      } else {
+        let check = false;
+        state.Carts.map((item, key) => {
+          if (item.id == action.payload.id) {
+            state.Carts[key].quantity++;
+            check = true;
+          }
+        });
+
+        if (!check) {
+          let _cart = {
+            id: action.payload.id,
+            quantity: 1,
+            name: action.payload.namePR,
+            image: action.payload.image,
+            price: action.payload.priceData,
+          };
+          state.Carts.push(_cart);
+        }
       }
-    // delele product
-    case actionTypes.DELETE_PRODUCT_SUCCESS:
-      let newcart = state.cartAr;
-      const objIndex = newcart.findIndex((obj) => obj.id == action.payload.id);
-      newcart.splice(objIndex, 1);
-      console.log(">>newcart", newcart);
-      return { cartAr: [...newcart], totalprice: 0 };
+      return {
+        ...state,
+        numberCart: state.numberCart + 1,
+      };
+    case actionTypes.INCREASE_QUANTITY:
+      state.numberCart++;
+      state.Carts[action.payload].quantity++;
+
+      return {
+        ...state,
+      };
+    case actionTypes.DECREASE_QUANTITY:
+      let quantity = state.Carts[action.payload].quantity;
+      if (quantity > 1) {
+        state.numberCart--;
+        state.Carts[action.payload].quantity--;
+      }
+
+      return {
+        ...state,
+      };
+    case actionTypes.DELETE_CART:
+      let quantity_ = state.Carts[action.payload].quantity;
+      return {
+        ...state,
+        numberCart: state.numberCart - quantity_,
+        Carts: state.Carts.filter((item) => {
+          return item.id != state.Carts[action.payload].id;
+        }),
+      };
     default:
       return state;
   }

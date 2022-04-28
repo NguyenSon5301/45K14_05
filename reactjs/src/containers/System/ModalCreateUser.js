@@ -39,9 +39,15 @@ class ModalCreateUser extends Component {
       });
     });
   }
-  componentDidMount() {
-    this.props.fetchGenderData();
-    this.props.fetchRoleData();
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
+  async componentDidMount() {
+    await this.props.fetchGenderData();
+    await this.props.fetchRoleData();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.gendersArr !== this.props.gendersArr) {
@@ -162,7 +168,7 @@ class ModalCreateUser extends Component {
                   >
                     {roleData.map((item, index) => {
                       return (
-                        <option key={index} value={item.keyMap}>
+                        <option key="{index}" value={item.keyMap}>
                           {language === LANGUAGE.VI
                             ? item.valueVi
                             : item.valueEn}
@@ -184,7 +190,7 @@ class ModalCreateUser extends Component {
                       gendersArr.length > 0 &&
                       gendersArr.map((item, index) => {
                         return (
-                          <option key={index} value={item.keyMap}>
+                          <option key="{index}" value={item.keyMap}>
                             {language === LANGUAGE.VI
                               ? item.valueVi
                               : item.valueEn}

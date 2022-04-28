@@ -4,7 +4,9 @@ import "./DetailBlog.scss";
 import HeaderHomePage from "../HomePage/HeaderHomePage";
 import NewLetter from "../NewLetter/NewLetter";
 import FooterPage from "../Footer/FooterPage";
-export default class DetailBlog extends Component {
+import { connect } from "react-redux";
+import HeaderBefore from "../HomePage/HeaderBefore";
+class DetailBlog extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +33,8 @@ export default class DetailBlog extends Component {
 
     return (
       <div className="detail-blog-container">
-        <HeaderHomePage />
+        {this.props.isLoggedIn ? <HeaderHomePage /> : <HeaderBefore />}
+
         <div className="detail-cn-body">
           <div className="description-cn">
             {arrBlogs && arrBlogs.contentHTML && (
@@ -53,3 +56,14 @@ export default class DetailBlog extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailBlog);

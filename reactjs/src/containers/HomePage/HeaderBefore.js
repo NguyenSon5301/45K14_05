@@ -113,9 +113,10 @@ class HeaderBefore extends Component {
                             className="fa fa-shopping-cart"
                             aria-hidden="true"
                           ></i>
-                          <span id="checkout_items" className="checkout_items">
-                            2
-                          </span>
+                          <span
+                            id="checkout_items"
+                            className="checkout_items"
+                          ></span>
                         </a>
                       </li>
                     </ul>

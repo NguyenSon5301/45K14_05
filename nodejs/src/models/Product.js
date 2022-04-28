@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: "keyMap",
         as: "typeData",
       });
+      // Product.hasOne(models.ProductOrder, {
+      //   foreignKey: "productId",
+      //   as: "productData",
+      // });
     }
   }
   Product.init(

@@ -9,7 +9,9 @@ import { FormattedMessage } from "react-intl";
 import { NavLink } from "react-router-dom";
 import { path } from "../../utils/constant";
 import { toast } from "react-toastify";
-export default class Contact extends Component {
+import { connect } from "react-redux";
+import HeaderBefore from "../HomePage/HeaderBefore";
+class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +39,8 @@ export default class Contact extends Component {
   render() {
     return (
       <div class="super_container">
-        <HeaderHomePage />
+        {this.props.isLoggedIn ? <HeaderHomePage /> : <HeaderBefore />}
+
         <div class="container contact_container">
           <div class="row">
             <div class="col">
@@ -144,3 +147,14 @@ export default class Contact extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

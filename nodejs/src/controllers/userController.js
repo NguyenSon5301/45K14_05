@@ -77,6 +77,8 @@ let getAllUser = async (req, res) => {
     let data = await userService.onGetAllUsers(id);
     res.status(200).json(data);
   } catch (error) {
+    console.log("check err", error);
+
     res.status(200).json({
       errCode: -1,
       errMessage: "Error from server",
