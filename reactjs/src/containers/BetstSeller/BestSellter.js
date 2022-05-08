@@ -69,7 +69,7 @@ class BestSellter extends Component {
                         className="section-content"
                         onClick={() => this.handleViewDetailProduct(item)}
                       >
-                        <div className="img-customer" key="{index}">
+                        <div className="img-customer" key={index}>
                           <div
                             className="img-product"
                             style={{

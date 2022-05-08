@@ -52,7 +52,7 @@ export default class ContactManage extends Component {
               arrContact.length > 0 &&
               arrContact.map((item, index) => {
                 return (
-                  <tr key="{index}">
+                  <tr key={index}>
                     <td>{item.nameCT}</td>
                     <td>{item.emailCT}</td>
                     <td>{item.message}</td>

@@ -165,7 +165,7 @@ class ModalEditUser extends Component {
                 >
                   {roleData.map((item, index) => {
                     return (
-                      <option key="{index}" value={item.keyMap}>
+                      <option key={index} value={item.keyMap}>
                         {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
                       </option>
                     );
@@ -185,7 +185,7 @@ class ModalEditUser extends Component {
                     gendersArr.map((item, index) => {
                       return (
                         <>
-                          <option key="{index}" value={item.keyMap}>
+                          <option key={index} value={item.keyMap}>
                             {language === LANGUAGE.VI
                               ? item.valueVi
                               : item.valueEn}

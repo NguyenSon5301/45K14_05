@@ -42,6 +42,9 @@ class DetailBlog extends Component {
                 <div className="title-blg">{arrBlogs.title}</div>
                 <hr />
                 <div
+                  style={{
+                    "background-image": "center",
+                  }}
                   dangerouslySetInnerHTML={{
                     __html: arrBlogs.contentHTML,
                   }}

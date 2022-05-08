@@ -80,8 +80,9 @@ class SinglePr extends Component {
                     <p>{products.description}</p>
                   </div>
                   <div className="free_delivery d-flex flex-row align-items-center justify-content-center">
-                    <span className="ti-truck"></span>
-                    <span>free delivery</span>
+                    <span>
+                      <FormattedMessage id="Product.free_delivery" />
+                    </span>
                   </div>
                   <div className="product_prices">
                     {products &&

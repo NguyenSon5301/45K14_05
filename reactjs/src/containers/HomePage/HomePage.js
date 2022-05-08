@@ -15,6 +15,7 @@ import BestSellter from "../BetstSeller/BestSellter";
 import DealOff from "../Deal/DealOff";
 import Blog from "../Blog/Blog";
 import HeaderBefore from "./HeaderBefore";
+import "./responsive.css";
 
 class HomePage extends Component {
   ChangeLanguage = (language) => {
@@ -25,12 +26,12 @@ class HomePage extends Component {
       <div className="super_container">
         {this.props.isLoggedIn ? <HeaderHomePage /> : <HeaderBefore />}
         <div
-          className="main_slider"
+          className="main_slider c-12"
           style={{ backgroundImage: `url(${sli1})` }}
         >
           <div className="container fill_height">
-            <div className="row align-items-center fill_height">
-              <div className="col">
+            <div className="row align-items-center fill_height ">
+              <div className="col c-12">
                 <div className="main_slider_content">
                   <h6>
                     <FormattedMessage id={"Banner.title-banner"} />

@@ -36,7 +36,7 @@ class ModalEditUser extends Component {
       "price",
       "typePr",
       "description",
-      "image",
+      // "image",
       "size",
     ];
     for (let i = 0; i < arrCheck.length; i++) {

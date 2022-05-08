@@ -168,7 +168,7 @@ class ModalCreateUser extends Component {
                   >
                     {roleData.map((item, index) => {
                       return (
-                        <option key="{index}" value={item.keyMap}>
+                        <option key={index} value={item.keyMap}>
                           {language === LANGUAGE.VI
                             ? item.valueVi
                             : item.valueEn}
@@ -190,7 +190,7 @@ class ModalCreateUser extends Component {
                       gendersArr.length > 0 &&
                       gendersArr.map((item, index) => {
                         return (
-                          <option key="{index}" value={item.keyMap}>
+                          <option key={index} value={item.keyMap}>
                             {language === LANGUAGE.VI
                               ? item.valueVi
                               : item.valueEn}

@@ -37,7 +37,8 @@
         "price": "Giá sản phẩm",
         "type": "Loại sản phẩm",
         "size": "kích cỡ",
-        "description": "Mô tả"
+        "description": "Mô tả",
+        "free_delivery": "Miễn phí vận chuyển"
     },
     "letter": {
         "title": "Bấm theo dõi chúng tôi, bạn sẽ nhận được giảm giá 20% khi mua hàng lần đầu",

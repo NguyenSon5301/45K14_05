@@ -105,7 +105,7 @@ function Cart({
                       {language === LANGUAGE.EN
                         ? item.price.valueEn
                         : item.price.valueVi}
-                      $
+                      <span> {language === LANGUAGE.EN ? "$" : "VND"}</span>
                     </td>
                     <td>
                       <span

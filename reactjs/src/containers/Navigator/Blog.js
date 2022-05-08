@@ -59,7 +59,7 @@ class Blog extends Component {
                 <div
                   class="blog_item"
                   style={{ "margin-bottom": "30px", "margin-top": "0" }}
-                  key="{index}"
+                  key={index}
                   onClick={() => this.handleViewDetailBlog(item)}
                 >
                   <div

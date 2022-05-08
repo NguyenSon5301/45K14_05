@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         as: "roleData",
       });
 
-      User.hasMany(models.ProductOrder, {
-        foreignKey: "userId",
-        as: "userData",
-      });
+      // User.hasMany(models.ProductOrder, {
+      //   foreignKey: "userId",
+      //   as: "userData",
+      // });
     }
   }
   User.init(

@@ -5,7 +5,6 @@ import CommonUtils from "../../utils/CommonUtils";
 import "./ProductManage.scss";
 import { LANGUAGE } from "../../utils/constant";
 import { emitter } from "../../utils/emitter";
-
 import * as actions from "../../store/actions";
 import {
   createNewProduct,
@@ -229,7 +228,7 @@ class ProductManage extends Component {
                 arrPrice.length > 0 &&
                 arrPrice.map((item, index) => {
                   return (
-                    <option key="{index}" value={item.keyMap}>
+                    <option key={index} value={item.keyMap}>
                       {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
                     </option>
                   );
@@ -260,7 +259,7 @@ class ProductManage extends Component {
                 arrType.length > 0 &&
                 arrType.map((item, index) => {
                   return (
-                    <option key="{index}" value={item.keyMap}>
+                    <option key={index} value={item.keyMap}>
                       {language === LANGUAGE.VI ? item.valueVi : item.valueEn}
                     </option>
                   );
@@ -307,7 +306,7 @@ class ProductManage extends Component {
                 arrProducts.length > 0 &&
                 arrProducts.map((item, index) => {
                   return (
-                    <tr key="{index}">
+                    <tr key={index}>
                       <td>{item.namePR}</td>
                       <td>{item.description}</td>
                       <td>{item.sizeId}</td>
@@ -324,7 +323,7 @@ class ProductManage extends Component {
                       </td>
                       <td className="button-sub">
                         <button
-                          className="btn btn-primary mx-2"
+                          className="btn btn-primary  mx-2"
                           onClick={() => this.onEdit(item)}
                         >
                           Edit

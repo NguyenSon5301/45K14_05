@@ -47,7 +47,8 @@
         "price": "Price",
         "type": "Type",
         "size": "Size",
-        "description": "Description"
+        "description": "Description",
+        "free_delivery": "FREE DELIVERY"
     },
     "Contact": {
         "header": "Contact us",

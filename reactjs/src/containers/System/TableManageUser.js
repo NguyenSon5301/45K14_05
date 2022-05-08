@@ -39,7 +39,7 @@ class TableManageUser extends Component {
               usersRedux.length > 0 &&
               usersRedux.map((item, index) => {
                 return (
-                  <tr key="{index}">
+                  <tr key={index}>
                     <td>
                       <button
                         className="btn-delete"

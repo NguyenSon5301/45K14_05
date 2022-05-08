@@ -140,7 +140,7 @@ class ProductItem extends Component {
                             <div class="product_info">
                               <h6 class="product_name">
                                 <div
-                                  key="{index}"
+                                  key={index}
                                   id={item.id}
                                   onClick={() =>
                                     this.handleViewDetailProduct(item)
